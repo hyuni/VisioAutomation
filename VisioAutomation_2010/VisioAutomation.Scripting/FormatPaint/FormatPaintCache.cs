@@ -94,7 +94,7 @@ namespace VisioAutomation.Scripting.FormatPaint
             }
         }
         
-        public void CopyFormat(IVisio.Shape shape, FormatCategory category)
+        public void CopyFormat(IVisio.IVShape shape, FormatCategory category)
         {
             // Build the Query
             var query = new ShapeSheet.Queries.Query();
@@ -121,7 +121,7 @@ namespace VisioAutomation.Scripting.FormatPaint
             }
         }
 
-        public void PasteFormat(IVisio.Page page, IList<int> shapeids, FormatCategory category, bool applyformulas)
+        public void PasteFormat(IVisio.IVPage page, IList<int> shapeids, FormatCategory category, bool applyformulas)
         {
 
             // Find all the cells that are going to be pasted

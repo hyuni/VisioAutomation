@@ -5,12 +5,12 @@ namespace VisioAutomation.Layers
 {
     public static class LayerHelper
     {
-        public static IEnumerable<IVisio.Layer> ToEnumerable(IVisio.Layers layers)
+        public static IEnumerable<IVisio.IVLayer> ToEnumerable(IVisio.IVLayers layers)
         {
             short count = layers.Count;
             for (int i = 0; i < count; i++)
             {
-                yield return (IVisio.Layer) layers[i + 1];
+                yield return (IVisio.IVLayer) layers[i + 1];
             }
         }
     }

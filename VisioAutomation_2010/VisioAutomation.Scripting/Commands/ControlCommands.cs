@@ -66,7 +66,7 @@ namespace VisioAutomation.Scripting.Commands
             }
         }
 
-        public Dictionary<IVisio.Shape, IList<VACONTROL.ControlCells>> Get(TargetShapes targets)
+        public Dictionary<IVisio.IVShape, IList<VACONTROL.ControlCells>> Get(TargetShapes targets)
         {
             this._client.Application.AssertApplicationAvailable();
             this._client.Document.AssertDocumentAvailable();
@@ -75,10 +75,10 @@ namespace VisioAutomation.Scripting.Commands
 
             if (shapes.Count < 1)
             {
-                return new Dictionary<IVisio.Shape, IList<VACONTROL.ControlCells>>(0);
+                return new Dictionary<IVisio.IVShape, IList<VACONTROL.ControlCells>>(0);
             }
 
-            var dic = new Dictionary<IVisio.Shape, IList<VACONTROL.ControlCells>>();
+            var dic = new Dictionary<IVisio.IVShape, IList<VACONTROL.ControlCells>>();
             foreach (var shape in shapes)
             {
                 var controls = VACONTROL.ControlCells.GetCells(shape);

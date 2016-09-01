@@ -43,7 +43,7 @@ namespace VisioAutomation.Models.Dom
             return this.GetEnumerator();
         }
         
-        public void Render(IVisio.Page page)
+        public void Render(IVisio.IVPage page)
         {
             if (page == null)
             {
@@ -309,14 +309,14 @@ namespace VisioAutomation.Models.Dom
                     var rect = (Rectangle) shape;
                     var rect_shape = context.VisioPage.DrawRectangle(rect.P0.X, rect.P0.Y, rect.P1.X, rect.P1.Y);
                     rect.VisioShapeID = rect_shape.ID16;
-                    rect.VisioShape = (IVisio.Shape) rect_shape;
+                    rect.VisioShape = (IVisio.IVShape) rect_shape;
                 }
                 else if (shape is Oval)
                 {
                     var oval = (Oval)shape;
                     var oval_shape = context.VisioPage.DrawOval(oval.P0.X, oval.P0.Y, oval.P1.X, oval.P1.Y);
                     oval.VisioShapeID = oval_shape.ID16;
-                    oval.VisioShape = (IVisio.Shape)oval_shape;
+                    oval.VisioShape = (IVisio.IVShape)oval_shape;
                 }
                 else if (shape is Arc)
                 {
@@ -392,8 +392,8 @@ namespace VisioAutomation.Models.Dom
                 var from_shape = context.GetShape(dyncon_shape.From.VisioShapeID);
                 var to_shape = context.GetShape(dyncon_shape.To.VisioShapeID);
 
-                ConnectorHelper.ConnectShapes(from_shape, to_shape, (IVisio.Shape)vis_connector);
-                dyncon_shape.VisioShape = (IVisio.Shape)vis_connector;
+                ConnectorHelper.ConnectShapes(from_shape, to_shape, (IVisio.IVShape)vis_connector);
+                dyncon_shape.VisioShape = (IVisio.IVShape)vis_connector;
                 dyncon_shape.VisioShapeID = connector_shapeids[i];
             }
         }
@@ -475,14 +475,14 @@ namespace VisioAutomation.Models.Dom
             return bezier;
         }
 
-        public Shape Drop(IVisio.Master master, Drawing.Point pos)
+        public Shape Drop(IVisio.IVMaster master, Drawing.Point pos)
         {
             var m = new Shape(master, pos);
             this.Add(m);
             return m;
         }
 
-        public Shape Drop(IVisio.Master master, double x, double y)
+        public Shape Drop(IVisio.IVMaster master, double x, double y)
         {
             var m = new Shape(master, new Drawing.Point(x, y));
             this.Add(m);
@@ -510,7 +510,7 @@ namespace VisioAutomation.Models.Dom
             return m;
         }
 
-        public Connector Connect(IVisio.Master m, BaseShape s0, BaseShape s2)
+        public Connector Connect(IVisio.IVMaster m, BaseShape s0, BaseShape s2)
         {
             var cxn = new Connector(s0, s2, m);
             this.Add(cxn);

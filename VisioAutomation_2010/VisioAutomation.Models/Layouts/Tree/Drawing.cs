@@ -13,7 +13,7 @@ namespace VisioAutomation.Models.Layouts.Tree
             this.LayoutOptions = new LayoutOptions();            
         }
 
-        public void Render(IVisio.Page page)
+        public void Render(IVisio.IVPage page)
         {
             var renderer = new TreeLayout();
             if (this.LayoutOptions != null)

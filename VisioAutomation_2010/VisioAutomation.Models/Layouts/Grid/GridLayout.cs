@@ -34,7 +34,7 @@ namespace VisioAutomation.Models.Layouts.Grid
             }
         }
 
-        public GridLayout(int cols, int rows, Drawing.Size cellsize, IVisio.Master master)
+        public GridLayout(int cols, int rows, Drawing.Size cellsize, IVisio.IVMaster master)
         {
             this.ColumnDirection = ColumnDirection.LeftToRight;
             this.RowDirection = RowDirection.BottomToTop;
@@ -129,7 +129,7 @@ namespace VisioAutomation.Models.Layouts.Grid
             }
         }
 
-        public void Render(IVisio.Page page)
+        public void Render(IVisio.IVPage page)
         {
             if (page == null)
             {

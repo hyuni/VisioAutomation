@@ -15,7 +15,7 @@ namespace VisioAutomation_Tests.Scripting
             var page1 = this.GetNewPage();
             var stencil = "basic_u.vss";
 
-            short flags = (short)IVisio.VisOpenSaveArgs.visOpenRO | (short)IVisio.VisOpenSaveArgs.visOpenDocked;
+            short flags = (short)IVisio.Enums.VisOpenSaveArgs.visOpenRO | (short)IVisio.Enums.VisOpenSaveArgs.visOpenDocked;
             var app = page1.Application;
             var documents = app.Documents;
             var stencil_doc = documents.OpenEx(stencil, flags);

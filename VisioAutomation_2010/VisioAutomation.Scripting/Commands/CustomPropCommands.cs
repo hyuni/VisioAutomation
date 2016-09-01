@@ -13,12 +13,12 @@ namespace VisioAutomation.Scripting.Commands
 
         }
 
-        public IDictionary<IVisio.Shape, VACUSTPROP.CustomPropertyDictionary> Get(TargetShapes targets)
+        public IDictionary<IVisio.IVShape, VACUSTPROP.CustomPropertyDictionary> Get(TargetShapes targets)
         {
             this._client.Application.AssertApplicationAvailable();
             this._client.Document.AssertDocumentAvailable();
 
-            var prop_dic = new Dictionary<IVisio.Shape, VACUSTPROP.CustomPropertyDictionary>();
+            var prop_dic = new Dictionary<IVisio.IVShape, VACUSTPROP.CustomPropertyDictionary>();
             var shapes = targets.ResolveShapes(this._client);
 
             if (shapes.Count < 1)
@@ -117,7 +117,7 @@ namespace VisioAutomation.Scripting.Commands
             }
         }
 
-        public IEnumerable<IVisio.Shape> EnumerateAndSelect(IEnumerable<IVisio.Shape> shapes)
+        public IEnumerable<IVisio.IVShape> EnumerateAndSelect(IEnumerable<IVisio.IVShape> shapes)
         {
             this._client.Application.AssertApplicationAvailable();
             this._client.Document.AssertDocumentAvailable();

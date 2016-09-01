@@ -35,7 +35,7 @@ namespace VisioAutomation.Scripting.Commands
             if (surf_Window_subtype == 64)
             {
                 this._client.WriteVerbose("Window = Master Editing");
-                var surf_Master = (IVisio.Master)surf_Window.Master;
+                var surf_Master = (IVisio.IVMaster)surf_Window.Master;
                 var surface = new Drawing.DrawingSurface(surf_Master);
                 return surface;
 
@@ -49,7 +49,7 @@ namespace VisioAutomation.Scripting.Commands
             }
         }
 
-        public IList<IVisio.Shape> Table(System.Data.DataTable datatable,
+        public IList<IVisio.IVShape> Table(System.Data.DataTable datatable,
                                           IList<double> widths,
                                           IList<double> heights,
                                           Drawing.Size cellspacing)
@@ -74,7 +74,7 @@ namespace VisioAutomation.Scripting.Commands
 
             if (datatable.Rows.Count < 1)
             {
-                return new List<IVisio.Shape>(0);
+                return new List<IVisio.IVShape>(0);
             }
 
 
@@ -82,7 +82,7 @@ namespace VisioAutomation.Scripting.Commands
             string stencil = "basic_u.vss";
             var stencildoc = this._client.Document.OpenStencil(stencil);
             var stencildoc_masters = stencildoc.Masters;
-            var masterobj = stencildoc_masters.ItemU[master];
+            var masterobj = stencildoc_masters.get_ItemU(master);
 
             var app = this._client.Application.Get();
             var application = app;
@@ -141,14 +141,14 @@ namespace VisioAutomation.Scripting.Commands
             }
         }
 
-        public IVisio.Shape NURBSCurve(IList<Drawing.Point> controlpoints,
+        public IVisio.IVShape NURBSCurve(IList<Drawing.Point> controlpoints,
                                     IList<double> knots,
                                     IList<double> weights, int degree)
         {
 
             // flags:
             // None = 0,
-            // IVisio.VisDrawSplineFlags.visSpline1D
+            // IVisio.Enums.VisDrawSplineFlags.visSpline1D
 
             this._client.Application.AssertApplicationAvailable();
             this._client.Document.AssertDocumentAvailable();
@@ -163,12 +163,12 @@ namespace VisioAutomation.Scripting.Commands
             }
         }
 
-        public IVisio.Shape Rectangle(VisioAutomation.Drawing.Rectangle r)
+        public IVisio.IVShape Rectangle(VisioAutomation.Drawing.Rectangle r)
         {
             return this.Rectangle(r.Left, r.Bottom, r.Right, r.Top);
         }
 
-        public IVisio.Shape Rectangle(double x0, double y0, double x1, double y1)
+        public IVisio.IVShape Rectangle(double x0, double y0, double x1, double y1)
         {
             var surface = this.GetDrawingSurface();
             var application = this._client.Application.Get();
@@ -179,7 +179,7 @@ namespace VisioAutomation.Scripting.Commands
             }
         }
 
-        public IVisio.Shape Line(double x0, double y0, double x1, double y1)
+        public IVisio.IVShape Line(double x0, double y0, double x1, double y1)
         {
             var surface = this.GetDrawingSurface();
             var application = this._client.Application.Get();
@@ -190,7 +190,7 @@ namespace VisioAutomation.Scripting.Commands
             }
         }
 
-        public IVisio.Shape Oval(double x0, double y0, double x1, double y1)
+        public IVisio.IVShape Oval(double x0, double y0, double x1, double y1)
         {
             var surface = this.GetDrawingSurface();
             var rect = new Drawing.Rectangle(x0, y0, x1, y1);
@@ -202,7 +202,7 @@ namespace VisioAutomation.Scripting.Commands
             }
         }
 
-        public IVisio.Shape Oval(Drawing.Point center, double radius)
+        public IVisio.IVShape Oval(Drawing.Point center, double radius)
         {
             var surface = this.GetDrawingSurface();
             var application = this._client.Application.Get();
@@ -213,7 +213,7 @@ namespace VisioAutomation.Scripting.Commands
             }
         }
 
-        public IVisio.Shape Bezier(IEnumerable<Drawing.Point> points)
+        public IVisio.IVShape Bezier(IEnumerable<Drawing.Point> points)
         {
             var surface = this.GetDrawingSurface();
             var application = this._client.Application.Get();
@@ -224,7 +224,7 @@ namespace VisioAutomation.Scripting.Commands
             }
         }
 
-        public IVisio.Shape PolyLine(IList<Drawing.Point> points)
+        public IVisio.IVShape PolyLine(IList<Drawing.Point> points)
         {
             var surface = this.GetDrawingSurface();
             var application = this._client.Application.Get();
@@ -235,7 +235,7 @@ namespace VisioAutomation.Scripting.Commands
             }
         }
 
-        public IVisio.Shape PieSlice(Drawing.Point center,
+        public IVisio.IVShape PieSlice(Drawing.Point center,
                                   double radius,
                                   double start_angle,
                                   double end_angle)
@@ -252,7 +252,7 @@ namespace VisioAutomation.Scripting.Commands
                 return shape;
             }
         }
-        public IVisio.Shape DoughnutSlice(Drawing.Point center,
+        public IVisio.IVShape DoughnutSlice(Drawing.Point center,
                           double inner_radius,
                           double outer_radius,
                           double start_angle,
@@ -383,8 +383,8 @@ namespace VisioAutomation.Scripting.Commands
             }
         }
 
-        private static IList<IVisio.Shape> CreateDuplicates(IVisio.Page page,
-                                           IVisio.Shape shape,
+        private static IList<IVisio.IVShape> CreateDuplicates(IVisio.IVPage page,
+                                           IVisio.IVShape shape,
                                            int n)
         {
             // NOTE: n is the total number you want INCLUDING the original shape
@@ -396,7 +396,7 @@ namespace VisioAutomation.Scripting.Commands
 
             if (n < 2)
             {
-                return new List<IVisio.Shape> { shape };
+                return new List<IVisio.IVShape> { shape };
             }
 
             int num_doubles = (int)System.Math.Log(n, 2.0);
@@ -406,7 +406,7 @@ namespace VisioAutomation.Scripting.Commands
                 throw new System.InvalidOperationException("internal error: leftover value must greater than or equal to zero");
             }
 
-            var duplicated_shapes = new List<IVisio.Shape> { shape };
+            var duplicated_shapes = new List<IVisio.IVShape> { shape };
 
             var application = page.Application;
             var win = application.ActiveWindow;
@@ -414,7 +414,7 @@ namespace VisioAutomation.Scripting.Commands
             foreach (int i in Enumerable.Range(0, num_doubles))
             {
                 win.DeselectAll();
-                win.Select(duplicated_shapes, IVisio.VisSelectArgs.visSelect);
+                win.Select(duplicated_shapes, IVisio.Enums.VisSelectArgs.visSelect);
                 var selection = win.Selection;
                 selection.Duplicate();
                 var selection1 = win.Selection;
@@ -425,7 +425,7 @@ namespace VisioAutomation.Scripting.Commands
             {
                 var leftover_shapes = duplicated_shapes.Take(leftover);
                 win.DeselectAll();
-                win.Select(leftover_shapes, IVisio.VisSelectArgs.visSelect);
+                win.Select(leftover_shapes, IVisio.Enums.VisSelectArgs.visSelect);
                 var selection = win.Selection;
                 selection.Duplicate();
                 var selection1 = win.Selection;
@@ -433,7 +433,7 @@ namespace VisioAutomation.Scripting.Commands
             }
 
             win.DeselectAll();
-            win.Select(duplicated_shapes, IVisio.VisSelectArgs.visSelect);
+            win.Select(duplicated_shapes, IVisio.Enums.VisSelectArgs.visSelect);
 
             if (duplicated_shapes.Count != n)
             {
@@ -451,7 +451,7 @@ namespace VisioAutomation.Scripting.Commands
             return duplicated_shapes;
         }
 
-        public List<IVisio.Shape> GetAllShapes()
+        public List<IVisio.IVShape> GetAllShapes()
         {
             var surface = this._client.ShapeSheet.GetShapeSheetSurface();
             return surface.Target.GetAllShapes();

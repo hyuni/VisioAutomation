@@ -29,7 +29,7 @@ namespace VisioPowerShell.Commands.Format
         public Model.HorizontalAlignment AlignHorizontal = Model.HorizontalAlignment.None;
 
         [Parameter(Mandatory = false)]
-        public IVisio.Shape[] Shapes;
+        public IVisio.IVShape[] Shapes;
 
         protected override void ProcessRecord()
         {

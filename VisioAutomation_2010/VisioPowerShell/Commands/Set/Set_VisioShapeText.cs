@@ -10,7 +10,7 @@ namespace VisioPowerShell.Commands.Set
         public string[] Text { get; set; }
 
         [Parameter(Mandatory = false)]
-        public IVisio.Shape[] Shapes;
+        public IVisio.IVShape[] Shapes;
 
         protected override void ProcessRecord()
         {

@@ -148,7 +148,7 @@ namespace VisioAutomation.Pages
             }
         }
 
-        public static PageCells GetCells(IVisio.Shape shape)
+        public static PageCells GetCells(IVisio.IVShape shape)
         {
             var query = PageCells.lazy_query.Value;
             return ShapeSheet.Queries.QueryGroups.QueryGroupSingleRow._GetCells<PageCells, double>(shape, query, query.GetCells);

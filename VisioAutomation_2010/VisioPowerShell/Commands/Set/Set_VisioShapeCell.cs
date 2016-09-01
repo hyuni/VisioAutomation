@@ -20,7 +20,7 @@ namespace VisioPowerShell.Commands.Set
         public SwitchParameter TestCircular { get; set; }
 
         [Parameter(Mandatory = false)]
-        public IVisio.Shape[] Shapes { get; set; }
+        public IVisio.IVShape[] Shapes { get; set; }
 
         protected override void ProcessRecord()
         {

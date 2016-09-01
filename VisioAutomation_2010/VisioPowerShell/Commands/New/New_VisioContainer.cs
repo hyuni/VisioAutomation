@@ -7,7 +7,7 @@ namespace VisioPowerShell.Commands.New
     public class New_VisioContainer : VisioCmdlet
     {
         [SMA.Parameter(Position = 0, Mandatory = true,ParameterSetName="MasterObject")]
-        public IVisio.Master Master { get; set; }
+        public IVisio.IVMaster Master { get; set; }
 
         [SMA.Parameter(Position = 0, Mandatory = true, ParameterSetName = "MasterName")]
         public string MasterName { get; set; }

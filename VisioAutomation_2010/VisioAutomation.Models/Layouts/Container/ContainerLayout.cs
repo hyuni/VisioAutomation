@@ -103,7 +103,7 @@ namespace VisioAutomation.Models.Layouts.Container
             this.IsLayedOut = true;
         }
 
-        public IVisio.Page Render(IVisio.Document doc)
+        public IVisio.IVPage Render(IVisio.IVDocument doc)
         {
             if (!this.IsLayedOut)
             {
@@ -130,8 +130,8 @@ namespace VisioAutomation.Models.Layouts.Container
             // Drop the container shapes
             var ct_items = this.Containers.ToList();
             var ct_rects = ct_items.Select(item => item.Rectangle).ToList();
-            var masters = ct_items.Select(i => plain_container_master).Cast<IVisio.Master>().ToList();
-            short[] ct_shapeids = ContainerLayout.DropManyU((IVisio.Page)page, masters, ct_rects);
+            var masters = ct_items.Select(i => plain_container_master).Cast<IVisio.IVMaster>().ToList();
+            short[] ct_shapeids = ContainerLayout.DropManyU((IVisio.IVPage)page, masters, ct_rects);
 
             // associate each container with the corresponding shape oject and shape id
             for (int i = 0; i < ct_items.Count; i++)
@@ -139,7 +139,7 @@ namespace VisioAutomation.Models.Layouts.Container
                 var ct_item = ct_items[i];
                 var ct_shapeid = ct_shapeids[i];
                 var shape = page_shapes[ct_shapeid];
-                ct_item.VisioShape = (IVisio.Shape)shape;
+                ct_item.VisioShape = (IVisio.IVShape)shape;
                 ct_item.ShapeID = ct_shapeid;
             }
 
@@ -147,8 +147,8 @@ namespace VisioAutomation.Models.Layouts.Container
             // Render the items
             var items = this.ContainerItems.ToList();
             var item_rects = items.Select(item => item.Rectangle).ToList();
-            var item_masters = items.Select(i => item_master).Cast<IVisio.Master>().ToList();
-            short[] shapeids = ContainerLayout.DropManyU((IVisio.Page)page, item_masters, item_rects);
+            var item_masters = items.Select(i => item_master).Cast<IVisio.IVMaster>().ToList();
+            short[] shapeids = ContainerLayout.DropManyU((IVisio.IVPage)page, item_masters, item_rects);
 
             // Associate each item with the corresponding shape object and shape id
             for (int i = 0; i < items.Count; i++)
@@ -156,7 +156,7 @@ namespace VisioAutomation.Models.Layouts.Container
                 var item = items[i];
                 var shapeid = shapeids[i];
                 var shape = page_shapes[shapeid];
-                item.VisioShape = (IVisio.Shape)shape;
+                item.VisioShape = (IVisio.IVShape)shape;
                 item.ShapeID = shapeid;
             }
 
@@ -184,7 +184,7 @@ namespace VisioAutomation.Models.Layouts.Container
             }     
 
             writer.BlastGuards = true;
-            writer.Commit((IVisio.Page)page);
+            writer.Commit((IVisio.IVPage)page);
 
             // Set the Container Text
             foreach (var ct in this.Containers)
@@ -198,12 +198,12 @@ namespace VisioAutomation.Models.Layouts.Container
             page.ResizeToFitContents();
             app.ActiveWindow.ViewFit = (short)IVisio.Enums.VisWindowFit.visFitPage;
 
-            return (IVisio.Page)page;
+            return (IVisio.IVPage)page;
         }
 
         private static short[] DropManyU(
-            IVisio.Page page,
-            IList<IVisio.Master> masters,
+            IVisio.IVPage page,
+            IList<IVisio.IVMaster> masters,
             IList<Drawing.Rectangle> rects)
         {
             var points = rects.Select(r => r.Center).ToList();

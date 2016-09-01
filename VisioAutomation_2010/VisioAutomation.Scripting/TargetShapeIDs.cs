@@ -6,9 +6,9 @@ namespace VisioAutomation.Scripting
     public class TargetShapeIDs
     {
         public readonly IList<int> ShapeIDs;
-        public readonly IVisio.Page Page;
+        public readonly IVisio.IVPage Page;
 
-        public TargetShapeIDs(IVisio.Page page, IList<int> shape_ids)
+        public TargetShapeIDs(IVisio.IVPage page, IList<int> shape_ids)
         {
             if (page == null)
             {

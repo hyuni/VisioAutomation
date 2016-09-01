@@ -12,7 +12,7 @@ namespace VisioAutomation_Tests.DocumentAnalysis
     [TestClass]
     public class PathAnalysis_Tests : VisioAutomationTest
     {
-        private void connect(IVisio.Shape a, IVisio.Shape b, bool a_arrow, bool b_arrow)
+        private void connect(IVisio.IVShape a, IVisio.IVShape b, bool a_arrow, bool b_arrow)
         {
             var page = a.ContainingPage;
             var connectors_stencil = page.Application.Documents.OpenStencil("connec_u.vss");
@@ -223,7 +223,7 @@ namespace VisioAutomation_Tests.DocumentAnalysis
             page1.Delete(0);
         }
 
-        private IVisio.Shape[] draw_standard_shapes(IVisio.Page page1)
+        private IVisio.IVShape[] draw_standard_shapes(IVisio.IVPage page1)
         {
             var s1 = page1.DrawRectangle(0, 0, 1, 1);
             var s2 = page1.DrawRectangle(0, 3, 1, 4);

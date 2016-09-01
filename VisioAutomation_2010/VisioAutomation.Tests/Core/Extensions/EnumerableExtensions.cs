@@ -81,7 +81,7 @@ namespace VisioAutomation_Tests.Core.Extensions
             page2.NameU = "P2";
             page3.NameU = "P3";
             var pages = doc1.Pages;
-            var expected = doc1.Pages.Cast<IVisio.Page>().ToList();
+            var expected = doc1.Pages.Cast<IVisio.IVPage>().ToList();
             var actual = doc1.Pages.ToEnumerable().ToList();
 
             Assert.AreEqual(expected.Count, actual.Count);

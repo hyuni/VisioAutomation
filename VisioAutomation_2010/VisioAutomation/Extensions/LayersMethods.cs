@@ -5,7 +5,7 @@ namespace VisioAutomation.Extensions
 {
     public static class LayersMethods
     {
-        public static IEnumerable<IVisio.Layer> ToEnumerable(this IVisio.Layers layers)
+        public static IEnumerable<IVisio.IVLayer> ToEnumerable(this IVisio.IVLayers layers)
         {
             return VisioAutomation.Layers.LayerHelper.ToEnumerable(layers);
         }

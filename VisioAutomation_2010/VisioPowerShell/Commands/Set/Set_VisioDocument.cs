@@ -12,7 +12,7 @@ namespace VisioPowerShell.Commands.Set
 
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = "Doc")]
         [ValidateNotNull]
-        public IVisio.Document Document  { get; set; }
+        public IVisio.IVDocument Document  { get; set; }
         
         protected override void ProcessRecord()
         {

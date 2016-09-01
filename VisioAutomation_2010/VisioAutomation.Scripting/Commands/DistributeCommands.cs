@@ -41,15 +41,15 @@ namespace VisioAutomation.Scripting.Commands
             }
 
 
-            IVisio.VisUICmds cmd;
+            IVisio.Enums.VisUICmds cmd;
 
             switch (axis)
             {
                 case Axis.XAxis:
-                    cmd = IVisio.VisUICmds.visCmdDistributeHSpace;
+                    cmd = IVisio.Enums.VisUICmds.visCmdDistributeHSpace;
                     break;
                 case Axis.YAxis:
-                    cmd = IVisio.VisUICmds.visCmdDistributeVSpace;
+                    cmd = IVisio.Enums.VisUICmds.visCmdDistributeVSpace;
                     break;
                 default:
                     throw new System.ArgumentOutOfRangeException();
@@ -73,18 +73,18 @@ namespace VisioAutomation.Scripting.Commands
                 return;
             }
 
-            IVisio.VisUICmds cmd;
+            IVisio.Enums.VisUICmds cmd;
 
             switch (halign)
             {
                 case AlignmentHorizontal.Left:
-                    cmd = IVisio.VisUICmds.visCmdDistributeLeft;
+                    cmd = IVisio.Enums.VisUICmds.visCmdDistributeLeft;
                     break;
                 case AlignmentHorizontal.Center:
-                    cmd = IVisio.VisUICmds.visCmdDistributeCenter;
+                    cmd = IVisio.Enums.VisUICmds.visCmdDistributeCenter;
                     break;
                 case AlignmentHorizontal.Right:
-                    cmd = IVisio.VisUICmds.visCmdDistributeRight;
+                    cmd = IVisio.Enums.VisUICmds.visCmdDistributeRight;
                     break;
                 default: throw new System.ArgumentOutOfRangeException();
             }
@@ -104,14 +104,14 @@ namespace VisioAutomation.Scripting.Commands
                 return;
             }
 
-            IVisio.VisUICmds cmd;
+            IVisio.Enums.VisUICmds cmd;
             switch (valign)
             {
                 case AlignmentVertical.Top:
-                    cmd = IVisio.VisUICmds.visCmdDistributeTop;
+                    cmd = IVisio.Enums.VisUICmds.visCmdDistributeTop;
                     break;
-                case AlignmentVertical.Center: cmd = IVisio.VisUICmds.visCmdDistributeMiddle; break;
-                case AlignmentVertical.Bottom: cmd = IVisio.VisUICmds.visCmdDistributeBottom; break;
+                case AlignmentVertical.Center: cmd = IVisio.Enums.VisUICmds.visCmdDistributeMiddle; break;
+                case AlignmentVertical.Bottom: cmd = IVisio.Enums.VisUICmds.visCmdDistributeBottom; break;
                 default: throw new System.ArgumentOutOfRangeException();
             }
 

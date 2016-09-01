@@ -65,7 +65,7 @@ namespace VisioAutomation.Scripting.Commands
             }
         }
 
-        public Dictionary<IVisio.Shape, IList<VAHLINK.HyperlinkCells>> Get(TargetShapes targets)
+        public Dictionary<IVisio.IVShape, IList<VAHLINK.HyperlinkCells>> Get(TargetShapes targets)
         {
             this._client.Application.AssertApplicationAvailable();
             this._client.Document.AssertDocumentAvailable();
@@ -74,10 +74,10 @@ namespace VisioAutomation.Scripting.Commands
 
             if (shapes.Count < 1)
             {
-                return new Dictionary<IVisio.Shape, IList<VAHLINK.HyperlinkCells>>(0);
+                return new Dictionary<IVisio.IVShape, IList<VAHLINK.HyperlinkCells>>(0);
             }
 
-            var dic = new Dictionary<IVisio.Shape, IList<VAHLINK.HyperlinkCells>>();
+            var dic = new Dictionary<IVisio.IVShape, IList<VAHLINK.HyperlinkCells>>();
             foreach (var shape in shapes)
             {
                 var hyperlinks = VAHLINK.HyperlinkCells.GetCells(shape);

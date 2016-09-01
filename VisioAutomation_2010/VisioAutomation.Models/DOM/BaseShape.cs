@@ -7,7 +7,7 @@ namespace VisioAutomation.Models.Dom
 {
     public class BaseShape : Node
     {
-        public IVisio.Shape VisioShape { get; set; }
+        public IVisio.IVShape VisioShape { get; set; }
         public short VisioShapeID { get; internal set; }
 
         public VisioAutomation.Models.Text.TextElement Text { get; set; }

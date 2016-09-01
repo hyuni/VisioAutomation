@@ -37,8 +37,8 @@ namespace VisioAutomationSamples
             var con_layer = page.Layers["Connector"];
 
             var sel = page.CreateSelection(
-                IVisio.VisSelectionTypes.visSelTypeByLayer,
-                IVisio.VisSelectMode.visSelModeSkipSub,
+                IVisio.Enums.VisSelectionTypes.visSelTypeByLayer,
+                IVisio.Enums.VisSelectMode.visSelModeSkipSub,
                 con_layer);
             sel.SendToBack();
         }

@@ -77,7 +77,7 @@ namespace VisioAutomation.Models.Layouts.DirectedGraph
             {
 
 
-                //new_connector.VisioShape = IVisio.Shape; // IVisio.Shape();
+                //new_connector.VisioShape = IVisio.IVShape; // IVisio.IVShape();
                 var h = new_connector.VisioShape.Hyperlinks.Add();
 
                 h.Name = hyperlink; // Name of Hyperlink
@@ -88,13 +88,13 @@ namespace VisioAutomation.Models.Layouts.DirectedGraph
             return new_connector;
         }
 
-        public void Render(IVisio.Page page, VisioLayoutOptions options)
+        public void Render(IVisio.IVPage page, VisioLayoutOptions options)
         {
             var vr = new VisioRenderer();
             vr.Render(page, this, options);
         }
 
-        public void Render(IVisio.Page page, MsaglLayoutOptions options)
+        public void Render(IVisio.IVPage page, MsaglLayoutOptions options)
         {
             MsaglRenderer.Render(page, this, options);
         }

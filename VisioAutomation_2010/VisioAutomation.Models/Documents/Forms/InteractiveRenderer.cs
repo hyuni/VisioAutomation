@@ -7,25 +7,25 @@ namespace VisioAutomation.Models.Documents.Forms
 {
     public class InteractiveRenderer
     {
-        private readonly IVisio.Pages _visio_pages;
+        private readonly IVisio.IVPages _visio_pages;
         private double _current_line_height;
-        private IVisio.Page _page;
+        private IVisio.IVPage _page;
         private FormPage _form_page;
 
         public List<TextBlock> Blocks;
         public Drawing.Point InsertionPoint;
 
-        public InteractiveRenderer(IVisio.Document doc)
+        public InteractiveRenderer(IVisio.IVDocument doc)
         {
-            this._visio_pages = (IVisio.Pages)doc.Pages;
+            this._visio_pages = (IVisio.IVPages)doc.Pages;
             this.Blocks = new List<TextBlock>();
         }
 
-        public IVisio.Page CreatePage(FormPage formpage)
+        public IVisio.IVPage CreatePage(FormPage formpage)
         {
             this._form_page = formpage;
 
-            this._page = (IVisio.Page)this._visio_pages.Add();
+            this._page = (IVisio.IVPage)this._visio_pages.Add();
             this._page.Name = formpage.Name;
 
             // Update the Page Cells
@@ -40,7 +40,7 @@ namespace VisioAutomation.Models.Documents.Forms
             pagecells.PageTopMargin = formpage.Margin.Top;
             pagecells.PageBottomMargin = formpage.Margin.Bottom;
             pagecells.SetFormulas(pagewriter);
-            pagewriter.Commit((IVisio.Shape)pagesheet);
+            pagewriter.Commit((IVisio.IVShape)pagesheet);
 
 
             this.Reset();
@@ -66,7 +66,7 @@ namespace VisioAutomation.Models.Documents.Forms
             return tb;
         }
 
-        public IVisio.Shape AddShape(TextBlock block)
+        public IVisio.IVShape AddShape(TextBlock block)
         {
             // Remember this Block 
             this.Blocks.Add(block);

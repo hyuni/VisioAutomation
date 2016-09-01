@@ -478,8 +478,8 @@ namespace VisioAutomation_Tests.Scripting
             var ver = client.Application.Version;
             var cont_master_name = ver.Major >= 15 ? "Plain" : "Container 1";
 
-            var stencil_type = IVisio.VisBuiltInStencilTypes.visBuiltInStencilContainers;
-            var measurement_system = IVisio.VisMeasurementSystem.visMSUS;
+            var stencil_type = IVisio.Enums.VisBuiltInStencilTypes.visBuiltInStencilContainers;
+            var measurement_system = IVisio.Enums.VisMeasurementSystem.visMSUS;
             var containers_file = app.GetBuiltInStencilFile(stencil_type, measurement_system);
             var containers_doc = app.Documents.OpenStencil(containers_file);
             var masters = containers_doc.Masters;

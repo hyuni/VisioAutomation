@@ -12,7 +12,7 @@ namespace VisioAutomationSamples
     {
         public class NodeData
         {
-            public IVisio.Shape VisioShape;
+            public IVisio.IVShape VisioShape;
             public string Text;
             public bool Render;
             public ShapeCells Cells;
@@ -50,7 +50,7 @@ namespace VisioAutomationSamples
             BoxLayoutSamples.FontGlyphComparision3(doc, fontnames, samplechars);
         }
 
-        public static void FontGlyphComparision(IVisio.Document doc, string[] fontnames, List<string> samplechars)
+        public static void FontGlyphComparision(IVisio.IVDocument doc, string[] fontnames, List<string> samplechars)
         {
             var layout = new BoxL.BoxLayout();
 
@@ -164,7 +164,7 @@ namespace VisioAutomationSamples
             page.ResizeToFitContents(bordersize);
         }
 
-        public static void FontGlyphComparision2(IVisio.Document doc, string[] fontnames, List<string> samplechars)
+        public static void FontGlyphComparision2(IVisio.IVDocument doc, string[] fontnames, List<string> samplechars)
         {
             double w = 2.0;
             double h = 1;
@@ -221,7 +221,7 @@ namespace VisioAutomationSamples
             }
         }
 
-        public static void FontGlyphComparision3(IVisio.Document doc, string[] fontnames, List<string> samplechars)
+        public static void FontGlyphComparision3(IVisio.IVDocument doc, string[] fontnames, List<string> samplechars)
         {
             var colors = new[] {"rgb(0,0,255)", "rgb(255,0,0)"};
 

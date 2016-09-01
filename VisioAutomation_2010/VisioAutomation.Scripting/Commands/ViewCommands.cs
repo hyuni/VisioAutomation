@@ -14,7 +14,7 @@ namespace VisioAutomation.Scripting.Commands
             this.ZoomIncrement = 1.20;
         }
 
-        public IVisio.Window GetActiveWindow()
+        public IVisio.IVWindow GetActiveWindow()
         {
             this._client.Application.AssertApplicationAvailable();
 
@@ -31,8 +31,8 @@ namespace VisioAutomation.Scripting.Commands
             return active_window.Zoom;
         }
 
-        private static void SetViewRectToSelection(IVisio.Window window,
-                                                   IVisio.VisBoundingBoxArgs bbargs, 
+        private static void SetViewRectToSelection(IVisio.IVWindow window,
+                                                   IVisio.Enums.VisBoundingBoxArgs bbargs, 
                                                    double padding_scale)
         {
             if (padding_scale < 0.0)
@@ -88,11 +88,11 @@ namespace VisioAutomation.Scripting.Commands
             }
             else if (zoom == View.Zoom.ToPage)
             {
-                active_window.ViewFit = (short)IVisio.VisWindowFit.visFitPage;
+                active_window.ViewFit = (short)IVisio.Enums.VisWindowFit.visFitPage;
             }
             else if (zoom == View.Zoom.ToWidth)
             {
-                active_window.ViewFit = (short)IVisio.VisWindowFit.visFitWidth;
+                active_window.ViewFit = (short)IVisio.Enums.VisWindowFit.visFitWidth;
             }
             else if (zoom == View.Zoom.ToSelection)
             {
@@ -102,7 +102,7 @@ namespace VisioAutomation.Scripting.Commands
                 }
 
                 double padding_scale = 0.1;
-                ViewCommands.SetViewRectToSelection(active_window, IVisio.VisBoundingBoxArgs.visBBoxExtents, padding_scale);
+                ViewCommands.SetViewRectToSelection(active_window, IVisio.Enums.VisBoundingBoxArgs.visBBoxExtents, padding_scale);
 
             }
             else

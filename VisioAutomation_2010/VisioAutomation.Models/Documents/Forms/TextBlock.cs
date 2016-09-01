@@ -12,7 +12,7 @@ namespace VisioAutomation.Models.Documents.Forms
         public Shapes.FormatCells FormatCells;
         public VisioAutomation.Text.CharacterCells CharacterCells;
         public string Text;
-        public IVisio.Shape VisioShape;
+        public IVisio.IVShape VisioShape;
         public int VisioShapeID;
         public Drawing.Rectangle Rectangle;
 

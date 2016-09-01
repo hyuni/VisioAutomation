@@ -7,7 +7,7 @@ namespace VisioPowerShell.Commands.Remove
     public class Remove_VisioShape : VisioCmdlet
     {
         [Parameter(Mandatory = false)]
-        public IVisio.Shape[] Shapes;
+        public IVisio.IVShape[] Shapes;
 
         protected override void ProcessRecord()
         {

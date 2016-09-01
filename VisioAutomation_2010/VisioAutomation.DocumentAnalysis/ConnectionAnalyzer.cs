@@ -9,7 +9,7 @@ namespace VisioAutomation.DocumentAnalysis
     public static class ConnectionAnalyzer
     {
         public static IList<ConnectorEdge> GetTransitiveClosure(
-            IVisio.Page page,
+            IVisio.IVPage page,
             ConnectorHandling flag)
         {
             if (page == null)
@@ -18,7 +18,7 @@ namespace VisioAutomation.DocumentAnalysis
             }
 
             var directed_edges = ConnectionAnalyzer.GetDirectedEdges(page, flag)
-                .Select(e => new DirectedEdge<IVisio.Shape, IVisio.Shape>(e.From, e.To, e.Connector));
+                .Select(e => new DirectedEdge<IVisio.IVShape, IVisio.IVShape>(e.From, e.To, e.Connector));
 
             var closure = ConnectionAnalyzer.GetClosureFromEdges(directed_edges)
                 .Select(x => new ConnectorEdge(null, x.From, x.To)).ToList();
@@ -33,7 +33,7 @@ namespace VisioAutomation.DocumentAnalysis
         /// <param name="flag"></param>
         /// <returns></returns>
         public static IList<ConnectorEdge> GetDirectedEdges(
-            IVisio.Page page,
+            IVisio.IVPage page,
             ConnectorHandling flag)
         {
             if (page == null)
@@ -121,7 +121,7 @@ namespace VisioAutomation.DocumentAnalysis
         /// </summary>
         /// <param name="page"></param>
         /// <returns></returns>
-        private static IList<ConnectorEdge> GetDirectedEdgesRaw(IVisio.Page page)
+        private static IList<ConnectorEdge> GetDirectedEdgesRaw(IVisio.IVPage page)
         {
             if (page == null)
             {
@@ -133,8 +133,8 @@ namespace VisioAutomation.DocumentAnalysis
 
             var edges = new List<ConnectorEdge>();
 
-            IVisio.Shape old_connect_shape = null;
-            IVisio.Shape fromsheet = null;
+            IVisio.IVShape old_connect_shape = null;
+            IVisio.IVShape fromsheet = null;
 
             foreach (var connect in connects)
             {
@@ -145,15 +145,15 @@ namespace VisioAutomation.DocumentAnalysis
                     // the currect connector is NOT same as the one we stored previously
                     // this means the previous connector is connected to only one shape (not two).
                     // So skip the previos connector and start remembering from the current connector
-                    old_connect_shape = (IVisio.Shape) current_connect_shape;
-                    fromsheet = (IVisio.Shape) connect.ToSheet;
+                    old_connect_shape = (IVisio.IVShape) current_connect_shape;
+                    fromsheet = (IVisio.IVShape) connect.ToSheet;
                 }
                 else
                 {
                     // the currect connector is the same as the one we stored previously
                     // this means we have enountered it twice which means it connects two
                     // shapes and is thus an edge
-                    var undirected_edge = new ConnectorEdge((IVisio.Shape)current_connect_shape, fromsheet, (IVisio.Shape)connect.ToSheet);
+                    var undirected_edge = new ConnectorEdge((IVisio.IVShape)current_connect_shape, fromsheet, (IVisio.IVShape)connect.ToSheet);
                     edges.Add(undirected_edge);
                 }
             }

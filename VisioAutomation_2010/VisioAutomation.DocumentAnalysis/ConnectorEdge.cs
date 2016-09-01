@@ -4,11 +4,11 @@ namespace VisioAutomation.DocumentAnalysis
 {
     public struct ConnectorEdge
     {
-        public IVisio.Shape Connector { get; }
-        public IVisio.Shape From { get; }
-        public IVisio.Shape To { get; }
+        public IVisio.IVShape Connector { get; }
+        public IVisio.IVShape From { get; }
+        public IVisio.IVShape To { get; }
 
-        public ConnectorEdge(IVisio.Shape connectingshape, IVisio.Shape fromshape, IVisio.Shape toshape) : this()
+        public ConnectorEdge(IVisio.IVShape connectingshape, IVisio.IVShape fromshape, IVisio.IVShape toshape) : this()
         {
             if (fromshape == null)
             {

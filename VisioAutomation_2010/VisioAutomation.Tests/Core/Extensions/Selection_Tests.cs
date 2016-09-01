@@ -49,7 +49,7 @@ namespace VisioAutomation_Tests.Core.Extensions
             active_window.SelectAll();
 
             var selection = active_window.Selection;
-            var expected = selection.Cast<IVisio.Shape>().ToList();
+            var expected = selection.Cast<IVisio.IVShape>().ToList();
             var actual = selection.ToEnumerable().ToList();
 
             Assert.AreEqual(expected.Count, actual.Count);

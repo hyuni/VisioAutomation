@@ -22,7 +22,7 @@ namespace VisioPowerShell.Commands.Set
         public SwitchParameter SetResults;
 
         [Parameter(Mandatory = false)]
-        public IVisio.Shape[] Shapes;
+        public IVisio.IVShape[] Shapes;
 
         protected override void ProcessRecord()
         {
@@ -32,21 +32,21 @@ namespace VisioPowerShell.Commands.Set
             
             if (this.BlastGuards)
             {
-                flags = (short)(flags | (short)IVisio.VisGetSetArgs.visSetBlastGuards);
+                flags = (short)(flags | (short)IVisio.Enums.VisGetSetArgs.visSetBlastGuards);
             }
             
             if (this.TestCircular)
             {
-                flags = (short)(flags | (short)IVisio.VisGetSetArgs.visSetTestCircular);
+                flags = (short)(flags | (short)IVisio.Enums.VisGetSetArgs.visSetTestCircular);
             }
 
             if (!this.SetResults)
             {
-                this.Client.ShapeSheet.SetFormula(targets, this.Cell, this.Value, (IVisio.VisGetSetArgs)flags);               
+                this.Client.ShapeSheet.SetFormula(targets, this.Cell, this.Value, (IVisio.Enums.VisGetSetArgs)flags);               
             }
             else
             {
-                this.Client.ShapeSheet.SetResult<string>(targets, this.Cell, this.Value, (IVisio.VisGetSetArgs)flags);                               
+                this.Client.ShapeSheet.SetResult<string>(targets, this.Cell, this.Value, (IVisio.Enums.VisGetSetArgs)flags);                               
             }
         }
     }

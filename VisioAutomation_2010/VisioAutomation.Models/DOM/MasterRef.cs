@@ -6,9 +6,9 @@ namespace VisioAutomation.Models.Dom
     {
         public string MasterName { get; private set; }
         public string StencilName { get; }
-        public IVisio.Master VisioMaster { get; internal set; }
+        public IVisio.IVMaster VisioMaster { get; internal set; }
 
-        public MasterRef(IVisio.Master master)
+        public MasterRef(IVisio.IVMaster master)
         {
             if (master == null)
             {

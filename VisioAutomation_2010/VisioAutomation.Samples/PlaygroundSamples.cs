@@ -10,7 +10,7 @@ namespace VisioAutomationSamples
 {
     public static class PlaygroundSamples
     {
-        private static IVisio.Shape draw_leaf(IVisio.Page page, VA.Drawing.Point p0)
+        private static IVisio.IVShape draw_leaf(IVisio.IVPage page, VA.Drawing.Point p0)
         {
             var p1 = p0.Add(1, 1);
             var p2 = p1.Add(1, 0);

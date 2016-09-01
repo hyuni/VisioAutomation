@@ -7,7 +7,7 @@ namespace VisioPowerShell.Commands.Select
     public class Select_VisioShape : VisioCmdlet
     {
         [Parameter(Mandatory = true, Position = 0, ParameterSetName = "SelectByShapes")]
-        public IVisio.Shape[] Shapes { get; set; }
+        public IVisio.IVShape[] Shapes { get; set; }
         
         [Parameter(Mandatory = true, Position = 0, ParameterSetName = "SelectByShapeIDs")]
         public int[] ShapeIDs { get; set; }

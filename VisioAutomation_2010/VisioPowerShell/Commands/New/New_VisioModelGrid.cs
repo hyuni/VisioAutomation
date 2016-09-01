@@ -9,7 +9,7 @@ namespace VisioPowerShell.Commands.New
     public class New_VisioModelGrid : VisioCmdlet
     {
         [Parameter(Position = 0, Mandatory = true)]
-        public IVisio.Master Master { get; set; }
+        public IVisio.IVMaster Master { get; set; }
 
         [Parameter(Mandatory = true)]
         public int Columns { get; set; }

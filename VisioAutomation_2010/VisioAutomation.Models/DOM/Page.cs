@@ -13,7 +13,7 @@ namespace VisioAutomation.Models.Dom
         public Pages.PageCells PageCells;
         public string Name;
         public Pages.PageLayout.Layout Layout;
-        public IVisio.Page VisioPage;
+        public IVisio.IVPage VisioPage;
         public Application.PerfSettings PerfSettings { get; }
 
         public Page()
@@ -34,7 +34,7 @@ namespace VisioAutomation.Models.Dom
             this.PerfSettings.LiveDynamics = false;
         }
 
-        public IVisio.Page Render(IVisio.Document doc)
+        public IVisio.IVPage Render(IVisio.IVDocument doc)
         {
             if (doc== null)
             {
@@ -43,14 +43,14 @@ namespace VisioAutomation.Models.Dom
 
             var pages = doc.Pages;
             var page = pages.Add();
-            this.VisioPage = (IVisio.Page)page;
+            this.VisioPage = (IVisio.IVPage)page;
 
-            this.Render((IVisio.Page)page);
+            this.Render((IVisio.IVPage)page);
             
-            return (IVisio.Page)page;
+            return (IVisio.IVPage)page;
         }
 
-        public void Render(IVisio.Page page)
+        public void Render(IVisio.IVPage page)
         {
             if (page == null)
             {

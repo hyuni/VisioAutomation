@@ -143,7 +143,7 @@ namespace VisioAutomation.Scripting.Commands
             this.Copy(null, allflags);
         }
 
-        public void Copy(IVisio.Shape target_shape, FormatCategory category)
+        public void Copy(IVisio.IVShape target_shape, FormatCategory category)
         {
             this._client.Application.AssertApplicationAvailable();
             this._client.Document.AssertDocumentAvailable();

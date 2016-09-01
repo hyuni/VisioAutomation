@@ -13,7 +13,7 @@ namespace VisioAutomation.Scripting.Commands
 
         }
 
-        public IDictionary<IVisio.Shape, IList<ConnectionPointCells>> Get(TargetShapes targets)
+        public IDictionary<IVisio.IVShape, IList<ConnectionPointCells>> Get(TargetShapes targets)
         {
             this._client.Application.AssertApplicationAvailable();
             this._client.Document.AssertDocumentAvailable();
@@ -23,10 +23,10 @@ namespace VisioAutomation.Scripting.Commands
 
             if (shapes.Count<1)
             {
-                return new Dictionary<IVisio.Shape, IList<ConnectionPointCells>>();
+                return new Dictionary<IVisio.IVShape, IList<ConnectionPointCells>>();
             }
 
-            var dic = new Dictionary<IVisio.Shape, IList<ConnectionPointCells>>();
+            var dic = new Dictionary<IVisio.IVShape, IList<ConnectionPointCells>>();
             foreach (var shape in shapes)
             {
                 var cp = ConnectionPointCells.GetCells(shape);

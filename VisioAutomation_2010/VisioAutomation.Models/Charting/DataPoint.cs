@@ -8,7 +8,7 @@ namespace VisioAutomation.Models.Charting
         public double Value;
         public string Label;
         public string LabelFormat;
-        public IVisio.Shape VisioShape;
+        public IVisio.IVShape VisioShape;
 
         public DataPoint(double value)
         {

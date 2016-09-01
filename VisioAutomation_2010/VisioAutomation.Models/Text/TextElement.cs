@@ -141,7 +141,7 @@ namespace VisioAutomation.Models.Text
             return markupinfo;
         }
 
-        public void SetText(IVisio.Shape shape)
+        public void SetText(IVisio.IVShape shape)
         {
             if (shape == null)
             {

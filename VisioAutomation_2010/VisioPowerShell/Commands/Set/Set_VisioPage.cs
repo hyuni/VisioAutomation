@@ -12,7 +12,7 @@ namespace VisioPowerShell.Commands.Set
         public string Name { get; set; }
 
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = "Page")]
-        public IVisio.Page Page  { get; set; }
+        public IVisio.IVPage Page  { get; set; }
 
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = "PageNumber")]
         public int PageNumber = -1;

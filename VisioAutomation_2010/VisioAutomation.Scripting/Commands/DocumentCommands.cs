@@ -40,14 +40,14 @@ namespace VisioAutomation.Scripting.Commands
 
                 // Check if the window type matches that of a document
                 short active_window_type = active_window.Type;
-                var vis_drawing = (int)IVisio.VisWinTypes.visDrawing;
-                var vis_master = (int)IVisio.VisWinTypes.visMasterWin;
-                // var vis_sheet = (short)IVisio.VisWinTypes.visSheet;
+                var vis_drawing = (int)IVisio.Enums.VisWinTypes.visDrawing;
+                var vis_master = (int)IVisio.Enums.VisWinTypes.visMasterWin;
+                // var vis_sheet = (short)IVisio.Enums.VisWinTypes.visSheet;
 
                 this._client.WriteVerbose("The Active Window: Type={0} & SybType={1}", active_window_type, active_window.SubType);
                 if (!(active_window_type == vis_drawing || active_window_type == vis_master))
                 {
-                    this._client.WriteVerbose("The Active Window Type must be one of {0} or {1}", IVisio.VisWinTypes.visDrawing, IVisio.VisWinTypes.visMasterWin);
+                    this._client.WriteVerbose("The Active Window Type must be one of {0} or {1}", IVisio.Enums.VisWinTypes.visDrawing, IVisio.Enums.VisWinTypes.visMasterWin);
                     return false;
                 }
 
@@ -94,7 +94,7 @@ namespace VisioAutomation.Scripting.Commands
             this.Activate(doc);
         }
 
-        public void Activate(IVisio.Document doc)
+        public void Activate(IVisio.IVDocument doc)
         {
             this._client.Application.AssertApplicationAvailable();
             Documents.DocumentHelper.Activate(doc);
@@ -108,7 +108,7 @@ namespace VisioAutomation.Scripting.Commands
             var application = this._client.Application.Get();
             var doc = application.ActiveDocument;
 
-            if (doc.Type != IVisio.VisDocumentTypes.visTypeDrawing)
+            if (doc.Type != IVisio.Enums.VisDocumentTypes.visTypeDrawing)
             {
                 this._client.WriteVerbose("Not a Drawing Window", doc.Name);
                 throw new AutomationException("Not a Drawing Window");
@@ -135,7 +135,7 @@ namespace VisioAutomation.Scripting.Commands
             this._client.Application.AssertApplicationAvailable();
             var application = this._client.Application.Get();
             var documents = application.Documents;
-            var docs = documents.ToEnumerable().Where(doc => doc.Type == IVisio.VisDocumentTypes.visTypeDrawing).ToList();
+            var docs = documents.ToEnumerable().Where(doc => doc.Type == IVisio.Enums.VisDocumentTypes.visTypeDrawing).ToList();
 
             using (var alert = new Application.AlertResponseScope(application, Application.AlertResponseCode.No))
             {
@@ -148,12 +148,12 @@ namespace VisioAutomation.Scripting.Commands
             }
         }
 
-        public IVisio.Document New()
+        public IVisio.IVDocument New()
         {
             return this.New(null);
         }
 
-        public IVisio.Document New(string template)
+        public IVisio.IVDocument New(string template)
         {
             this._client.Application.AssertApplicationAvailable();
 
@@ -170,9 +170,9 @@ namespace VisioAutomation.Scripting.Commands
             {
 
                 var doc = documents.Add(string.Empty);
-                var template_doc = documents.AddEx(template, IVisio.VisMeasurementSystem.visMSDefault,
-                              (int)IVisio.VisOpenSaveArgs.visAddStencil +
-                              (int)IVisio.VisOpenSaveArgs.visOpenDocked,
+                var template_doc = documents.AddEx(template, IVisio.Enums.VisMeasurementSystem.visMSDefault,
+                              (int)IVisio.Enums.VisOpenSaveArgs.visAddStencil +
+                              (int)IVisio.Enums.VisOpenSaveArgs.visOpenDocked,
                               0);
                 return doc;
             }
@@ -198,12 +198,12 @@ namespace VisioAutomation.Scripting.Commands
             doc.SaveAs(filename);
         }
 
-        public IVisio.Document New(VisioAutomation.Drawing.Size size)
+        public IVisio.IVDocument New(VisioAutomation.Drawing.Size size)
         {
             return this.New(size,null);
         }
 
-        public IVisio.Document New(VisioAutomation.Drawing.Size size,string template)
+        public IVisio.IVDocument New(VisioAutomation.Drawing.Size size,string template)
         {
             this._client.Application.AssertApplicationAvailable();
             var doc = this.New(template);
@@ -211,7 +211,7 @@ namespace VisioAutomation.Scripting.Commands
             return doc;
         }
 
-        public IVisio.Document OpenStencil(string name)
+        public IVisio.IVDocument OpenStencil(string name)
         {
             this._client.Application.AssertApplicationAvailable();
             
@@ -235,7 +235,7 @@ namespace VisioAutomation.Scripting.Commands
             return doc;
         }
 
-        public IVisio.Document Open(string filename)
+        public IVisio.IVDocument Open(string filename)
         {
             this._client.Application.AssertApplicationAvailable();
             
@@ -267,7 +267,7 @@ namespace VisioAutomation.Scripting.Commands
         }
 
 
-        public IVisio.Document Get(string name)
+        public IVisio.IVDocument Get(string name)
         {
             this._client.Application.AssertApplicationAvailable();
 
@@ -277,7 +277,7 @@ namespace VisioAutomation.Scripting.Commands
             return doc;
         }
 
-        public List<IVisio.Document> GetDocumentsByName(string name)
+        public List<IVisio.IVDocument> GetDocumentsByName(string name)
         {
             var application = this._client.Application.Get();
             var documents = application.Documents;

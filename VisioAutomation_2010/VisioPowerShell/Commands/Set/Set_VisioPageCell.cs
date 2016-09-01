@@ -20,7 +20,7 @@ namespace VisioPowerShell.Commands.Set
         public SwitchParameter TestCircular { get; set; }
 
         [Parameter(Mandatory = false)]
-        public IVisio.Page[] Pages { get; set; }
+        public IVisio.IVPage[] Pages { get; set; }
 
         protected override void ProcessRecord()
         {

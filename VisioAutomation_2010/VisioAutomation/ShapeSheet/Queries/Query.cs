@@ -301,11 +301,11 @@ namespace VisioAutomation.ShapeSheet.Queries
 
             // For each shapeid fetch the corresponding shape from the page
             // this is needed because we'll need to get per shape section information
-            var shapes = new List<IVisio.Shape>(shapeids.Count);
+            var shapes = new List<IVisio.IVShape>(shapeids.Count);
             foreach (int shapeid in shapeids)
             {
                 var shape = pageshapes.get_ItemFromID16((short)shapeid);
-                shapes.Add( (IVisio.Shape) shape);
+                shapes.Add( (IVisio.IVShape) shape);
             }
 
             for (int n = 0; n < shapeids.Count; n++)
@@ -330,7 +330,7 @@ namespace VisioAutomation.ShapeSheet.Queries
             }
         }
 
-        private static short _get_num_rows_for_section(IVisio.Shape shape, SubQuery subquery)
+        private static short _get_num_rows_for_section(IVisio.IVShape shape, SubQuery subquery)
         {
             // For visSectionObject we know the result is always going to be 1
             // so avoid making the call tp RowCount[]

@@ -11,7 +11,7 @@ namespace VisioAutomation.Shapes.CustomProperties
     public static class CustomPropertyHelper
     {
         public static void Set(
-            IVisio.Shape shape,
+            IVisio.IVShape shape,
             string name,
             CustomPropertyCells cp)
         {
@@ -49,7 +49,7 @@ namespace VisioAutomation.Shapes.CustomProperties
             CustomPropertyHelper.Set(shape, row, cp);
         }
 
-        public static void Set(IVisio.Shape shape, short row, CustomPropertyCells cp)
+        public static void Set(IVisio.IVShape shape, short row, CustomPropertyCells cp)
         {
             if (shape == null)
             {
@@ -68,7 +68,7 @@ namespace VisioAutomation.Shapes.CustomProperties
         /// If there are no custom properties then null will be returned</remarks>
         /// <param name="shape"></param>
         /// <returns>A list of custom properties</returns>
-        public static CustomPropertyDictionary Get(IVisio.Shape shape)
+        public static CustomPropertyDictionary Get(IVisio.IVShape shape)
         {
             var prop_names = CustomPropertyHelper.GetNames(shape);
             var dic = new CustomPropertyDictionary(prop_names.Count);
@@ -83,7 +83,7 @@ namespace VisioAutomation.Shapes.CustomProperties
             return dic;
         }
 
-        public static IList<VisioAutomation.Shapes.CustomProperties.CustomPropertyDictionary> Get(IVisio.Page page, IList<IVisio.Shape> shapes)
+        public static IList<VisioAutomation.Shapes.CustomProperties.CustomPropertyDictionary> Get(IVisio.IVPage page, IList<IVisio.IVShape> shapes)
         {
             if (page == null)
             {
@@ -129,7 +129,7 @@ namespace VisioAutomation.Shapes.CustomProperties
             return customprops_dic;
         }
 
-        public static int GetCount(IVisio.Shape shape)
+        public static int GetCount(IVisio.IVShape shape)
         {
             if (shape == null)
             {
@@ -154,7 +154,7 @@ namespace VisioAutomation.Shapes.CustomProperties
             return row_count;
         }
 
-        public static IList<string> GetNames(IVisio.Shape shape)
+        public static IList<string> GetNames(IVisio.IVShape shape)
         {
             if (shape == null)
             {
@@ -227,7 +227,7 @@ namespace VisioAutomation.Shapes.CustomProperties
             }
         }
 
-        public static bool Contains(IVisio.Shape shape, string name)
+        public static bool Contains(IVisio.IVShape shape, string name)
         {
             if (shape == null)
             {
@@ -252,7 +252,7 @@ namespace VisioAutomation.Shapes.CustomProperties
             return string.Format("Prop.{0}", name);
         }
 
-        public static void Delete(IVisio.Shape shape, string name)
+        public static void Delete(IVisio.IVShape shape, string name)
         {
             if (shape == null)
             {
@@ -272,7 +272,7 @@ namespace VisioAutomation.Shapes.CustomProperties
             shape.DeleteRow((short)IVisio.Enums.VisSectionIndices.visSectionProp, row);
         }
 
-        public static void Set(IVisio.Shape shape, string name, string val)
+        public static void Set(IVisio.IVShape shape, string name, string val)
         {
             if (shape == null)
             {

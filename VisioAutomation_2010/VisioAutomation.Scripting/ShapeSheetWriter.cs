@@ -8,11 +8,11 @@ namespace VisioAutomation.Scripting
         internal readonly FormulaWriterSIDSRC formula_writer;
         internal readonly ResultWriterSIDSRC  result_writer;
         public Client Client;
-        public IVisio.Page TargetPage;
+        public IVisio.IVPage TargetPage;
         public bool BlastGuards;
         public bool TestCircular;
 
-        public ShapeSheetWriter(Client client, IVisio.Page page)
+        public ShapeSheetWriter(Client client, IVisio.IVPage page)
         {
             this.Client = client;
             this.TargetPage = page;
@@ -29,19 +29,19 @@ namespace VisioAutomation.Scripting
         public void SetResult(short id, ShapeSheet.SRC src, double result)
         {
             var sidsrc = new ShapeSheet.SIDSRC(id, src);
-            this.result_writer.SetResult(sidsrc, result, IVisio.VisUnitCodes.visNumber);
+            this.result_writer.SetResult(sidsrc, result, IVisio.Enums.VisUnitCodes.visNumber);
         }
 
         public void SetResult(short id, ShapeSheet.SRC src, int result)
         {
             var sidsrc = new ShapeSheet.SIDSRC(id, src);
-            this.result_writer.SetResult(sidsrc, result, IVisio.VisUnitCodes.visNumber);
+            this.result_writer.SetResult(sidsrc, result, IVisio.Enums.VisUnitCodes.visNumber);
         }
 
         public void SetResult(short id, ShapeSheet.SRC src, string result)
         {
             var sidsrc = new ShapeSheet.SIDSRC(id, src);
-            this.result_writer.SetResult(sidsrc, result, IVisio.VisUnitCodes.visNumber);
+            this.result_writer.SetResult(sidsrc, result, IVisio.Enums.VisUnitCodes.visNumber);
         }
 
         public void Commit()

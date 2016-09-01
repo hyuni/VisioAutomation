@@ -7,13 +7,13 @@ namespace VisioPowerShell.Commands.New
     public class New_VisioConnection : VisioCmdlet
     {
         [Parameter(Position = 0, Mandatory = true)]
-        public IVisio.Shape[] From { get; set; }
+        public IVisio.IVShape[] From { get; set; }
 
         [Parameter(Position = 1, Mandatory = true)]
-        public IVisio.Shape[] To { get; set; }
+        public IVisio.IVShape[] To { get; set; }
 
         [Parameter(Position = 2, Mandatory = false)]
-        public IVisio.Master Master { get; set; }
+        public IVisio.IVMaster Master { get; set; }
 
         protected override void ProcessRecord()
         {

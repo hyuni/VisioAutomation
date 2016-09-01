@@ -16,7 +16,7 @@ namespace VisioAutomation.Shapes.UserDefinedCells
             return "User." + name;
         }
 
-        public static void Delete(IVisio.Shape shape, string name)
+        public static void Delete(IVisio.IVShape shape, string name)
         {
             if (shape == null)
             {
@@ -36,12 +36,12 @@ namespace VisioAutomation.Shapes.UserDefinedCells
             shape.DeleteRow(UserDefinedCellHelper._userdefinedcell_section, row);
         }
 
-        public static void Set(IVisio.Shape shape, string name, ShapeSheet.CellData<double> value, ShapeSheet.CellData<double> prompt)
+        public static void Set(IVisio.IVShape shape, string name, ShapeSheet.CellData<double> value, ShapeSheet.CellData<double> prompt)
         {
             UserDefinedCellHelper.Set(shape, name, value.Formula.Value, prompt.Formula.Value);
         }
 
-        public static void Set(IVisio.Shape shape, string name, ShapeSheet.FormulaLiteral value, ShapeSheet.FormulaLiteral prompt)
+        public static void Set(IVisio.IVShape shape, string name, ShapeSheet.FormulaLiteral value, ShapeSheet.FormulaLiteral prompt)
         {
             if (shape == null)
             {
@@ -99,7 +99,7 @@ namespace VisioAutomation.Shapes.UserDefinedCells
         /// If there are no user properties then null will be returned</remarks>
         /// <param name="shape"></param>
         /// <returns>A list of user  properties</returns>
-        public static IList<UserDefinedCell> Get(IVisio.Shape shape)
+        public static IList<UserDefinedCell> Get(IVisio.IVShape shape)
         {
             if (shape == null)
             {
@@ -130,7 +130,7 @@ namespace VisioAutomation.Shapes.UserDefinedCells
             return list;
         }
 
-        public static IList<List<UserDefinedCell>> Get(IVisio.Page page, IList<IVisio.Shape> shapes)
+        public static IList<List<UserDefinedCell>> Get(IVisio.IVPage page, IList<IVisio.IVShape> shapes)
         {
             if (page == null)
             {
@@ -171,7 +171,7 @@ namespace VisioAutomation.Shapes.UserDefinedCells
         /// </summary>
         /// <param name="shape"></param>
         /// <returns></returns>
-        public static int GetCount(IVisio.Shape shape)
+        public static int GetCount(IVisio.IVShape shape)
         {
             if (shape == null)
             {
@@ -205,7 +205,7 @@ namespace VisioAutomation.Shapes.UserDefinedCells
         /// </remarks>
         /// <param name="shape"></param>
         /// <returns></returns>
-        public static IList<string> GetNames(IVisio.Shape shape)
+        public static IList<string> GetNames(IVisio.IVShape shape)
         {
             if (shape == null)
             {
@@ -265,7 +265,7 @@ namespace VisioAutomation.Shapes.UserDefinedCells
             }
         }
 
-        public static bool Contains(IVisio.Shape shape, string name)
+        public static bool Contains(IVisio.IVShape shape, string name)
         {
             if (shape == null)
             {

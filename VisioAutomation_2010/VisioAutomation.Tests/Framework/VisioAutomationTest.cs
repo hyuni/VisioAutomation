@@ -21,12 +21,12 @@ namespace VisioAutomation_Tests
             return app;
         }
 
-        public IVisio.Page GetNewPage()
+        public IVisio.IVPage GetNewPage()
         {
             return this.GetNewPage(string.Empty);
         }
 
-        public IVisio.Page GetNewPage(string suffix)
+        public IVisio.IVPage GetNewPage(string suffix)
         {
 
             var frame = new StackFrame(2);
@@ -39,7 +39,7 @@ namespace VisioAutomation_Tests
             return page;
         }
 
-        public IVisio.Page GetNewPage(VisioAutomation.Drawing.Size s)
+        public IVisio.IVPage GetNewPage(VisioAutomation.Drawing.Size s)
         {
             var app = this.GetVisioApplication();
             var documents = app.Documents;
@@ -56,7 +56,7 @@ namespace VisioAutomation_Tests
             return page;
         }
 
-        public IVisio.Document GetNewDoc()
+        public IVisio.IVDocument GetNewDoc()
         {
             var app = this.GetVisioApplication();
             var documents = app.Documents;
@@ -83,7 +83,7 @@ namespace VisioAutomation_Tests
             return client;
         }
 
-        public static VisioAutomation.Drawing.Size GetSize(IVisio.Shape shape)
+        public static VisioAutomation.Drawing.Size GetSize(IVisio.IVShape shape)
         {
             var query = new VisioAutomation.ShapeSheet.Queries.Query();
             var col_w = query.AddCell(VisioAutomation.ShapeSheet.SRCConstants.Width,"Width");
@@ -97,27 +97,27 @@ namespace VisioAutomation_Tests
             return size;
         }
 
-        public static void ResetDoc(IVisio.Document doc)
+        public static void ResetDoc(IVisio.IVDocument doc)
         {
             var pages = doc.Pages;
 
-            var target_pages = new List<IVisio.Page>(pages.Count);
+            var target_pages = new List<IVisio.IVPage>(pages.Count);
 
-            foreach (IVisio.Page p in pages)
+            foreach (IVisio.IVPage p in pages)
             {
                 target_pages.Add(p);
             }
 
             var empty_page = pages.Add();
 
-            foreach (IVisio.Page p in target_pages)
+            foreach (IVisio.IVPage p in target_pages)
             {
                 p.Delete(1);
             }
         }
 
         /// Selects a series of shapes and groups them into one shape
-        public static IVisio.Shape SelectAndGroup(IVisio.Window window, IEnumerable<IVisio.Shape> shapes)
+        public static IVisio.IVShape SelectAndGroup(IVisio.Window window, IEnumerable<IVisio.IVShape> shapes)
         {
             if (window == null)
             {
@@ -129,14 +129,14 @@ namespace VisioAutomation_Tests
                 throw new System.ArgumentNullException(nameof(shapes));
             }
 
-            var selectargs = IVisio.VisSelectArgs.visSelect;
+            var selectargs = IVisio.Enums.VisSelectArgs.visSelect;
             window.Select(shapes, selectargs);
             var selection = window.Selection;
             var group = selection.Group();
             return group;
         }
 
-        public static void SetPageSize(IVisio.Page page, VisioAutomation.Drawing.Size size)
+        public static void SetPageSize(IVisio.IVPage page, VisioAutomation.Drawing.Size size)
         {
             if (page == null)
             {
@@ -151,7 +151,7 @@ namespace VisioAutomation_Tests
             writer.Commit(page_sheet);
         }
 
-        public static VisioAutomation.Drawing.Size GetPageSize(IVisio.Page page)
+        public static VisioAutomation.Drawing.Size GetPageSize(IVisio.IVPage page)
         {
             if (page == null)
             {

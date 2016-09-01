@@ -76,7 +76,7 @@ namespace VisioAutomation_Tests.Models.Layouts
             Assert.AreEqual("\"v2\"", props_dic["p2"].Value.Formula);
             Assert.AreEqual("\"v3\"", props_dic["p3"].Value.Formula);
 
-            page1.Application.ActiveWindow.ViewFit = (short) IVisio.VisWindowFit.visFitPage;
+            page1.Application.ActiveWindow.ViewFit = (short) IVisio.Enums.VisWindowFit.visFitPage;
 
             string output_filename = TestGlobals.TestHelper.GetOutputFilename(nameof(RenderDirectedGraphWithCustomProps),".vsd");
             doc.SaveAs(output_filename);

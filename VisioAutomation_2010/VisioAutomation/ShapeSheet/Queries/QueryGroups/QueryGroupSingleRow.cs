@@ -23,7 +23,7 @@ namespace VisioAutomation.ShapeSheet.Queries.QueryGroups
         }
 
         protected static IList<T> _GetCells<T, TResult>(
-            IVisio.Page page, IList<int> shapeids,
+            IVisio.IVPage page, IList<int> shapeids,
             Query query,
             System.Func<ShapeSheet.CellData<TResult>[], T> cells_to_object)
         {
@@ -41,7 +41,7 @@ namespace VisioAutomation.ShapeSheet.Queries.QueryGroups
         }
 
         protected static T _GetCells<T, TResult>(
-            IVisio.Shape shape,
+            IVisio.IVShape shape,
             Query query,
             System.Func<ShapeSheet.CellData<TResult>[], T> cells_to_object)
         {

@@ -1,5 +1,5 @@
 using VisioAutomation.Scripting.Exceptions;
-using IVisio=Microsoft.Office.Interop.Visio;
+using IVisio=NetOffice.VisioApi;
 
 namespace VisioAutomation.Scripting.Commands
 {
@@ -12,7 +12,7 @@ namespace VisioAutomation.Scripting.Commands
         }
 
 
-        public IVisio.Shape Group()
+        public IVisio.IVShape Group()
         {
             this._client.Application.AssertApplicationAvailable();
             this._client.Document.AssertDocumentAvailable();
@@ -23,7 +23,7 @@ namespace VisioAutomation.Scripting.Commands
                 throw new VisioOperationException("No Selected Shapes to Group");
             }
 
-            // the other way of doing this: this.Client.VisioApplication.DoCmd((short)IVisio.VisUICmds.visCmdObjectGroup);
+            // the other way of doing this: this.Client.VisioApplication.DoCmd((short)IVisio.Enums.VisUICmds.visCmdObjectGroup);
             // but it doesn't return the group
 
             var selection = this._client.Selection.Get();
@@ -39,7 +39,7 @@ namespace VisioAutomation.Scripting.Commands
                 if (this._client.Selection.HasShapes())
                 {
                     var application = this._client.Application.Get();
-                    application.DoCmd((short)IVisio.VisUICmds.visCmdObjectUngroup);
+                    application.DoCmd((short)IVisio.Enums.VisUICmds.visCmdObjectUngroup);
                 }
             }
             else

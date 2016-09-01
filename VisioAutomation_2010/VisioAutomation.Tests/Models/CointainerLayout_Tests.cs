@@ -24,7 +24,7 @@ namespace VisioAutomation_Tests.Models.Layouts
                 var c1 = layout.AddContainer("A");
                 var i1 = c1.Add("A1");
                 // layout.PerformLayout(); 
-                IVisio.Page page = layout.Render(doc);
+                IVisio.IVPage page = layout.Render(doc);
                 page.Delete(0);
             }
             catch (AutomationException)

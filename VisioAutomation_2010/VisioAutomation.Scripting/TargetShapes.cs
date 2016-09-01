@@ -6,21 +6,21 @@ namespace VisioAutomation.Scripting
 {
     public class TargetShapes
     {
-        public readonly IList<IVisio.Shape> Shapes;
+        public readonly IList<IVisio.IVShape> Shapes;
         public TargetShapes()
         {
             // This explicitly means that the current selection is intended to be used
             this.Shapes = null;
         }
 
-        public TargetShapeIDs ToShapeIDs(IVisio.Page page)
+        public TargetShapeIDs ToShapeIDs(IVisio.IVPage page)
         {
             var shapeids = this.Shapes.Select(s => s.ID).ToList();
             var t = new TargetShapeIDs(page,shapeids);
             return t;
         }
 
-        public TargetShapes(IList<IVisio.Shape> shapes)
+        public TargetShapes(IList<IVisio.IVShape> shapes)
         {
             if (shapes == null)
             {
@@ -31,7 +31,7 @@ namespace VisioAutomation.Scripting
             this.Shapes = shapes;
         }
 
-        public TargetShapes(params IVisio.Shape[] shapes)
+        public TargetShapes(params IVisio.IVShape[] shapes)
         {
             if (shapes == null)
             {
@@ -61,7 +61,7 @@ namespace VisioAutomation.Scripting
             return selected_count;
         }
 
-        internal IList<IVisio.Shape> ResolveShapes(VisioAutomation.Scripting.Client client)
+        internal IList<IVisio.IVShape> ResolveShapes(VisioAutomation.Scripting.Client client)
         {
             client.Application.AssertApplicationAvailable();
 
@@ -77,7 +77,7 @@ namespace VisioAutomation.Scripting
         }
 
 
-        internal IList<IVisio.Shape> ResolveShapes2DOnly(VisioAutomation.Scripting.Client client)
+        internal IList<IVisio.IVShape> ResolveShapes2DOnly(VisioAutomation.Scripting.Client client)
         {
             var shapes = this.ResolveShapes(client);
             var shapes_2d = shapes.Where(s => s.OneD == 0).ToList();

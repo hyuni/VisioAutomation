@@ -6,8 +6,8 @@ namespace VisioAutomation.Windows
     public static class WindowHelper
     {
         public static void Select(
-            IVisio.Window window,
-            IEnumerable<IVisio.Shape> shapes,
+            IVisio.IVWindow window,
+            IEnumerable<IVisio.IVShape> shapes,
             IVisio.Enums.VisSelectArgs selectargs)
         {
             if (shapes == null)
@@ -21,24 +21,7 @@ namespace VisioAutomation.Windows
             }
         }
 
-        public static void Select(
-    IVisio.Window window,
-    IEnumerable<IVisio.IVShape> shapes,
-    IVisio.Enums.VisSelectArgs selectargs)
-        {
-            if (shapes == null)
-            {
-                throw new System.ArgumentNullException(nameof(shapes));
-            }
-
-            foreach (var shape in shapes)
-            {
-                window.Select(shape, (short)selectargs);
-            }
-        }
-
-
-        public static Drawing.Rectangle GetViewRect(IVisio.Window window)
+        public static Drawing.Rectangle GetViewRect(IVisio.IVWindow window)
         {
             // MSDN: http://msdn.microsoft.com/en-us/library/office/ff765846.aspx
             double left, top, height, width;
@@ -52,7 +35,7 @@ namespace VisioAutomation.Windows
             return r;
         }
 
-        public static System.Drawing.Rectangle GetWindowRect(IVisio.Window window)
+        public static System.Drawing.Rectangle GetWindowRect(IVisio.IVWindow window)
         {
             // MSDN: http://msdn.microsoft.com/en-us/library/office/ms367542(v=office.14).aspx
             int left, top, height, width;
@@ -62,7 +45,7 @@ namespace VisioAutomation.Windows
         }
 
         public static void SetWindowRect(
-            IVisio.Window window,
+            IVisio.IVWindow window,
             System.Drawing.Rectangle rect)
         {
             // MSDN: http://msdn.microsoft.com/en-us/library/office/ff769098.aspx
@@ -70,7 +53,7 @@ namespace VisioAutomation.Windows
         }
 
         public static void SetViewRect(
-            IVisio.Window window,
+            IVisio.IVWindow window,
             Drawing.Rectangle rect)
         {
             // MSDN: http://msdn.microsoft.com/en-us/library/office/ms367542(v=office.14).aspx

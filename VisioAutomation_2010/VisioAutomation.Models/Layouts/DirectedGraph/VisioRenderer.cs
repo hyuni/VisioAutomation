@@ -8,7 +8,7 @@ namespace VisioAutomation.Models.Layouts.DirectedGraph
         {
         }
 
-        public void Render(IVisio.Page page, DirectedGraphLayout directedGraphLayout, VisioLayoutOptions options)
+        public void Render(IVisio.IVPage page, DirectedGraphLayout directedGraphLayout, VisioLayoutOptions options)
         {
             // This is Visio-based render - it does NOT use MSAGL
             if (page == null)

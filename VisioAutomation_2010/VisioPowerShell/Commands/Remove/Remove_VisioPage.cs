@@ -7,7 +7,7 @@ namespace VisioPowerShell.Commands.Remove
     public class Remove_VisioPage : VisioCmdlet
     {
         [Parameter(Mandatory = false, Position=0, ValueFromPipeline = true)]
-        public IVisio.Page[] Pages;
+        public IVisio.IVPage[] Pages;
 
         [Parameter(Mandatory = false)]
         public SwitchParameter Renumber;

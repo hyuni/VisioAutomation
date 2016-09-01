@@ -140,7 +140,7 @@ namespace VisioAutomation.Scripting.Commands
             var active_document = application.ActiveDocument;
             var active_doc_fonts = active_document.Fonts;
             var font = active_doc_fonts[fontname];
-            IVisio.VisGetSetArgs flags=0;
+            IVisio.Enums.VisGetSetArgs flags=0;
             var srcs = new[] {ShapeSheet.SRCConstants.CharFont};
             var formulas = new[] { font.ID.ToString() };
             this._client.ShapeSheet.SetFormula(targets, srcs, formulas, flags);
@@ -181,11 +181,11 @@ namespace VisioAutomation.Scripting.Commands
             foreach (var shape in shapes)
             {
                 if (0 ==
-                    shape.RowExists[
-                        (short) IVisio.VisSectionIndices.visSectionObject, (short) IVisio.VisRowIndices.visRowTextXForm,
-                        (short) IVisio.VisExistsFlags.visExistsAnywhere])
+                    shape.get_RowExists(
+                        (short) IVisio.Enums.VisSectionIndices.visSectionObject, (short) IVisio.Enums.VisRowIndices.visRowTextXForm,
+                        (short) IVisio.Enums.VisExistsFlags.visExistsAnywhere))
                 {
-                    shape.AddRow((short)IVisio.VisSectionIndices.visSectionObject, (short)IVisio.VisRowIndices.visRowTextXForm, (short)IVisio.VisRowTags.visTagDefault); 
+                    shape.AddRow((short)IVisio.Enums.VisSectionIndices.visSectionObject, (short)IVisio.Enums.VisRowIndices.visRowTextXForm, (short)IVisio.Enums.VisRowTags.visTagDefault); 
                     
                 }
             }
@@ -245,8 +245,8 @@ namespace VisioAutomation.Scripting.Commands
                 var new_sizes = new List<Drawing.Size>(shapeids.Count);
                 foreach (var shape in shapes)
                 {
-                    var text_bounding_box = shape.GetBoundingBox(IVisio.VisBoundingBoxArgs.visBBoxUprightText).Size;
-                    var wh_bounding_box = shape.GetBoundingBox(IVisio.VisBoundingBoxArgs.visBBoxUprightWH).Size;
+                    var text_bounding_box = shape.GetBoundingBox(IVisio.Enums.VisBoundingBoxArgs.visBBoxUprightText).Size;
+                    var wh_bounding_box = shape.GetBoundingBox(IVisio.Enums.VisBoundingBoxArgs.visBBoxUprightWH).Size;
 
                     double max_w = System.Math.Max(text_bounding_box.Width, wh_bounding_box.Width);
                     double max_h = System.Math.Max(text_bounding_box.Height, wh_bounding_box.Height);

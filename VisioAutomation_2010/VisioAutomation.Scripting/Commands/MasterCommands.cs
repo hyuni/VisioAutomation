@@ -16,7 +16,7 @@ namespace VisioAutomation.Scripting.Commands
 
         }
 
-        public void OpenForEdit(IVisio.Master master)
+        public void OpenForEdit(IVisio.IVMaster master)
         {
             var mdraw_window = master.OpenDrawWindow();
             mdraw_window.Activate();
@@ -33,11 +33,11 @@ namespace VisioAutomation.Scripting.Commands
                 throw new AutomationException("The active window is not a master window");
             }
 
-            var master = (IVisio.Master)window.Master;
+            var master = (IVisio.IVMaster)window.Master;
             master.Close();
         }
 
-        public IList<IVisio.Master> Get()
+        public IList<IVisio.IVMaster> Get()
         {
             this._client.Application.AssertApplicationAvailable();
             this._client.Document.AssertDocumentAvailable();
@@ -49,7 +49,7 @@ namespace VisioAutomation.Scripting.Commands
             return masters;
         }
 
-        public IList<IVisio.Master> Get(IVisio.Document doc)
+        public IList<IVisio.IVMaster> Get(IVisio.IVDocument doc)
         {
             this._client.Application.AssertApplicationAvailable();
             var doc_masters = doc.Masters;
@@ -57,7 +57,7 @@ namespace VisioAutomation.Scripting.Commands
             return masters;
         }
 
-        public IVisio.Master Get(string name)
+        public IVisio.IVMaster Get(string name)
         {
             this._client.Application.AssertApplicationAvailable();
             this._client.Document.AssertDocumentAvailable();
@@ -72,13 +72,13 @@ namespace VisioAutomation.Scripting.Commands
                 throw new System.ArgumentException("mastername");
             }
 
-            IVisio.Master master;
+            IVisio.IVMaster master;
             try
             {
                 var application = this._client.Application.Get();
                 var active_document = application.ActiveDocument;
                 var masters = active_document.Masters;
-                master = masters.ItemU[name];
+                master = masters.get_ItemU(name);
             }
             catch (System.Runtime.InteropServices.COMException)
             {
@@ -88,7 +88,7 @@ namespace VisioAutomation.Scripting.Commands
             return master;
         }
 
-        public IVisio.Master Get(string master, IVisio.Document doc)
+        public IVisio.IVMaster Get(string master, IVisio.IVDocument doc)
         {
             this._client.Application.AssertApplicationAvailable();
             this._client.Document.AssertDocumentAvailable();
@@ -107,7 +107,7 @@ namespace VisioAutomation.Scripting.Commands
             var documents = application.Documents;
 
             var masters = doc.Masters;
-            IVisio.Master masterobj = this.TryGetMaster(masters, master);
+            IVisio.IVMaster masterobj = this.TryGetMaster(masters, master);
             if (masterobj == null)
             {
                 string msg = string.Format("No such master \"{0}\" in \"{1}\"", master, doc);
@@ -117,7 +117,7 @@ namespace VisioAutomation.Scripting.Commands
             return masterobj;
         }
 
-        public List<IVisio.Master> GetMastersByName(string name, IVisio.Document doc)
+        public List<IVisio.IVMaster> GetMastersByName(string name, IVisio.IVDocument doc)
         {
             if (name == null || name == "*")
             {
@@ -134,21 +134,21 @@ namespace VisioAutomation.Scripting.Commands
             }
         }
 
-        public List<IVisio.Master> GetMastersByName(string name)
+        public List<IVisio.IVMaster> GetMastersByName(string name)
         {
             var application = this._client.Application.Get();
             var doc = application.ActiveDocument;
             return this.GetMastersByName(name, doc);
         }
 
-        private IVisio.Master TryGetMaster(IVisio.Masters masters, string name)
+        private IVisio.IVMaster TryGetMaster(IVisio.IVMasters masters, string name)
         {
             this._client.Application.AssertApplicationAvailable();
             this._client.Document.AssertDocumentAvailable();
 
             try
             {
-                var masterobj = masters.ItemU[name];
+                var masterobj = masters.get_ItemU(name);
                 return masterobj;
             }
             catch (System.Runtime.InteropServices.COMException)
@@ -157,7 +157,7 @@ namespace VisioAutomation.Scripting.Commands
             }
         }
 
-        public IVisio.Shape Drop(IVisio.Master master, double x, double y)
+        public IVisio.IVShape Drop(IVisio.IVMaster master, double x, double y)
         {
             this._client.Application.AssertApplicationAvailable();
             this._client.Document.AssertDocumentAvailable();
@@ -168,7 +168,7 @@ namespace VisioAutomation.Scripting.Commands
             return shape;
         }
 
-        public short[] Drop(IList<IVisio.Master> masters, IList<Drawing.Point> points)
+        public short[] Drop(IList<IVisio.IVMaster> masters, IList<Drawing.Point> points)
         {
             this._client.Application.AssertApplicationAvailable();
             this._client.Document.AssertDocumentAvailable();
@@ -189,7 +189,7 @@ namespace VisioAutomation.Scripting.Commands
             return shapeids;
         }
 
-        public IVisio.Master New(IVisio.Document document, string name)
+        public IVisio.IVMaster New(IVisio.IVDocument document, string name)
         {
             this._client.Application.AssertApplicationAvailable();
 
@@ -204,7 +204,7 @@ namespace VisioAutomation.Scripting.Commands
             }
 
             var masters = document.Masters;
-            var master = masters.AddEx(IVisio.VisMasterTypes.visTypeMaster);
+            var master = masters.AddEx(IVisio.Enums.VisMasterTypes.visTypeMaster);
             if (name != null)
             {
                 master.Name = name;
@@ -216,7 +216,7 @@ namespace VisioAutomation.Scripting.Commands
         // http://blogs.msdn.com/b/visio/archive/2010/01/27/container-list-and-callout-api-in-visio-2010.aspx
         // https://msdn.microsoft.com/en-us/library/office/ff768907(v=office.14).aspx
 
-        public IVisio.Shape DropContainer(IVisio.Master master)
+        public IVisio.IVShape DropContainer(IVisio.IVMaster master)
         {
             this._client.Application.AssertApplicationAvailable();
             this._client.Document.AssertDocumentAvailable();
@@ -229,7 +229,7 @@ namespace VisioAutomation.Scripting.Commands
             return shape;
         }
 
-        public IVisio.Shape DropContainer(string master)
+        public IVisio.IVShape DropContainer(string master)
         {
             this._client.Application.AssertApplicationAvailable();
             this._client.Document.AssertDocumentAvailable();
@@ -238,12 +238,12 @@ namespace VisioAutomation.Scripting.Commands
             var page = application.ActivePage;
             var selectedShapes = this._client.Selection.Get();
 
-            var stencil_type = IVisio.VisBuiltInStencilTypes.visBuiltInStencilContainers;
-            var measurement_system = IVisio.VisMeasurementSystem.visMSUS;
+            var stencil_type = IVisio.Enums.VisBuiltInStencilTypes.visBuiltInStencilContainers;
+            var measurement_system = IVisio.Enums.VisMeasurementSystem.visMSUS;
             var containers_file = application.GetBuiltInStencilFile(stencil_type, measurement_system);
             var containers_doc = application.Documents.OpenStencil(containers_file);
             var masters = containers_doc.Masters;
-            var container_master = masters.ItemU[master];
+            var container_master = masters.get_ItemU(master);
             var shape = page.DropContainer(container_master,selectedShapes);
 
             return shape;

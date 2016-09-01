@@ -35,7 +35,7 @@ namespace VisioAutomation.Scripting.Commands
             var active_page = application.ActivePage;
             active_page.Export(filename);
             var active_window = application.ActiveWindow;
-            active_window.Select(old_selection, IVisio.VisSelectArgs.visSelect);
+            active_window.Select(old_selection, IVisio.Enums.VisSelectArgs.visSelect);
         }
 
         public void SelectionToFile(string filename)
@@ -123,7 +123,7 @@ namespace VisioAutomation.Scripting.Commands
             this.SelectionToSVGXHTML(selection, filename, s => this._client.WriteVerbose(s));
         }
 
-        private void SelectionToSVGXHTML(IVisio.Selection selection, string filename, System.Action<string> verboselog)
+        private void SelectionToSVGXHTML(IVisio.IVSelection selection, string filename, System.Action<string> verboselog)
         {
             this._client.Application.AssertApplicationAvailable();
             this._client.Document.AssertDocumentAvailable();

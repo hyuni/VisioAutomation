@@ -30,7 +30,7 @@ namespace VisioAutomationSamples
             var connector = stencil.Masters["Dynamic Connector"];
 
             // connect shapes - but leave s0 alone
-            var dir = IVisio.VisAutoConnectDir.visAutoConnectDirNone;
+            var dir = IVisio.Enums.VisAutoConnectDir.visAutoConnectDirNone;
             s1.AutoConnect(s2, dir, null);
             s2.AutoConnect(s3, dir, null);
             s3.AutoConnect(s2, dir, null);

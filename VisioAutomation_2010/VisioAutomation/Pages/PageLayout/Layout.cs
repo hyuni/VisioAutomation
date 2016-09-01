@@ -135,7 +135,7 @@ namespace VisioAutomation.Pages.PageLayout
             throw new System.ArgumentOutOfRangeException(nameof(cs));
         }
 
-        public void Apply(IVisio.Page page)
+        public void Apply(IVisio.IVPage page)
         {
             var pagecells = new PageCells();
             this.SetPageCells(pagecells);
@@ -143,7 +143,7 @@ namespace VisioAutomation.Pages.PageLayout
             var writer = new FormulaWriterSRC();
             pagecells.SetFormulas(writer);
             var pagesheet = page.PageSheet;
-            writer.Commit((IVisio.Shape)pagesheet);
+            writer.Commit((IVisio.IVShape)pagesheet);
             page.Layout();
         }
     }

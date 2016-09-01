@@ -8,7 +8,7 @@ namespace VisioAutomation.Models.Documents.Forms
         public string Name;
         public Drawing.Size Size;
         public Margin Margin;
-        public IVisio.Page VisioPage;
+        public IVisio.IVPage VisioPage;
 
         public double TitleTextSize { get; set; }
         public double BodyParaSpacingAfter { get; set; }
@@ -28,7 +28,7 @@ namespace VisioAutomation.Models.Documents.Forms
 
         }
 
-        internal IVisio.Page Draw(FormRenderingContext context)
+        internal IVisio.IVPage Draw(FormRenderingContext context)
         {
             var r = new InteractiveRenderer(context.Document);
             this.VisioPage = r.CreatePage(this);

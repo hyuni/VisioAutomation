@@ -10,14 +10,14 @@ namespace VisioAutomation.Models.Documents.Forms
         public string Creator ;
         public string Company;
         public List<FormPage> Pages;
-        public IVisio.Document VisioDocument;
+        public IVisio.IVDocument VisioDocument;
 
         public FormDocument()
         {
             this.Pages = new List<FormPage>();
         }
 
-        public IVisio.Document Render(IVisio.Application app)
+        public IVisio.IVDocument Render(IVisio.Application app)
         {
 
             var docs = app.Documents;
@@ -25,11 +25,11 @@ namespace VisioAutomation.Models.Documents.Forms
 
             var context = new FormRenderingContext();
             context.Application = app;
-            context.Document = (IVisio.Document) doc;
-            context.Pages = (IVisio.Pages) doc.Pages;
+            context.Document = (IVisio.IVDocument) doc;
+            context.Pages = (IVisio.IVPages) doc.Pages;
             context.Fonts = (IVisio.Fonts)doc.Fonts;
 
-            this.VisioDocument = (IVisio.Document)doc;
+            this.VisioDocument = (IVisio.IVDocument)doc;
 
             doc.Subject = this.Subject;
             doc.Title = this.Title;
@@ -51,7 +51,7 @@ namespace VisioAutomation.Models.Documents.Forms
                 var active_window = app.ActiveWindow;
                 active_window.Page = first_page;
             }
-            return (IVisio.Document)doc;
+            return (IVisio.IVDocument)doc;
         }
     }
 }

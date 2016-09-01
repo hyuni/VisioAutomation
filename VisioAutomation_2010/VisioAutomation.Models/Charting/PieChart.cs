@@ -27,10 +27,10 @@ namespace VisioAutomation.Models.Charting
             this.Radius = radius;
         }
 
-        public void Render( IVisio.Page page)
+        public void Render( IVisio.IVPage page)
         {
             var values = this.DataPoints.Select(p => p.Value).ToList();
-            var shapes = new List<IVisio.Shape>(values.Count);
+            var shapes = new List<IVisio.IVShape>(values.Count);
             if (this.InnerRadius <= 0)
             {
                 var slices = PieSlice.GetSlicesFromValues(this.Center, this.Radius, values);

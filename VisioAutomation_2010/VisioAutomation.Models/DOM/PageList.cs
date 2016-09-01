@@ -36,9 +36,9 @@ namespace VisioAutomation.Models.Dom
             get { return this._pagenodes.Count; }
         }
 
-        public IList<IVisio.Page> Render(IVisio.Document doc)
+        public IList<IVisio.IVPage> Render(IVisio.IVDocument doc)
         {
-            var pages = new List<IVisio.Page>(this.Count);
+            var pages = new List<IVisio.IVPage>(this.Count);
             foreach (var pagenode in this._pagenodes)
             {
                 var page = pagenode.Render(doc);
@@ -47,11 +47,11 @@ namespace VisioAutomation.Models.Dom
             return pages;
         }
 
-        public IList<IVisio.Page> Render(IVisio.Page startpage)
+        public IList<IVisio.IVPage> Render(IVisio.IVPage startpage)
         {
             var doc = startpage.Document;
             int count = 0;
-            var pages = new List<IVisio.Page>(this.Count);
+            var pages = new List<IVisio.IVPage>(this.Count);
 
             var app = doc.Application;
             var active_window = app.ActiveWindow;
@@ -64,7 +64,7 @@ namespace VisioAutomation.Models.Dom
                 }
                 else
                 {
-                    var rendered_page = pagenode.Render((IVisio.Document)doc);
+                    var rendered_page = pagenode.Render((IVisio.IVDocument)doc);
                     pages.Add(rendered_page);
                 }
 

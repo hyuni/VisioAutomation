@@ -152,7 +152,7 @@ namespace VisioAutomation_Tests.Models.Dom
             string orgchart_vst = "orgchart.vst";
             string position_master_name = vis_ver.Major >= 15 ? "Position Belt" : "Position";
 
-            var doc_node = new Document(orgchart_vst, IVisio.VisMeasurementSystem.visMSUS);
+            var doc_node = new Document(orgchart_vst, IVisio.Enums.VisMeasurementSystem.visMSUS);
             var page_node = new Page();
             doc_node.Pages.Add(page_node);
 
@@ -204,7 +204,7 @@ namespace VisioAutomation_Tests.Models.Dom
             Assert.AreEqual(1, page.Shapes.Count);
             Assert.AreNotEqual(0, line_node_0.VisioShapeID);
             Assert.IsNotNull(line_node_0.VisioShape);
-            Assert.AreEqual(2.0, line_node_0.VisioShape.CellsU["PinX"].Result[IVisio.VisUnitCodes.visNumber]);
+            Assert.AreEqual(2.0, line_node_0.VisioShape.CellsU["PinX"].Result[IVisio.Enums.VisUnitCodes.visNumber]);
             page.Delete(0);
             doc.Close(true);
         }
@@ -326,7 +326,7 @@ namespace VisioAutomation_Tests.Models.Dom
             var page_node = new Page();
             var master_node_0 = page_node.Shapes.Drop("XXX", this.basic_u_vss, 3, 3);
 
-            IVisio.Page page=null;
+            IVisio.IVPage page=null;
             bool caught = false;
             try
             {
@@ -358,7 +358,7 @@ namespace VisioAutomation_Tests.Models.Dom
             var page_node = new Page();
             var master_node_0 = page_node.Shapes.Drop(this.rectangle, non_existent_stencil, 3, 3);
 
-            IVisio.Page page = null;
+            IVisio.IVPage page = null;
             bool caught = false;
             try
             {

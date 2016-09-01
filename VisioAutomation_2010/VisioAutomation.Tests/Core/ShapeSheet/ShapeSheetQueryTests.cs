@@ -24,10 +24,10 @@ namespace VisioAutomation_Tests.Core.ShapeSheet
         {
             var query = new VisioAutomation.ShapeSheet.Queries.Query();
 
-            var sec_char = query.AddSubQuery(IVisio.VisSectionIndices.visSectionCharacter);
+            var sec_char = query.AddSubQuery(IVisio.Enums.VisSectionIndices.visSectionCharacter);
             Assert.AreEqual("Character", sec_char.Name);
 
-            var sec_obj = query.AddSubQuery(IVisio.VisSectionIndices.visSectionObject);
+            var sec_obj = query.AddSubQuery(IVisio.Enums.VisSectionIndices.visSectionObject);
             Assert.AreEqual("Object", sec_obj.Name);
 
         }
@@ -62,7 +62,7 @@ namespace VisioAutomation_Tests.Core.ShapeSheet
             var col_fg = query.AddCell(src_fg, "FillForegnd");
             var col_bg = query.AddCell(src_bg, "FillBkgnd");
             var col_filpat = query.AddCell(src_filpat, "FillPattern");
-            var sec_char = query.AddSubQuery(IVisio.VisSectionIndices.visSectionCharacter);
+            var sec_char = query.AddSubQuery(IVisio.Enums.VisSectionIndices.visSectionCharacter);
             Assert.AreEqual("Character",sec_char.Name);
             var col_charcase = sec_char.AddCell(VA.ShapeSheet.SRCConstants.CharCase, "CharCase");
             var col_charcolor = sec_char.AddCell(VA.ShapeSheet.SRCConstants.CharColor, "CharColor");
@@ -179,7 +179,7 @@ namespace VisioAutomation_Tests.Core.ShapeSheet
 
             var query = new VisioAutomation.ShapeSheet.Queries.Query();
 
-            var prop_sec = query.AddSubQuery(IVisio.VisSectionIndices.visSectionProp);
+            var prop_sec = query.AddSubQuery(IVisio.Enums.VisSectionIndices.visSectionProp);
             var value_col = prop_sec.AddCell(VA.ShapeSheet.SRCConstants.Prop_Value,"Value");
 
             var shapeids = new[] { s1.ID, s2.ID, s3.ID, s4.ID };
@@ -325,8 +325,8 @@ namespace VisioAutomation_Tests.Core.ShapeSheet
             // First verify that none of the shapes have the controls section locally or otherwise
             foreach (var s in shapes)
             {
-                Assert.AreEqual(0, s.SectionExists[(short)IVisio.VisSectionIndices.visSectionControls, 1]);
-                Assert.AreEqual(0, s.SectionExists[(short)IVisio.VisSectionIndices.visSectionControls, 0]);
+                Assert.AreEqual(0, s.SectionExists[(short)IVisio.Enums.VisSectionIndices.visSectionControls, 1]);
+                Assert.AreEqual(0, s.SectionExists[(short)IVisio.Enums.VisSectionIndices.visSectionControls, 0]);
             }
 
             // Try to retrieve the control cells rows for each shape, every shape should return zero rows
@@ -353,13 +353,13 @@ namespace VisioAutomation_Tests.Core.ShapeSheet
             {
                 if (s != s2)
                 {
-                    Assert.AreEqual(0, s.SectionExists[(short)IVisio.VisSectionIndices.visSectionControls, 1]);
-                    Assert.AreEqual(0, s.SectionExists[(short)IVisio.VisSectionIndices.visSectionControls, 0]);
+                    Assert.AreEqual(0, s.SectionExists[(short)IVisio.Enums.VisSectionIndices.visSectionControls, 1]);
+                    Assert.AreEqual(0, s.SectionExists[(short)IVisio.Enums.VisSectionIndices.visSectionControls, 0]);
                 }
                 else
                 {
-                    Assert.AreEqual(-1, s.SectionExists[(short)IVisio.VisSectionIndices.visSectionControls, 1]);
-                    Assert.AreEqual(-1, s.SectionExists[(short)IVisio.VisSectionIndices.visSectionControls, 0]);
+                    Assert.AreEqual(-1, s.SectionExists[(short)IVisio.Enums.VisSectionIndices.visSectionControls, 1]);
+                    Assert.AreEqual(-1, s.SectionExists[(short)IVisio.Enums.VisSectionIndices.visSectionControls, 0]);
                 }
             }
 
@@ -398,13 +398,13 @@ namespace VisioAutomation_Tests.Core.ShapeSheet
 
         public bool section_is_skippable( VA.ShapeSheet.SRC src)
         {
-            bool can_skip = (src.Section == (short)IVisio.VisSectionIndices.visSectionFirst)
-                         || (src.Section == (short)IVisio.VisSectionIndices.visSectionFirstComponent)
-                         || (src.Section == (short)IVisio.VisSectionIndices.visSectionLast)
-                         || (src.Section == (short)IVisio.VisSectionIndices.visSectionInval)
-                         || (src.Section == (short)IVisio.VisSectionIndices.visSectionNone)
-                         || (src.Section == (short)IVisio.VisSectionIndices.visSectionFirst)
-                         || (src.Section == (short)IVisio.VisSectionIndices.visSectionLastComponent);
+            bool can_skip = (src.Section == (short)IVisio.Enums.VisSectionIndices.visSectionFirst)
+                         || (src.Section == (short)IVisio.Enums.VisSectionIndices.visSectionFirstComponent)
+                         || (src.Section == (short)IVisio.Enums.VisSectionIndices.visSectionLast)
+                         || (src.Section == (short)IVisio.Enums.VisSectionIndices.visSectionInval)
+                         || (src.Section == (short)IVisio.Enums.VisSectionIndices.visSectionNone)
+                         || (src.Section == (short)IVisio.Enums.VisSectionIndices.visSectionFirst)
+                         || (src.Section == (short)IVisio.Enums.VisSectionIndices.visSectionLastComponent);
             return can_skip;
         }
 
@@ -473,9 +473,9 @@ namespace VisioAutomation_Tests.Core.ShapeSheet
             // will be reused as fill in the query
             var unique_section_ids = name_to_src.Select(pair => pair.Value).Select(src => src.Section).Distinct().ToList();
             var section_to_subquery = new Dictionary<short, VisioAutomation.ShapeSheet.Queries.SubQuery>(unique_section_ids.Count);
-            foreach (short section_id in unique_section_ids.Where(i=>i!=(short)IVisio.VisSectionIndices.visSectionObject))
+            foreach (short section_id in unique_section_ids.Where(i=>i!=(short)IVisio.Enums.VisSectionIndices.visSectionObject))
             {
-                    section_to_subquery[section_id] = query.AddSubQuery((IVisio.VisSectionIndices)section_id);
+                    section_to_subquery[section_id] = query.AddSubQuery((IVisio.Enums.VisSectionIndices)section_id);
             }
 
             // Now for each src add it as a top level cell, or as a cell in 
@@ -485,7 +485,7 @@ namespace VisioAutomation_Tests.Core.ShapeSheet
                 var name = kv.Key;
                 var src = kv.Value;
 
-                if (src.Section == (short) IVisio.VisSectionIndices.visSectionObject)
+                if (src.Section == (short) IVisio.Enums.VisSectionIndices.visSectionObject)
                 {
                     query.AddCell(src, name);
                 }
@@ -523,12 +523,12 @@ namespace VisioAutomation_Tests.Core.ShapeSheet
             // Ensure that duplicate sections are caught
 
             var q2 = new VisioAutomation.ShapeSheet.Queries.Query();
-            q2.AddSubQuery(IVisio.VisSectionIndices.visSectionObject);
+            q2.AddSubQuery(IVisio.Enums.VisSectionIndices.visSectionObject);
 
             bool caught_exc2 = false;
             try
             {
-                q2.AddSubQuery(IVisio.VisSectionIndices.visSectionObject);
+                q2.AddSubQuery(IVisio.Enums.VisSectionIndices.visSectionObject);
             }
             catch (System.ArgumentException)
             {
@@ -539,7 +539,7 @@ namespace VisioAutomation_Tests.Core.ShapeSheet
 
             // Ensure that Duplicates in Section Queries Are caught - 
             var q3 = new VisioAutomation.ShapeSheet.Queries.Query();
-            var sec = q3.AddSubQuery(IVisio.VisSectionIndices.visSectionObject);
+            var sec = q3.AddSubQuery(IVisio.Enums.VisSectionIndices.visSectionObject);
             sec.AddCell(VA.ShapeSheet.SRCConstants.PinX,"PinX");
             bool caught_exc3 = false;
             try

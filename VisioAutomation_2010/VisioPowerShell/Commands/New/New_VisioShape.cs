@@ -8,7 +8,7 @@ namespace VisioPowerShell.Commands.New
     public class New_VisioShape : VisioCmdlet
     {
         [Parameter(Position = 0, Mandatory = true)]
-        public IVisio.Master[] Masters { get; set; }
+        public IVisio.IVMaster[] Masters { get; set; }
 
         [Parameter(Position = 1, Mandatory = true)]
         public double [] Points { get; set; }

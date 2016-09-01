@@ -26,7 +26,7 @@ namespace VisioAutomation.Shapes.Geometry
             return this.RowTag;
         }
 
-        public void AddTo(IVisio.Shape shape, FormulaWriterSRC writer, short row, short section)
+        public void AddTo(IVisio.IVShape shape, FormulaWriterSRC writer, short row, short section)
         {
             short row_index = shape.AddRow(section, row, (short) this.GetRowTagType());
             this.Update(section, row_index, writer);

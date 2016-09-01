@@ -7,7 +7,7 @@ namespace VisioPowerShell.Commands.Get
     public class Get_VisioShapeText : VisioCmdlet
     {
         [Parameter(Mandatory = false)]
-        public IVisio.Shape[] Shapes;
+        public IVisio.IVShape[] Shapes;
 
         protected override void ProcessRecord()
         {

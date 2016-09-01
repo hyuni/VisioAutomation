@@ -10,13 +10,13 @@ namespace VisioAutomation.Models.Dom
         public Drawing.Size? DropSize { get; private set; }
         public string Name { get; set; }
 
-        public Shape(IVisio.Master master, Drawing.Point pos)
+        public Shape(IVisio.IVMaster master, Drawing.Point pos)
         {
             this.Master = new MasterRef(master);
             this.DropPosition = pos;
         }
 
-	        public Shape(IVisio.Master master, VA.Drawing.Point pos, string name)
+	        public Shape(IVisio.IVMaster master, VA.Drawing.Point pos, string name)
    {
        this.Master = new MasterRef(master);
        this.DropPosition = pos;
@@ -24,7 +24,7 @@ namespace VisioAutomation.Models.Dom
    }
 
         
-        public Shape(IVisio.Master master, Drawing.Rectangle rect) 
+        public Shape(IVisio.IVMaster master, Drawing.Rectangle rect) 
         {
             this.Master = new MasterRef(master);
             this.DropPosition = rect.Center;
@@ -44,7 +44,7 @@ namespace VisioAutomation.Models.Dom
             this.DropSize = rect.Size;
         }
 
-        public Shape(IVisio.Master master, double x, double y) :
+        public Shape(IVisio.IVMaster master, double x, double y) :
             this(master, new Drawing.Point(x, y))
         {
         }

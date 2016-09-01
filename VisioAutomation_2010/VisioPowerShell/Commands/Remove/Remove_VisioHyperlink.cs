@@ -10,7 +10,7 @@ namespace VisioPowerShell.Commands.Remove
         public int Index { get; set; }
 
         [Parameter(Mandatory = false)]
-        public IVisio.Shape[] Shapes;
+        public IVisio.IVShape[] Shapes;
 
         protected override void ProcessRecord()
         {

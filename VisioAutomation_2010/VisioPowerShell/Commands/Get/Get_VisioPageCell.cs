@@ -16,7 +16,7 @@ namespace VisioPowerShell.Commands.Get
         public string[] Cells { get; set; }
 
         [Parameter(Mandatory = false)]
-        public IVisio.Page Page { get; set; }
+        public IVisio.IVPage Page { get; set; }
 
         [Parameter(Mandatory = false)]
         public SwitchParameter GetResults;

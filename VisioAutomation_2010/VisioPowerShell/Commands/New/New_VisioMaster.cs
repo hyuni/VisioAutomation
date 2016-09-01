@@ -10,7 +10,7 @@ namespace VisioPowerShell.Commands.New
         public string Name;
 
         [Parameter(Mandatory = false)]
-        public IVisio.Document Document;
+        public IVisio.IVDocument Document;
 
         protected override void ProcessRecord()
         {

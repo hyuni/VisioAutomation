@@ -88,7 +88,7 @@ namespace VisioAutomation.Models.Charting
             return pie_bez;
         }
 
-        public IVisio.Shape Render(IVisio.Page page)
+        public IVisio.IVShape Render(IVisio.IVPage page)
         {
             if (this.InnerRadius <= 0.0)
             {
@@ -100,7 +100,7 @@ namespace VisioAutomation.Models.Charting
             }
         }
 
-        public IVisio.Shape RenderPie( IVisio.Page page)
+        public IVisio.IVShape RenderPie( IVisio.IVPage page)
         {
             if (this.Angle == 0.0)
             {
@@ -123,11 +123,11 @@ namespace VisioAutomation.Models.Charting
                 // Render the bezier
                 var doubles_array = Drawing.Point.ToDoubles(pie_bez).ToArray();
                 var pie_slice = page.DrawBezier(doubles_array, (short)degree, 0);
-                return (IVisio.Shape) pie_slice;
+                return (IVisio.IVShape) pie_slice;
             }
         }
 
-        public IVisio.Shape RenderDoughnut(IVisio.Page page)
+        public IVisio.IVShape RenderDoughnut(IVisio.IVPage page)
         {
             double total_angle = this.Angle;
 
@@ -163,7 +163,7 @@ namespace VisioAutomation.Models.Charting
                 // Render the bezier
                 var doubles_array = Drawing.Point.ToDoubles(thickarc).ToArray();
                 var pie_slice = page.DrawBezier(doubles_array, (short)degree, 0);
-                return (IVisio.Shape) pie_slice;
+                return (IVisio.IVShape) pie_slice;
             }
         }
 

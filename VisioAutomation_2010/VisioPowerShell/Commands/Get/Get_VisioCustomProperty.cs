@@ -7,7 +7,7 @@ namespace VisioPowerShell.Commands.Get
     public class Get_VisioCustomProperty : VisioCmdlet
     {
         [Parameter(Mandatory = false)]
-        public IVisio.Shape[] Shapes;
+        public IVisio.IVShape[] Shapes;
 
         [Parameter(Mandatory = false)]
         public SwitchParameter GetCells;

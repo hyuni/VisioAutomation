@@ -57,7 +57,7 @@ namespace VisioAutomation_Tests.Core
             doc.Close(true);
         }
         
-        private static void TestResize(IVisio.Document doc,
+        private static void TestResize(IVisio.IVDocument doc,
             VA.Drawing.Size bottomleft_margin,
             VA.Drawing.Size upperright_margin,
             VA.Drawing.Size shape_size,

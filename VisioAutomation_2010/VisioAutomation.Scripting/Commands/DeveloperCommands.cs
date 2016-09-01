@@ -34,7 +34,7 @@ namespace VisioAutomation.Scripting.Commands
             return types;
         }       
 
-        public IVisio.Document DrawScriptingDocumentation()
+        public IVisio.IVDocument DrawScriptingDocumentation()
         {
             this._client.Application.AssertApplicationAvailable();
 
@@ -102,7 +102,7 @@ namespace VisioAutomation.Scripting.Commands
             return doc;
         }
 
-        public IVisio.Document DrawInteropEnumDocumentation()
+        public IVisio.IVDocument DrawInteropEnumDocumentation()
         {
             this._client.Application.AssertApplicationAvailable();
             
@@ -218,12 +218,12 @@ namespace VisioAutomation.Scripting.Commands
             }
         }
 
-        public IVisio.Document DrawNamespaces()
+        public IVisio.IVDocument DrawNamespaces()
         {
             return this.DrawNamespaces(DeveloperCommands.GetTypes());
         }
 
-        public IVisio.Document DrawNamespaces(IList<Type> types)
+        public IVisio.IVDocument DrawNamespaces(IList<Type> types)
         {
             this._client.Application.AssertApplicationAvailable();
 
@@ -372,12 +372,12 @@ namespace VisioAutomation.Scripting.Commands
             }
         }
 
-        public IVisio.Document DrawNamespacesAndClasses()
+        public IVisio.IVDocument DrawNamespacesAndClasses()
         {
             return this.DrawNamespacesAndClasses(DeveloperCommands.GetTypes());
         }
 
-        public IVisio.Document DrawNamespacesAndClasses(IList<Type> types_)
+        public IVisio.IVDocument DrawNamespacesAndClasses(IList<Type> types_)
         {
             this._client.Application.AssertApplicationAvailable();
 
@@ -512,7 +512,7 @@ namespace VisioAutomation.Scripting.Commands
             return doc;
         }
 
-        private static void hide_ui_stuff(IVisio.Document doc)
+        private static void hide_ui_stuff(IVisio.IVDocument doc)
         {
             var app = doc.Application;
             var active_window = app.ActiveWindow;

@@ -18,7 +18,7 @@ namespace VisioAutomation.Models.Charting
             this.DataPoints = new DataPointList();
         }
 
-        public void Render(IVisio.Page page)
+        public void Render(IVisio.IVPage page)
         {
             this.TotalMarginWidth = this.Rectangle.Width*(0.10);
             this.TotalBarSpacingWidth = this.Rectangle.Width * (0.10);

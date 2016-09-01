@@ -23,12 +23,12 @@ namespace VisioAutomation_Tests
             return shape ;
         }
 
-        public List<IVisio.Shape> New_VisioShape(IVisio.MasterClass master, double[] points)
+        public List<IVisio.IVShape> New_VisioShape(IVisio.MasterClass master, double[] points)
         {
             var cmd = new VisioPowerShell.Commands.New.New_VisioShape();
-            cmd.Masters = new IVisio.Master[]{ master };
+            cmd.Masters = new IVisio.IVMaster[]{ master };
             cmd.Points= points;
-            var results = cmd.Invoke<List<IVisio.Shape>>();
+            var results = cmd.Invoke<List<IVisio.IVShape>>();
             var shape_list = results.First();
             return shape_list;
         }

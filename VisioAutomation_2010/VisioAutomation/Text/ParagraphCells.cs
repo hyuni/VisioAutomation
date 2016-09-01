@@ -42,13 +42,13 @@ namespace VisioAutomation.Text
             }
         }
 
-        public static IList<List<ParagraphCells>> GetCells(IVisio.Page page, IList<int> shapeids)
+        public static IList<List<ParagraphCells>> GetCells(IVisio.IVPage page, IList<int> shapeids)
         {
             var query = ParagraphCells.lazy_query.Value;
             return ShapeSheet.Queries.QueryGroups.QueryGroupMultiRow._GetCells<ParagraphCells, double>(page, shapeids, query, query.GetCells);
         }
 
-        public static IList<ParagraphCells> GetCells(IVisio.Shape shape)
+        public static IList<ParagraphCells> GetCells(IVisio.IVShape shape)
         {
             var query = ParagraphCells.lazy_query.Value;
             return ShapeSheet.Queries.QueryGroups.QueryGroupMultiRow._GetCells<ParagraphCells, double>(shape, query, query.GetCells);

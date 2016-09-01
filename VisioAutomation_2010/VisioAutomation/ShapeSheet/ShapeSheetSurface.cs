@@ -11,17 +11,17 @@ namespace VisioAutomation.ShapeSheet
             this.Target = target;
         }
 
-        public ShapeSheetSurface(IVisio.Page page)
+        public ShapeSheetSurface(IVisio.IVPage page)
         {
             this.Target = new SurfaceTarget(page);
         }
 
-        public ShapeSheetSurface(IVisio.Master master)
+        public ShapeSheetSurface(IVisio.IVMaster master)
         {
             this.Target = new SurfaceTarget(master);
         }
 
-        public ShapeSheetSurface(IVisio.Shape shape)
+        public ShapeSheetSurface(IVisio.IVShape shape)
         {
             this.Target = new SurfaceTarget(shape);
         }

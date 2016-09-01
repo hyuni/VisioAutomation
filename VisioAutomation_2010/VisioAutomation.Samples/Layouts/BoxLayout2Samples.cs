@@ -248,7 +248,7 @@ namespace VisioAutomationSamples
 
     public static class Util
     {
-        public static void Render(VABOXMODEL.BoxLayout layout, IVisio.Document doc)
+        public static void Render(VABOXMODEL.BoxLayout layout, IVisio.IVDocument doc)
         {
             layout.PerformLayout();
             var page1 = doc.Pages.Add();
@@ -261,7 +261,7 @@ namespace VisioAutomationSamples
                 node.Data = shape;
             }
 
-            var root_shape = (IVisio.Shape)layout.Root.Data;
+            var root_shape = (IVisio.IVShape)layout.Root.Data;
             root_shape.CellsU["FillForegnd"].FormulaForceU = "rgb(240,240,240)";
             var margin = new VA.Drawing.Size(0.5, 0.5);
             page1.ResizeToFitContents(margin);

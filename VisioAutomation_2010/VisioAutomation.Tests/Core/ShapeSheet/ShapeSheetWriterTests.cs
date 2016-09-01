@@ -62,7 +62,7 @@ namespace VisioAutomation_Tests.Core.ShapeSheet
 
             // Setup the modifications to the cell values
             var writer = new ResultWriterSRC();
-            writer.SetResult(ShapeSheetWriterTests.src_linepat, 7, IVisio.VisUnitCodes.visNumber);
+            writer.SetResult(ShapeSheetWriterTests.src_linepat, 7, IVisio.Enums.VisUnitCodes.visNumber);
             writer.Commit(shape1);
 
             // Build the query
@@ -86,7 +86,7 @@ namespace VisioAutomation_Tests.Core.ShapeSheet
 
             // Setup the modifications to the cell values
             var writer = new ResultWriterSRC();
-            writer.SetResult(ShapeSheetWriterTests.src_linepat, "7", IVisio.VisUnitCodes.visNumber);
+            writer.SetResult(ShapeSheetWriterTests.src_linepat, "7", IVisio.Enums.VisUnitCodes.visNumber);
             writer.Commit(shape1);
 
             // Build the query
@@ -114,12 +114,12 @@ namespace VisioAutomation_Tests.Core.ShapeSheet
 
             // Set the formulas
             var writer = new ResultWriterSIDSRC();
-            writer.SetResult( new SIDSRC(shape1.ID16, ShapeSheetWriterTests.src_pinx), 0.5, IVisio.VisUnitCodes.visNumber);
-            writer.SetResult( new SIDSRC(shape1.ID16, ShapeSheetWriterTests.src_piny), 0.5, IVisio.VisUnitCodes.visNumber);
-            writer.SetResult( new SIDSRC(shape2.ID16, ShapeSheetWriterTests.src_pinx), 1.5, IVisio.VisUnitCodes.visNumber);
-            writer.SetResult( new SIDSRC(shape2.ID16, ShapeSheetWriterTests.src_piny), 1.5, IVisio.VisUnitCodes.visNumber);
-            writer.SetResult( new SIDSRC(shape3.ID16, ShapeSheetWriterTests.src_pinx), 2.5, IVisio.VisUnitCodes.visNumber);
-            writer.SetResult( new SIDSRC(shape3.ID16, ShapeSheetWriterTests.src_piny), 2.5, IVisio.VisUnitCodes.visNumber);
+            writer.SetResult( new SIDSRC(shape1.ID16, ShapeSheetWriterTests.src_pinx), 0.5, IVisio.Enums.VisUnitCodes.visNumber);
+            writer.SetResult( new SIDSRC(shape1.ID16, ShapeSheetWriterTests.src_piny), 0.5, IVisio.Enums.VisUnitCodes.visNumber);
+            writer.SetResult( new SIDSRC(shape2.ID16, ShapeSheetWriterTests.src_pinx), 1.5, IVisio.Enums.VisUnitCodes.visNumber);
+            writer.SetResult( new SIDSRC(shape2.ID16, ShapeSheetWriterTests.src_piny), 1.5, IVisio.Enums.VisUnitCodes.visNumber);
+            writer.SetResult( new SIDSRC(shape3.ID16, ShapeSheetWriterTests.src_pinx), 2.5, IVisio.Enums.VisUnitCodes.visNumber);
+            writer.SetResult( new SIDSRC(shape3.ID16, ShapeSheetWriterTests.src_piny), 2.5, IVisio.Enums.VisUnitCodes.visNumber);
             writer.Commit(page1);
 
             // Verify that the formulas were set
@@ -158,8 +158,8 @@ namespace VisioAutomation_Tests.Core.ShapeSheet
 
             // Setup the modifications to the cell values
             var writer = new ResultWriterSRC();
-            writer.SetResult(ShapeSheetWriterTests.src_linepat, "7", IVisio.VisUnitCodes.visNumber);
-            writer.SetResult(VA.ShapeSheet.SRCConstants.PinX, 2, IVisio.VisUnitCodes.visNumber);
+            writer.SetResult(ShapeSheetWriterTests.src_linepat, "7", IVisio.Enums.VisUnitCodes.visNumber);
+            writer.SetResult(VA.ShapeSheet.SRCConstants.PinX, 2, IVisio.Enums.VisUnitCodes.visNumber);
             writer.Commit(shape1);
 
             // Build the query

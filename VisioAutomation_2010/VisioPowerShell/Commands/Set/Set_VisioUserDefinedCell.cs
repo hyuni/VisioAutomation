@@ -16,7 +16,7 @@ namespace VisioPowerShell.Commands.Set
         public string Prompt;
 
         [Parameter(Mandatory = false)]
-        public IVisio.Shape[] Shapes; 
+        public IVisio.IVShape[] Shapes; 
 
         protected override void ProcessRecord()
         {

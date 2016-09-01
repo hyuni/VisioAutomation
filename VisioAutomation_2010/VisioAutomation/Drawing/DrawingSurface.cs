@@ -14,93 +14,93 @@ namespace VisioAutomation.Drawing
             this.Target = target;
         }
 
-        public DrawingSurface(IVisio.Page page)
+        public DrawingSurface(IVisio.IVPage page)
         {
          this.Target = new SurfaceTarget(page);
         }
 
-        public DrawingSurface(IVisio.Master master)
+        public DrawingSurface(IVisio.IVMaster master)
         {
             this.Target = new SurfaceTarget(master);
         }
 
 
-        public DrawingSurface(IVisio.Shape shape)
+        public DrawingSurface(IVisio.IVShape shape)
         {
             this.Target = new SurfaceTarget(shape);
         }
 
-        public IVisio.Shape DrawLine(Point p1, Point p2)
+        public IVisio.IVShape DrawLine(Point p1, Point p2)
         {
 
             if (this.Target.Master != null)
             {
                 var shape = this.Target.Master.DrawLine(p1.X, p1.Y, p2.X, p2.Y);
-                return (IVisio.Shape) shape;
+                return (IVisio.IVShape) shape;
             }
             else if (this.Target.Page != null)
             {
                 var shape = this.Target.Page.DrawLine(p1.X, p1.Y, p2.X, p2.Y);
-                return (IVisio.Shape) shape;
+                return (IVisio.IVShape) shape;
             }
             else if (this.Target.Shape != null)
             {
                 var shape = this.Target.Shape.DrawLine(p1.X, p1.Y, p2.X, p2.Y);
-                return (IVisio.Shape) shape;
+                return (IVisio.IVShape) shape;
             }
 
             throw new System.ArgumentException("Unhandled Drawing Surface");
 
         }
 
-        public IVisio.Shape DrawPolyLine(IList<Point> points)
+        public IVisio.IVShape DrawPolyLine(IList<Point> points)
         {
             var doubles_array = Point.ToDoubles(points).ToArray();
 
             if (this.Target.Master != null)
             {
                 var shape = this.Target.Master.DrawPolyline(doubles_array, 0);
-                return (IVisio.Shape) shape;
+                return (IVisio.IVShape) shape;
             }
             else if (this.Target.Page != null)
             {
                 var shape = this.Target.Page.DrawPolyline(doubles_array, 0);
-                return (IVisio.Shape) shape;
+                return (IVisio.IVShape) shape;
             }
             else if (this.Target.Shape != null)
             {
                 var shape = this.Target.Shape.DrawPolyline(doubles_array, 0);
-                return (IVisio.Shape) shape;
+                return (IVisio.IVShape) shape;
             }
 
             throw new System.ArgumentException("Unhandled Drawing Surface");
         }
 
-        public IVisio.Shape DrawBezier(IList<Point> points, short degree, short flags)
+        public IVisio.IVShape DrawBezier(IList<Point> points, short degree, short flags)
         {
             var doubles_array = Point.ToDoubles(points).ToArray();
 
             if (this.Target.Master != null)
             {
                 var shape = this.Target.Master.DrawBezier(doubles_array, degree, flags);
-                return (IVisio.Shape) shape;
+                return (IVisio.IVShape) shape;
             }
             else if (this.Target.Page != null)
             {
                 var shape = this.Target.Page.DrawBezier(doubles_array, degree, flags);
-                return (IVisio.Shape) shape;
+                return (IVisio.IVShape) shape;
             }
             else if (this.Target.Shape != null)
             {
                 var shape = this.Target.Shape.DrawBezier(doubles_array, degree, flags);
-                return (IVisio.Shape) shape;
+                return (IVisio.IVShape) shape;
             }
 
             throw new System.ArgumentException("Unhandled Drawing Surface");
 
         }
 
-        public IVisio.Shape DrawBezier(IList<Point> points)
+        public IVisio.IVShape DrawBezier(IList<Point> points)
         {
             short degree = 3;
             short flags = 0;
@@ -108,28 +108,28 @@ namespace VisioAutomation.Drawing
             return shape;
         }
 
-        public IVisio.Shape DrawOval(Rectangle rect)
+        public IVisio.IVShape DrawOval(Rectangle rect)
         {
             if (this.Target.Master != null)
             {
                 var shape = this.Target.Master.DrawOval(rect.Left, rect.Bottom, rect.Right, rect.Top);
-                return (IVisio.Shape) shape;
+                return (IVisio.IVShape) shape;
             }
             else if (this.Target.Page != null)
             {
                 var shape = this.Target.Page.DrawOval(rect.Left, rect.Bottom, rect.Right, rect.Top);
-                return (IVisio.Shape) shape;
+                return (IVisio.IVShape) shape;
             }
             else if (this.Target.Shape != null)
             {
                 var shape = this.Target.Shape.DrawOval(rect.Left, rect.Bottom, rect.Right, rect.Top);
-                return (IVisio.Shape) shape;
+                return (IVisio.IVShape) shape;
             }
 
             throw new System.ArgumentException("Unhandled Drawing Surface");
         }
 
-        public IVisio.Shape DrawOval(Point center, double radius)
+        public IVisio.IVShape DrawOval(Point center, double radius)
         {
             var lower_left = center.Add(-radius, -radius);
             var upper_right = center.Add(radius, radius);
@@ -138,65 +138,65 @@ namespace VisioAutomation.Drawing
             return this.DrawOval(rect);
         }
 
-        public IVisio.Shape DrawRectangle(Rectangle rect)
+        public IVisio.IVShape DrawRectangle(Rectangle rect)
         {
             var shape = this.DrawRectangle(rect.Left, rect.Bottom, rect.Right, rect.Top);
             return shape;
         }
 
-        public IVisio.Shape DrawRectangle(double x0, double y0, double x1, double y1)
+        public IVisio.IVShape DrawRectangle(double x0, double y0, double x1, double y1)
         {
             if (this.Target.Master != null)
             {
                 var shape = this.Target.Master.DrawRectangle(x0, y0, x1, y1);
-                return (IVisio.Shape) shape;
+                return (IVisio.IVShape) shape;
             }
             else if (this.Target.Page != null)
             {
                 var shape = this.Target.Page.DrawRectangle(x0, y0, x1, y1);
-                return (IVisio.Shape) shape;
+                return (IVisio.IVShape) shape;
             }
             else if (this.Target.Shape != null)
             {
                 var shape = this.Target.Shape.DrawRectangle(x0, y0, x1, y1);
-                return (IVisio.Shape) shape;
+                return (IVisio.IVShape) shape;
             }
 
             throw new System.ArgumentException("Unhandled Drawing Surface");
             
         }
 
-        public IVisio.Shape DrawLine(double x0, double y0, double x1, double y1)
+        public IVisio.IVShape DrawLine(double x0, double y0, double x1, double y1)
         {
             if (this.Target.Master != null)
             {
                 var shape = this.Target.Master.DrawLine(x0, y0, x1, y1);
-                return (IVisio.Shape) shape;
+                return (IVisio.IVShape) shape;
             }
             else if (this.Target.Page != null)
             {
                 var shape = this.Target.Page.DrawLine(x0, y0, x1, y1);
 
-                return (IVisio.Shape) shape;
+                return (IVisio.IVShape) shape;
             }
             else if (this.Target.Shape != null)
             {
                 var shape = this.Target.Shape.DrawLine(x0, y0, x1, y1);
 
-                return (IVisio.Shape) shape;
+                return (IVisio.IVShape) shape;
             }
 
             throw new System.ArgumentException("Unhandled Drawing Surface");
             
         }
 
-        public IVisio.Shape DrawNURBS(IList<Point> controlpoints,
+        public IVisio.IVShape DrawNURBS(IList<Point> controlpoints,
             IList<double> knots,
             IList<double> weights, int degree)
         {
             // flags:
             // None = 0,
-            // IVisio.VisDrawSplineFlags.visSpline1D
+            // IVisio.Enums.VisDrawSplineFlags.visSpline1D
 
             var flags = 0;
             double[] pts_dbl_a = Point.ToDoubles(controlpoints).ToArray();
@@ -206,17 +206,17 @@ namespace VisioAutomation.Drawing
             if (this.Target.Master != null)
             {
                 var shape = this.Target.Master.DrawNURBS((short)degree, (short)flags, pts_dbl_a, kts_dbl_a, weights_dbl_a);
-                return (IVisio.Shape) shape;
+                return (IVisio.IVShape) shape;
             }
             else if (this.Target.Page != null)
             {
                 var shape = this.Target.Page.DrawNURBS((short)degree, (short)flags, pts_dbl_a, kts_dbl_a, weights_dbl_a);
-                return (IVisio.Shape) shape;
+                return (IVisio.IVShape) shape;
             }
             else if (this.Target.Shape != null)
             {
                 var shape = this.Target.Shape.DrawNURBS((short)degree, (short)flags, pts_dbl_a, kts_dbl_a, weights_dbl_a);
-                return (IVisio.Shape) shape;
+                return (IVisio.IVShape) shape;
             }
 
             throw new System.ArgumentException("Unhandled Drawing Surface");
@@ -224,7 +224,7 @@ namespace VisioAutomation.Drawing
         }
 
         public short[] DropManyU(
-            IList<IVisio.Master> masters,
+            IList<IVisio.IVMaster> masters,
             IEnumerable<Point> points)
         {
             if (masters == null)
@@ -269,8 +269,8 @@ namespace VisioAutomation.Drawing
             return outids;
         }
 
-        public IVisio.Shape Drop(
-            IVisio.Master master,
+        public IVisio.IVShape Drop(
+            IVisio.IVMaster master,
             Point point)
         {
             if (master == null)
@@ -280,34 +280,34 @@ namespace VisioAutomation.Drawing
 
             if (this.Target.Master != null)
             {
-                return (IVisio.Shape) this.Target.Master.Drop(master, point.X, point.Y);
+                return (IVisio.IVShape) this.Target.Master.Drop(master, point.X, point.Y);
             }
             else if (this.Target.Page != null)
             {
-                return (IVisio.Shape) this.Target.Page.Drop(master, point.X, point.Y);
+                return (IVisio.IVShape) this.Target.Page.Drop(master, point.X, point.Y);
             }
             else if (this.Target.Shape != null)
             {
-                return (IVisio.Shape) this.Target.Shape.Drop(master, point.X, point.Y);
+                return (IVisio.IVShape) this.Target.Shape.Drop(master, point.X, point.Y);
             }
 
             throw new System.ArgumentException("Unhandled Drawing Surface");
             
         }
 
-        public IVisio.Shape DrawQuarterArc(Point p0, Point p1, IVisio.Enums.VisArcSweepFlags flags)
+        public IVisio.IVShape DrawQuarterArc(Point p0, Point p1, IVisio.Enums.VisArcSweepFlags flags)
         {
             if (this.Target.Master != null)
             {
-                return (IVisio.Shape) this.Target.Master.DrawQuarterArc(p0.X, p0.Y, p1.X, p1.Y, flags);
+                return (IVisio.IVShape) this.Target.Master.DrawQuarterArc(p0.X, p0.Y, p1.X, p1.Y, flags);
             }
             else if (this.Target.Page != null)
             {
-                return (IVisio.Shape) this.Target.Page.DrawQuarterArc(p0.X, p0.Y, p1.X, p1.Y, flags);
+                return (IVisio.IVShape) this.Target.Page.DrawQuarterArc(p0.X, p0.Y, p1.X, p1.Y, flags);
             }
             else if (this.Target.Shape != null)
             {
-                return (IVisio.Shape) this.Target.Shape.DrawQuarterArc(p0.X, p0.Y, p1.X, p1.Y, flags);
+                return (IVisio.IVShape) this.Target.Shape.DrawQuarterArc(p0.X, p0.Y, p1.X, p1.Y, flags);
             }
 
             throw new System.ArgumentException("Unhandled Drawing Surface");

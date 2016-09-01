@@ -26,7 +26,7 @@ namespace VisioAutomation.Models.Layouts.Tree
             return newnode;
         }
 
-        internal void RenderToVisio(Drawing drawing, IVisio.Page page)
+        internal void RenderToVisio(Drawing drawing, IVisio.IVPage page)
         {
             if (drawing == null)
             {
@@ -87,7 +87,7 @@ namespace VisioAutomation.Models.Layouts.Tree
             }
 
             var centerpoints = treenodes.Select(tn => tn.Rect.Center).ToList();
-            var master_nodes = centerpoints.Select(cp => page_node.Shapes.Drop((IVisio.Master)node_master, cp)).ToList();
+            var master_nodes = centerpoints.Select(cp => page_node.Shapes.Drop((IVisio.IVMaster)node_master, cp)).ToList();
 
             // For each OrgChart object, attach the shape that corresponds to it
             foreach (int i in Enumerable.Range(0, treenodes.Count))
@@ -116,7 +116,7 @@ namespace VisioAutomation.Models.Layouts.Tree
                     {
                         var parent_shape = (Dom.BaseShape)parent.DOMNode;
                         var child_shape = (Dom.BaseShape)child.DOMNode;
-                        var connector = page_node.Shapes.Connect((IVisio.Master)connector_master, parent_shape, child_shape);
+                        var connector = page_node.Shapes.Connect((IVisio.IVMaster)connector_master, parent_shape, child_shape);
                         connector.Cells = this.LayoutOptions.ConnectorCells;
                     }
                 }

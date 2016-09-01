@@ -113,7 +113,7 @@ namespace VisioAutomation.Scripting.Commands
             return formulas;
         }
 
-        public ListOutput<T> QueryResults<T>(TargetShapes targets, IVisio.VisSectionIndices section, IList<IVisio.VisCellIndices> cells)
+        public ListOutput<T> QueryResults<T>(TargetShapes targets, IVisio.Enums.VisSectionIndices section, IList<IVisio.Enums.VisCellIndices> cells)
         {
             this._client.Application.AssertApplicationAvailable();
             this._client.Document.AssertDocumentAvailable();
@@ -139,7 +139,7 @@ namespace VisioAutomation.Scripting.Commands
             return results;
         }
 
-        public ListOutput<string> QueryFormulas(TargetShapes targets, IVisio.VisSectionIndices section, IList<IVisio.VisCellIndices> cells)
+        public ListOutput<string> QueryFormulas(TargetShapes targets, IVisio.Enums.VisSectionIndices section, IList<IVisio.Enums.VisCellIndices> cells)
         {
             this._client.Application.AssertApplicationAvailable();
             this._client.Document.AssertDocumentAvailable();
@@ -172,7 +172,7 @@ namespace VisioAutomation.Scripting.Commands
             TargetShapes targets, 
             IList<ShapeSheet.SRC> srcs, 
             IList<string> formulas,
-            IVisio.VisGetSetArgs flags)
+            IVisio.Enums.VisGetSetArgs flags)
         {
             this._client.Application.AssertApplicationAvailable();
             this._client.Document.AssertDocumentAvailable();
@@ -216,8 +216,8 @@ namespace VisioAutomation.Scripting.Commands
             int num_formulas = formulas.Count;
 
             var writer = new FormulaWriterSIDSRC(shapes.Count*num_formulas);
-            writer.BlastGuards = ((short)flags & (short)IVisio.VisGetSetArgs.visSetBlastGuards) != 0;
-            writer.TestCircular = ((short)flags & (short)IVisio.VisGetSetArgs.visSetTestCircular) != 0;
+            writer.BlastGuards = ((short)flags & (short)IVisio.Enums.VisGetSetArgs.visSetBlastGuards) != 0;
+            writer.TestCircular = ((short)flags & (short)IVisio.Enums.VisGetSetArgs.visSetTestCircular) != 0;
 
             foreach (var shapeid in shapeids)
             {
@@ -240,7 +240,7 @@ namespace VisioAutomation.Scripting.Commands
         public void SetResult<T>(
                 TargetShapes  targets, 
                 IList<ShapeSheet.SRC> srcs,
-                IList<string> results, IVisio.VisGetSetArgs flags)
+                IList<string> results, IVisio.Enums.VisGetSetArgs flags)
         {
             this._client.Application.AssertApplicationAvailable();
             this._client.Document.AssertDocumentAvailable();
@@ -282,8 +282,8 @@ namespace VisioAutomation.Scripting.Commands
 
             int num_results = results.Count;
             var writer = new ResultWriterSIDSRC(shapes.Count * num_results);
-            writer.BlastGuards = ((short)flags & (short)IVisio.VisGetSetArgs.visSetBlastGuards) != 0;
-            writer.TestCircular = ((short)flags & (short)IVisio.VisGetSetArgs.visSetTestCircular) != 0;
+            writer.BlastGuards = ((short)flags & (short)IVisio.Enums.VisGetSetArgs.visSetBlastGuards) != 0;
+            writer.TestCircular = ((short)flags & (short)IVisio.Enums.VisGetSetArgs.visSetTestCircular) != 0;
 
             foreach (var shapeid in shapeids)
             {
@@ -291,7 +291,7 @@ namespace VisioAutomation.Scripting.Commands
                 {
                     var result = results[i];
                     var streamitem = new SIDSRC((short) shapeid, srcs[i]);
-                    writer.SetResult(streamitem, result, IVisio.VisUnitCodes.visNumber);
+                    writer.SetResult(streamitem, result, IVisio.Enums.VisUnitCodes.visNumber);
                 }
             }
 

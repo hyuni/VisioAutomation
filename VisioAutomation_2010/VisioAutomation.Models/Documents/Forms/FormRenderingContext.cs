@@ -6,9 +6,9 @@ namespace VisioAutomation.Models.Documents.Forms
     internal class FormRenderingContext
     {
         public IVisio.Application Application;
-        public IVisio.Document Document;
-        public IVisio.Page Page;
-        public IVisio.Pages Pages;
+        public IVisio.IVDocument Document;
+        public IVisio.IVPage Page;
+        public IVisio.IVPages Pages;
         public Dictionary<string, int> NameToFontID;
 
         public IVisio.Fonts Fonts;

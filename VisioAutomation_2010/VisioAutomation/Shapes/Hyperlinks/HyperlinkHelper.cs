@@ -8,7 +8,7 @@ namespace VisioAutomation.Shapes.Hyperlinks
     {
 
         public static int Add(
-            IVisio.Shape shape,
+            IVisio.IVShape shape,
             HyperlinkCells hyperlink)
         {
             if (shape == null)
@@ -28,9 +28,9 @@ namespace VisioAutomation.Shapes.Hyperlinks
 
             /*
             TODO: Why doesn't this work?
-            short row = shape.AddRow((short)IVisio.VisSectionIndices.visSectionHyperlink,
-                                     (short)IVisio.VisRowIndices.visRowLast,
-                                     (short)IVisio.VisRowTags.visTagDefault);
+            short row = shape.AddRow((short)IVisio.Enums.VisSectionIndices.visSectionHyperlink,
+                                     (short)IVisio.Enums.VisRowIndices.visRowLast,
+                                     (short)IVisio.Enums.VisRowTags.visTagDefault);
 
             HyperlinkHelper.Set(shape, row, hyperlink);
 
@@ -52,7 +52,7 @@ namespace VisioAutomation.Shapes.Hyperlinks
         }
 
         public static int Set(
-            IVisio.Shape shape,
+            IVisio.IVShape shape,
             short row,
             HyperlinkCells hyperlink)
         {
@@ -68,7 +68,7 @@ namespace VisioAutomation.Shapes.Hyperlinks
             return row;
         }
 
-        public static void Delete(IVisio.Shape shape, int index)
+        public static void Delete(IVisio.IVShape shape, int index)
         {
             if (shape == null)
             {
@@ -84,7 +84,7 @@ namespace VisioAutomation.Shapes.Hyperlinks
             shape.DeleteRow( (short) IVisio.Enums.VisSectionIndices.visSectionHyperlink, (short)row);
         }
 
-        public static int GetCount(IVisio.Shape shape)
+        public static int GetCount(IVisio.IVShape shape)
         {
             if (shape == null)
             {

@@ -46,7 +46,7 @@ namespace VisioPowerShell.Commands.Set
         public int Invisible = -1;
 
         [Parameter(Mandatory = false)]
-        public IVisio.Shape[] Shapes;
+        public IVisio.IVShape[] Shapes;
 
         protected override void ProcessRecord()
         {

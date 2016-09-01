@@ -50,7 +50,7 @@ namespace VisioAutomationSamples
             documents.Add("");
         }
 
-        public static void SetPageSize(IVisio.Page page, VA.Drawing.Size size)
+        public static void SetPageSize(IVisio.IVPage page, VA.Drawing.Size size)
         {
             if (page == null)
             {
@@ -65,7 +65,7 @@ namespace VisioAutomationSamples
             writer.Commit(page_sheet);
         }
 
-        public static VA.Drawing.Size GetPageSize(IVisio.Page page)
+        public static VA.Drawing.Size GetPageSize(IVisio.IVPage page)
         {
             if (page == null)
             {

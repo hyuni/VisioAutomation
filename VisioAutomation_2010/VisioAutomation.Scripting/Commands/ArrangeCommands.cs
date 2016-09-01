@@ -35,7 +35,7 @@ namespace VisioAutomation.Scripting.Commands
             using (var undoscope = this._client.Application.NewUndoScope("Nudge Shapes"))
             {
                 var selection = this._client.Selection.Get();
-                var unitcode = IVisio.VisUnitCodes.visInches;
+                var unitcode = IVisio.Enums.VisUnitCodes.visInches;
 
                 // Move method: http://msdn.microsoft.com/en-us/library/ms367549.aspx   
                 selection.Move(dx, dy, unitcode);

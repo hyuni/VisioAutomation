@@ -18,7 +18,7 @@ namespace VisioAutomation.Scripting.Commands
 
         }
 
-        public void Set(IVisio.Page page)
+        public void Set(IVisio.IVPage page)
         {
             this._client.Application.AssertApplicationAvailable();
             this._client.Document.AssertDocumentAvailable();
@@ -55,7 +55,7 @@ namespace VisioAutomation.Scripting.Commands
             this.Set(page);
         }
         
-        public IVisio.Page Get()
+        public IVisio.IVPage Get()
         {
             this._client.Application.AssertApplicationAvailable();
             this._client.Document.AssertDocumentAvailable();
@@ -64,7 +64,7 @@ namespace VisioAutomation.Scripting.Commands
             return application.ActivePage;
         }
 
-        public void Delete(IList<IVisio.Page> pages, bool renumber)
+        public void Delete(IList<IVisio.IVPage> pages, bool renumber)
         {
             this._client.Application.AssertApplicationAvailable();
             this._client.Document.AssertDocumentAvailable();
@@ -97,7 +97,7 @@ namespace VisioAutomation.Scripting.Commands
                 var pages = doc.Pages;
 
                 this._client.WriteVerbose("Retrieving Page for name \"{0}\"",name);
-                var page = pages.ItemU[name];
+                var page = pages.get_ItemU(name);
                 page.Delete(renumber ? (short)1 : (short)0);
             }
         }
@@ -142,7 +142,7 @@ namespace VisioAutomation.Scripting.Commands
             page.NameU = name;
         }
 
-        public IVisio.Page New(Drawing.Size? size, bool isbackgroundpage)
+        public IVisio.IVPage New(Drawing.Size? size, bool isbackgroundpage)
         {
             this._client.Application.AssertApplicationAvailable();
             this._client.Document.AssertDocumentAvailable();
@@ -150,7 +150,7 @@ namespace VisioAutomation.Scripting.Commands
             var application = this._client.Application.Get();
             var active_document = application.ActiveDocument;
             var pages = active_document.Pages;
-            IVisio.Page page = pages.Add();
+            IVisio.IVPage page = pages.Add();
 
             using (var undoscope = this._client.Application.NewUndoScope("New Page"))
             {
@@ -190,7 +190,7 @@ namespace VisioAutomation.Scripting.Commands
                 throw new VisioOperationException(msg);
             }
 
-            var bgpage = pages.ItemU[background_page_name];
+            var bgpage = pages.get_ItemU(background_page_name);
             var fgpage = application.ActivePage;
 
             // Set the background page
@@ -214,7 +214,7 @@ namespace VisioAutomation.Scripting.Commands
             }
         }
 
-        public IVisio.Page Duplicate()
+        public IVisio.IVPage Duplicate()
         {
             this._client.Application.AssertApplicationAvailable();
             this._client.Document.AssertDocumentAvailable();
@@ -235,7 +235,7 @@ namespace VisioAutomation.Scripting.Commands
             }
         }
 
-        public IVisio.Page Duplicate(IVisio.Document dest_doc)
+        public IVisio.IVPage Duplicate(IVisio.IVDocument dest_doc)
         {
             this._client.Application.AssertApplicationAvailable();
             this._client.Document.AssertDocumentAvailable();
@@ -274,7 +274,7 @@ namespace VisioAutomation.Scripting.Commands
             return PageCommands.GetOrientation(active_page);
         }
 
-        private static Pages.PrintPageOrientation GetOrientation(IVisio.Page page)
+        private static Pages.PrintPageOrientation GetOrientation(IVisio.IVPage page)
         {
             if (page == null)
             {
@@ -283,8 +283,8 @@ namespace VisioAutomation.Scripting.Commands
 
             var page_sheet = page.PageSheet;
             var src = ShapeSheet.SRCConstants.PrintPageOrientation;
-            var orientationcell = page_sheet.CellsSRC[src.Section, src.Row, src.Cell];
-            int value = orientationcell.ResultInt[IVisio.VisUnitCodes.visNumber, 0];
+            var orientationcell = page_sheet.get_CellsSRC(src.Section, src.Row, src.Cell);
+            int value = orientationcell.get_ResultInt(IVisio.Enums.VisUnitCodes.visNumber, 0);
             return (Pages.PrintPageOrientation)value;
         }
 
@@ -346,7 +346,7 @@ namespace VisioAutomation.Scripting.Commands
             }
         }
 
-        public void ResetOrigin(IVisio.Page page)
+        public void ResetOrigin(IVisio.IVPage page)
         {
             this._client.Application.AssertApplicationAvailable();
             this._client.Document.AssertDocumentAvailable();
@@ -431,7 +431,7 @@ namespace VisioAutomation.Scripting.Commands
             this._GoTo(pages, flags);
         }
 
-        private void _GoTo(IVisio.Pages pages, PageDirection flags)
+        private void _GoTo(IVisio.IVPages pages, PageDirection flags)
         {
             this._client.Application.AssertApplicationAvailable();
 
@@ -507,28 +507,28 @@ namespace VisioAutomation.Scripting.Commands
             }
         }
 
-        public IList<IVisio.Shape> GetShapesByID(int[] shapeids)
+        public IList<IVisio.IVShape> GetShapesByID(int[] shapeids)
         {
             this._client.Application.AssertApplicationAvailable();
             this._client.Document.AssertDocumentAvailable();
 
             var page = this._client.Page.Get();
             var shapes = page.Shapes;
-            var shapes_list = new List<IVisio.Shape>(shapeids.Length);
+            var shapes_list = new List<IVisio.IVShape>(shapeids.Length);
             foreach (int id in shapeids)
             {
-                var shape = shapes.ItemFromID[id];
+                var shape = shapes.get_ItemFromID(id);
                 shapes_list.Add(shape);
             }
             return shapes_list;
         }
 
-        public IList<IVisio.Shape> GetShapesByName(string[] shapenames)
+        public IList<IVisio.IVShape> GetShapesByName(string[] shapenames)
         {
             return this.GetShapesByName(shapenames, false);
         }
 
-        public IList<IVisio.Shape> GetShapesByName(string[] shapenames, bool ignore_bad_names)
+        public IList<IVisio.IVShape> GetShapesByName(string[] shapenames, bool ignore_bad_names)
         {
             this._client.Application.AssertApplicationAvailable();
             this._client.Document.AssertDocumentAvailable();
@@ -536,7 +536,7 @@ namespace VisioAutomation.Scripting.Commands
             var page = this._client.Page.Get();
             var shapes = page.Shapes;
 
-            var cached_shapes_list = new List<IVisio.Shape>(shapes.Count);
+            var cached_shapes_list = new List<IVisio.IVShape>(shapes.Count);
             cached_shapes_list.AddRange(shapes.ToEnumerable());
             
             if (shapenames.Contains("*"))
@@ -551,7 +551,7 @@ namespace VisioAutomation.Scripting.Commands
             return shapes_list;
         }
 
-        public IList<IVisio.Page> GetPagesByName(string Name)
+        public IList<IVisio.IVPage> GetPagesByName(string Name)
         {
             var application = this._client.Application.Get();
             var active_document = application.ActiveDocument;

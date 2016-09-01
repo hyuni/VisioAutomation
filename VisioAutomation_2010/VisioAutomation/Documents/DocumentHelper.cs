@@ -7,7 +7,7 @@ namespace VisioAutomation.Documents
 {
     public static class DocumentHelper
     {
-        public static IVisio.Document OpenStencil(IVisio.Documents docs, string filename)
+        public static IVisio.IVDocument OpenStencil(IVisio.IVDocuments docs, string filename)
         {
             var stencil = DocumentHelper.TryOpenStencil(docs, filename);
             if (stencil == null)
@@ -18,13 +18,13 @@ namespace VisioAutomation.Documents
             return stencil;
         }
 
-        private static IVisio.Document TryOpenStencil(IVisio.Documents docs, string filename)
+        private static IVisio.IVDocument TryOpenStencil(IVisio.IVDocuments docs, string filename)
         {
             const short flags = (short)IVisio.Enums.VisOpenSaveArgs.visOpenRO | (short)IVisio.Enums.VisOpenSaveArgs.visOpenDocked;
             try
             {
                 var doc = docs.OpenEx(filename, flags);
-                return (IVisio.Document) doc;
+                return (IVisio.IVDocument) doc;
             }
             catch (System.Runtime.InteropServices.COMException)
             {
@@ -32,7 +32,7 @@ namespace VisioAutomation.Documents
             }
         }
 
-        public static void Activate(IVisio.Document doc)
+        public static void Activate(IVisio.IVDocument doc)
         {
             var app = doc.Application;
             var cur_active_doc = app.ActiveDocument;
@@ -67,7 +67,7 @@ namespace VisioAutomation.Documents
             throw new AutomationException("could not find window for document");
         }
 
-        public static void Close(IVisio.Document doc, bool force_close)
+        public static void Close(IVisio.IVDocument doc, bool force_close)
         {
             if (force_close)
             {
@@ -85,12 +85,12 @@ namespace VisioAutomation.Documents
             }
         }
 
-        public static IEnumerable<IVisio.Document> ToEnumerable(IVisio.Documents docs)
+        public static IEnumerable<IVisio.IVDocument> ToEnumerable(IVisio.IVDocuments docs)
         {
             short count = docs.Count;
             for (int i = 0; i < count; i++)
             {
-                yield return (IVisio.Document) docs[i + 1];
+                yield return (IVisio.IVDocument) docs[i + 1];
             }
         }
     }

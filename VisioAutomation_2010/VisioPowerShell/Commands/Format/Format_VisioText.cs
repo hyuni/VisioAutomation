@@ -8,7 +8,7 @@ namespace VisioPowerShell.Commands.Format
     {
 
         [Parameter(Mandatory = false)]
-        public IVisio.Shape[] Shapes;
+        public IVisio.IVShape[] Shapes;
 
         [Parameter(Mandatory = false)]
         [ValidateNotNullOrEmpty]

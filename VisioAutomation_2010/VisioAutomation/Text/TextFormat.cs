@@ -13,7 +13,7 @@ namespace VisioAutomation.Text
         public IList<TabStop> TabStops { get; private set; }
 
         private static IList<TextRun> GetTextRuns(
-            IVisio.Shape shape,
+            IVisio.IVShape shape,
             IVisio.Enums.VisRunTypes runtype,
             bool collect_text)
         {
@@ -64,7 +64,7 @@ namespace VisioAutomation.Text
             return runs;
         }
         
-        public static TextFormat GetFormat(IVisio.Shape shape)
+        public static TextFormat GetFormat(IVisio.IVShape shape)
         {
             var cells = new TextFormat();
             cells.CharacterFormats = CharacterCells.GetCells(shape);
@@ -76,7 +76,7 @@ namespace VisioAutomation.Text
             return cells;
         }
 
-        public static IList<TextFormat> GetFormat(IVisio.Page page, IList<int> shapeids)
+        public static IList<TextFormat> GetFormat(IVisio.IVPage page, IList<int> shapeids)
         {
             var charcells = CharacterCells.GetCells(page, shapeids);
             var paracells = ParagraphCells.GetCells(page, shapeids);
@@ -91,7 +91,7 @@ namespace VisioAutomation.Text
                 format.TextBlock = textblockcells[i];
                 formats.Add(format);
 
-                var shape = (IVisio.Shape) page_shapes.get_ItemFromID(shapeids[i]);
+                var shape = (IVisio.IVShape) page_shapes.get_ItemFromID(shapeids[i]);
                 format.CharacterTextRuns = TextFormat.GetTextRuns(shape, IVisio.Enums.VisRunTypes.visCharPropRow, true);
                 format.ParagraphTextRuns = TextFormat.GetTextRuns(shape, IVisio.Enums.VisRunTypes.visParaPropRow, true);
 

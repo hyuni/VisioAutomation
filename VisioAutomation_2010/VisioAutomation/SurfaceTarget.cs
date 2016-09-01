@@ -6,11 +6,11 @@ namespace VisioAutomation
 {
     public struct SurfaceTarget
     {
-        public readonly IVisio.Page Page;
-        public readonly IVisio.Master Master;
-        public readonly IVisio.Shape Shape;
+        public readonly IVisio.IVPage Page;
+        public readonly IVisio.IVMaster Master;
+        public readonly IVisio.IVShape Shape;
 
-        public SurfaceTarget(IVisio.Page page)
+        public SurfaceTarget(IVisio.IVPage page)
         {
             if (page == null)
             {
@@ -22,7 +22,7 @@ namespace VisioAutomation
             this.Shape = null;
         }
 
-        public SurfaceTarget(IVisio.Master master)
+        public SurfaceTarget(IVisio.IVMaster master)
         {
             if (master== null)
             {
@@ -34,7 +34,7 @@ namespace VisioAutomation
             this.Shape = null;
         }
 
-        public SurfaceTarget(IVisio.Shape shape)
+        public SurfaceTarget(IVisio.IVShape shape)
         {
             if (shape== null)
             {
@@ -46,25 +46,25 @@ namespace VisioAutomation
             this.Shape = shape;
         }
 
-        public IVisio.Shapes Shapes
+        public IVisio.IVShapes Shapes
         {
             get
             {
 
-                IVisio.Shapes shapes;
+                IVisio.IVShapes shapes;
 
                 if (this.Master != null)
                 {
 
-                    shapes = (IVisio.Shapes) this.Master.Shapes;
+                    shapes = (IVisio.IVShapes) this.Master.Shapes;
                 }
                 else if (this.Page != null)
                 {
-                    shapes = (IVisio.Shapes) this.Page.Shapes;
+                    shapes = (IVisio.IVShapes) this.Page.Shapes;
                 }
                 else if (this.Shape != null)
                 {
-                    shapes = (IVisio.Shapes) this.Shape.Shapes;
+                    shapes = (IVisio.IVShapes) this.Shape.Shapes;
                 }
                 else
                 {
@@ -76,29 +76,29 @@ namespace VisioAutomation
         }
 
 
-        public List<IVisio.Shape> GetAllShapes()
+        public List<IVisio.IVShape> GetAllShapes()
         {
-            IVisio.Shapes shapes;
+            IVisio.IVShapes shapes;
 
             if (this.Master != null)
             {
 
-                shapes = (IVisio.Shapes) this.Master.Shapes;
+                shapes = (IVisio.IVShapes) this.Master.Shapes;
             }
             else if (this.Page != null)
             {
-                shapes = (IVisio.Shapes) this.Page.Shapes;
+                shapes = (IVisio.IVShapes) this.Page.Shapes;
             }
             else if (this.Shape != null)
             {
-                shapes = (IVisio.Shapes) this.Shape.Shapes;
+                shapes = (IVisio.IVShapes) this.Shape.Shapes;
             }
             else
             {
                 throw new System.ArgumentException("Unhandled Drawing Surface");
             }
 
-            var list = new List<IVisio.Shape>();
+            var list = new List<IVisio.IVShape>();
             list.AddRange(shapes.ToEnumerable());
 
             return list;

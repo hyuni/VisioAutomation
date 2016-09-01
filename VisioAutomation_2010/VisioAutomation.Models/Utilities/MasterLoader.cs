@@ -14,7 +14,7 @@ namespace VisioAutomation.Models.Utilities
         {
             public string StencilName { get; }
             public string MasterName { get; }
-            public IVisio.Master VisioMaster { get; set; }
+            public IVisio.IVMaster VisioMaster { get; set; }
 
             public MasterRef(string mastername, string stencilname)
             {
@@ -64,7 +64,7 @@ namespace VisioAutomation.Models.Utilities
             }
 
             // for each unique stencil, load the stencil doc
-            var name_to_stencildoc = new Dictionary<string, IVisio.Document>(comparer);
+            var name_to_stencildoc = new Dictionary<string, IVisio.IVDocument>(comparer);
             foreach (var stencil in unique_stencils.Where(s=>s!=null))
             {
                 // If a stencil was stencified open the stencil if needed
@@ -89,7 +89,7 @@ namespace VisioAutomation.Models.Utilities
                         var stencildoc = name_to_stencildoc[master_ref.StencilName];
                         var stencilmasters = stencildoc.Masters;
 
-                        var master_object = this.TryGetMaster((IVisio.Masters)stencilmasters, master_ref.MasterName);
+                        var master_object = this.TryGetMaster((IVisio.IVMasters)stencilmasters, master_ref.MasterName);
                         if (master_object == null)
                         {
                             string msg =
@@ -106,7 +106,7 @@ namespace VisioAutomation.Models.Utilities
                         var stencildoc = app.ActiveDocument;
                         var stencilmasters = stencildoc.Masters;
 
-                        var master_object = this.TryGetMaster((IVisio.Masters)stencilmasters, master_ref.MasterName);
+                        var master_object = this.TryGetMaster((IVisio.IVMasters)stencilmasters, master_ref.MasterName);
                         if (master_object == null)
                         {
                             string msg =
@@ -120,12 +120,12 @@ namespace VisioAutomation.Models.Utilities
             }
         }
 
-        private IVisio.Master TryGetMaster(IVisio.Masters masters, string name)
+        private IVisio.IVMaster TryGetMaster(IVisio.IVMasters masters, string name)
         {
             try
             {
                 var masterobj = masters.get_ItemU(name);
-                return (IVisio.Master) masterobj;
+                return (IVisio.IVMaster) masterobj;
             }
             catch (System.Runtime.InteropServices.COMException)
             {

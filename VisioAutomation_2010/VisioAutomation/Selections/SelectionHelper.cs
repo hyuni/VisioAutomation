@@ -7,16 +7,16 @@ namespace VisioAutomation.Selections
 {
     public static class SelectionHelper
     {
-        public static IEnumerable<IVisio.Shape> ToEnumerable(IVisio.Selection selection)
+        public static IEnumerable<IVisio.IVShape> ToEnumerable(IVisio.IVSelection selection)
         {
             short count16 = selection.Count16;
             for (short i = 0; i < count16; i++)
             {
-                yield return (IVisio.Shape) selection[i + 1];
+                yield return (IVisio.IVShape) selection[i + 1];
             }
         }
 
-        public static Drawing.Rectangle GetBoundingBox(IVisio.Selection selection, IVisio.Enums.VisBoundingBoxArgs args)
+        public static Drawing.Rectangle GetBoundingBox(IVisio.IVSelection selection, IVisio.Enums.VisBoundingBoxArgs args)
         {
             double bbx0, bby0, bbx1, bby1;
             selection.BoundingBox((short)args, out bbx0, out bby0, out bbx1, out bby1);
@@ -24,18 +24,18 @@ namespace VisioAutomation.Selections
             return r;
         }
 
-        public static int[] GetIDs(IVisio.Selection selection)
+        public static int[] GetIDs(IVisio.IVSelection selection)
         {
             int[] ids_sa;
             selection.GetIDs(out ids_sa);
             int[] ids = (int[])ids_sa;
             return ids;
         }
-        public static IList<IVisio.Shape> GetSelectedShapes(IVisio.Selection selection)
+        public static IList<IVisio.IVShape> GetSelectedShapes(IVisio.IVSelection selection)
         {
             if (selection.Count < 1)
             {
-                return new List<IVisio.Shape>(0);
+                return new List<IVisio.IVShape>(0);
             }
             
             var sel_shapes = selection.ToEnumerable();
@@ -43,15 +43,15 @@ namespace VisioAutomation.Selections
             return shapes;
         }
 
-        public static IList<IVisio.Shape> GetSelectedShapesRecursive(IVisio.Selection selection)
+        public static IList<IVisio.IVShape> GetSelectedShapesRecursive(IVisio.IVSelection selection)
         {
             if (selection.Count < 1)
             {
-                return new List<IVisio.Shape>(0);
+                return new List<IVisio.IVShape>(0);
             }
 
-            var shapes = new List<IVisio.Shape>();
-            var sel_shapes = selection.ToEnumerable();
+            var shapes = new List<IVisio.IVShape>();
+            var sel_shapes = selection;
             foreach (var shape in Shapes.ShapeHelper.GetNestedShapes(sel_shapes))
             {
                 if (shape.Type != (short)IVisio.Enums.VisShapeTypes.visTypeGroup)
@@ -62,7 +62,7 @@ namespace VisioAutomation.Selections
             return shapes;
         }
 
-        public static void SendShapes(IVisio.Selection selection, VisioAutomation.Selections.ShapeSendDirection dir)
+        public static void SendShapes(IVisio.IVSelection selection, VisioAutomation.Selections.ShapeSendDirection dir)
         {
 
             if (dir == ShapeSendDirection.ToBack)

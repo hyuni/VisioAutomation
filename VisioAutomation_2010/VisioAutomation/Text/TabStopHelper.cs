@@ -11,7 +11,7 @@ namespace VisioAutomation.Text
     {
         private const short tab_section = (short)IVisio.Enums.VisSectionIndices.visSectionTab;
 
-        public static IList<TabStop> GetTabStops(IVisio.Shape shape)
+        public static IList<TabStop> GetTabStops(IVisio.IVShape shape)
         {
             if (shape == null)
             {
@@ -61,7 +61,7 @@ namespace VisioAutomation.Text
             return stops_list;
         }
 
-        public static void SetTabStops(IVisio.Shape shape, IList<TabStop> stops)
+        public static void SetTabStops(IVisio.IVShape shape, IList<TabStop> stops)
         {
             if (shape == null)
             {
@@ -138,7 +138,7 @@ namespace VisioAutomation.Text
             return tagtab;
         }
 
-        private static int GetTabStopCount(IVisio.Shape shape)
+        private static int GetTabStopCount(IVisio.IVShape shape)
         {
             if (shape == null)
             {
@@ -155,7 +155,7 @@ namespace VisioAutomation.Text
         /// Remove all tab stops on the shape
         /// </summary>
         /// <param name="shape"></param>
-        private static void ClearTabStops(IVisio.Shape shape)
+        private static void ClearTabStops(IVisio.IVShape shape)
         {
             if (shape == null)
             {

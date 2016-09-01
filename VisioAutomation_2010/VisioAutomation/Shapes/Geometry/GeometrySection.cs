@@ -38,7 +38,7 @@ namespace VisioAutomation.Shapes.Geometry
             get { return this.Rows[index]; }
         }
 
-        public short Render(IVisio.Shape shape)
+        public short Render(IVisio.IVShape shape)
         {
             short sec_index = GeometryHelper.AddSection(shape);
             short row_count = shape.get_RowCount(sec_index);

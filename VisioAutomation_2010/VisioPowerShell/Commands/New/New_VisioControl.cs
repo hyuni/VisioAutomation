@@ -33,7 +33,7 @@ namespace VisioPowerShell.Commands.New
         public string Tip { get; set; }
 
         [Parameter(Mandatory = false)]
-        public IVisio.Shape[] Shapes;
+        public IVisio.IVShape[] Shapes;
 
         protected override void ProcessRecord()
         {

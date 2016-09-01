@@ -5,7 +5,7 @@ namespace VisioAutomation.Styles
 {
     public static class StyleHelper
     {
-        public static IEnumerable<IVisio.Style> ToEnumerable(IVisio.Styles styles)
+        public static IEnumerable<IVisio.IVStyle> ToEnumerable(IVisio.IVStyles styles)
         {
             int count = styles.Count;
             for (int i = 0; i < count; i++)
@@ -14,7 +14,7 @@ namespace VisioAutomation.Styles
             }
         }
 
-        public static string[] GetNamesU(IVisio.Styles styles)
+        public static string[] GetNamesU(IVisio.IVStyles styles)
         {
             string[] names_sa;
             styles.GetNamesU(out names_sa);

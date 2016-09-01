@@ -12,7 +12,7 @@ namespace VisioPowerShell.Commands.Get
         public string[] Cells { get; set; }
 
         [Parameter(Mandatory = false)]
-        public IVisio.Shape[] Shapes { get; set; }
+        public IVisio.IVShape[] Shapes { get; set; }
 
         [Parameter(Mandatory = false)] 
         public SwitchParameter GetResults;

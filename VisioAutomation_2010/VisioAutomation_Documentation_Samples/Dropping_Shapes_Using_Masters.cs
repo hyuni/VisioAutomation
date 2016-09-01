@@ -5,7 +5,7 @@ namespace VisioAutomation_Documentation_Samples
 {
     public static class Dropping_Shapes_Using_Masters
     {
-        public static void One_shape_at_a_time(IVisio.Document doc)
+        public static void One_shape_at_a_time(IVisio.IVDocument doc)
         {
             var stencil = doc.Application.Documents.OpenStencil("basic_u.vss");
             var rectmaster = stencil.Masters["Rectangle"];
@@ -20,7 +20,7 @@ namespace VisioAutomation_Documentation_Samples
             page.Delete(0);
         }
 
-        public static void Multiple_shapes_at_a_time(IVisio.Document doc)
+        public static void Multiple_shapes_at_a_time(IVisio.IVDocument doc)
         {
             var stencil = doc.Application.Documents.OpenStencil("basic_u.vss");
             var rectmaster = stencil.Masters["Rectangle"];

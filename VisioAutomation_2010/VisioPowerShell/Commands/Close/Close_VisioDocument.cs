@@ -8,7 +8,7 @@ namespace VisioPowerShell.Commands.Close
     public class Close_VisioDocument : VisioCmdlet
     {
         [Parameter(Mandatory = false)]
-        public IVisio.Document[] Documents;
+        public IVisio.IVDocument[] Documents;
 
         [Parameter(Mandatory = false)]
         public SwitchParameter Force;

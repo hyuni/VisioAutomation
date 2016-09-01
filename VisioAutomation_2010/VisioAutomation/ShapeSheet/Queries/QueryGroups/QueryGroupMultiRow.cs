@@ -24,7 +24,7 @@ namespace VisioAutomation.ShapeSheet.Queries.QueryGroups
 
 
         public static IList<List<T>> _GetCells<T, TResult>(
-            IVisio.Page page,
+            IVisio.IVPage page,
             IList<int> shapeids,
             Query query,
             System.Func<ShapeSheet.CellData<TResult>[], T> cell_data_to_object)
@@ -46,7 +46,7 @@ namespace VisioAutomation.ShapeSheet.Queries.QueryGroups
         }
 
         public static IList<T> _GetCells<T, TResult>(
-            IVisio.Shape shape,
+            IVisio.IVShape shape,
             Query query,
             System.Func<ShapeSheet.CellData<TResult>[], T> cell_data_to_object)
         {

@@ -7,7 +7,7 @@ namespace VisioAutomation.Models.Charting
 {
     internal static class ChartUtil
     {
-        public static void GroupShapesIfNeeded(IVisio.Page page, List<IVisio.Shape> shapes)
+        public static void GroupShapesIfNeeded(IVisio.IVPage page, List<IVisio.IVShape> shapes)
         {
             if (shapes.Count > 0)
             {

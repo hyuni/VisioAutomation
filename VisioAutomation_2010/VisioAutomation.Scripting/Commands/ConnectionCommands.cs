@@ -38,7 +38,7 @@ namespace VisioAutomation.Scripting.Commands
             return directed_edges;
         }
 
-        public IList<IVisio.Shape> Connect(IList<IVisio.Shape> fromshapes, IList<IVisio.Shape> toshapes, IVisio.Master master)
+        public IList<IVisio.IVShape> Connect(IList<IVisio.IVShape> fromshapes, IList<IVisio.IVShape> toshapes, IVisio.IVMaster master)
         {
             this._client.Application.AssertApplicationAvailable();
             this._client.Document.AssertDocumentAvailable();

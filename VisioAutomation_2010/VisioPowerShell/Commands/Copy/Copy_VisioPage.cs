@@ -7,11 +7,11 @@ namespace VisioPowerShell.Commands.Copy
     public class Copy_VisioPage : VisioCmdlet
     {
         [Parameter(Mandatory = false)]
-        public IVisio.Document ToDocument=null;
+        public IVisio.IVDocument ToDocument=null;
 
         protected override void ProcessRecord()
         {
-            IVisio.Page newpage;
+            IVisio.IVPage newpage;
             if (this.ToDocument == null)
             {
                 newpage = this.Client.Page.Duplicate();

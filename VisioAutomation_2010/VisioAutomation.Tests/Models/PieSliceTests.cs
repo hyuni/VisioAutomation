@@ -22,7 +22,7 @@ namespace VisioAutomation_Tests.Models.Charting
             var values = new[] {1.0, 2.0};
             var slices = VisioAutomation.Models.Charting.PieSlice.GetSlicesFromValues(center, radius, values);
 
-            var shapes = new IVisio.Shape[values.Length];
+            var shapes = new IVisio.IVShape[values.Length];
             for (int i=0 ;i<values.Length;i++)
             {
                 var slice = slices[i];

@@ -7,28 +7,28 @@ namespace VisioAutomation.Shapes
 
     public static class ShapeHelper
     {
-        public static IVisio.Shape DrawLine(IVisio.Shape shape, Drawing.Point p1, Drawing.Point p2)
+        public static IVisio.IVShape DrawLine(IVisio.IVShape shape, Drawing.Point p1, Drawing.Point p2)
         {
             var surface = new Drawing.DrawingSurface(shape);
             var s = surface.DrawLine(p1, p2);
             return s;
         }
 
-        public static IVisio.Shape DrawQuarterArc(IVisio.Shape shape, Drawing.Point p0, Drawing.Point p1, IVisio.Enums.VisArcSweepFlags flags)
+        public static IVisio.IVShape DrawQuarterArc(IVisio.IVShape shape, Drawing.Point p0, Drawing.Point p1, IVisio.Enums.VisArcSweepFlags flags)
         {
             var surface = new Drawing.DrawingSurface(shape);
             var s = surface.DrawQuarterArc(p0, p1, flags);
             return s;
         }
 
-        public static Drawing.Rectangle GetBoundingBox(IVisio.Shape shape, IVisio.Enums.VisBoundingBoxArgs args)
+        public static Drawing.Rectangle GetBoundingBox(IVisio.IVShape shape, IVisio.Enums.VisBoundingBoxArgs args)
         {
             var surface = new Drawing.DrawingSurface(shape);
             var r = surface.GetBoundingBox(args);
             return r;
         }
 
-        public static Drawing.Point XYFromPage(IVisio.Shape shape, Drawing.Point xy)
+        public static Drawing.Point XYFromPage(IVisio.IVShape shape, Drawing.Point xy)
         {
             // MSDN: http://msdn.microsoft.com/en-us/library/office/ff767213.aspx
             double xprime;
@@ -37,7 +37,7 @@ namespace VisioAutomation.Shapes
             return new Drawing.Point(xprime, yprime);
         }
 
-        public static Drawing.Point XYToPage(IVisio.Shape shape, Drawing.Point xy)
+        public static Drawing.Point XYToPage(IVisio.IVShape shape, Drawing.Point xy)
         {
             // MSDN: http://msdn.microsoft.com/en-us/library/office/ff766239.aspx
             double xprime;
@@ -46,12 +46,12 @@ namespace VisioAutomation.Shapes
             return new Drawing.Point(xprime, yprime);
         }
 
-        public static IEnumerable<IVisio.Shape> ToEnumerable(IVisio.Shapes shapes)
+        public static IEnumerable<IVisio.IVShape> ToEnumerable(IVisio.IVShapes shapes)
         {
             int count = shapes.Count;
             for (int i = 0; i < count; i++)
             {
-                yield return (IVisio.Shape) shapes[i + 1];
+                yield return (IVisio.IVShape) shapes[i + 1];
             }
         }
 
@@ -60,15 +60,15 @@ namespace VisioAutomation.Shapes
         /// </summary>
         /// <param name="shapes">the set of shapes to start the enumeration</param>
         /// <returns>The enumeration</returns>
-        public static IList<IVisio.Shape> GetNestedShapes(IEnumerable<IVisio.Shape> shapes)
+        public static IList<IVisio.IVShape> GetNestedShapes(IEnumerable<IVisio.IVShape> shapes)
         {
             if (shapes == null)
             {
                 throw new System.ArgumentNullException(nameof(shapes));
             }
 
-            var result = new List<IVisio.Shape>();
-            var stack = new Stack<IVisio.Shape>(shapes);
+            var result = new List<IVisio.IVShape>();
+            var stack = new Stack<IVisio.IVShape>(shapes);
 
             while (stack.Count > 0)
             {
@@ -78,7 +78,7 @@ namespace VisioAutomation.Shapes
                 {
                     foreach (var child in subshapes)
                     {
-                        stack.Push((IVisio.Shape) child);
+                        stack.Push((IVisio.IVShape) child);
                     }
                 }
 
@@ -88,7 +88,7 @@ namespace VisioAutomation.Shapes
             return result;
         }
 
-        public static IList<IVisio.Shape> GetNestedShapes(IVisio.Shape shape)
+        public static IList<IVisio.IVShape> GetNestedShapes(IVisio.IVShape shape)
         {
             if (shape== null)
             {
@@ -100,12 +100,12 @@ namespace VisioAutomation.Shapes
             return ShapeHelper.GetNestedShapes(shapes);
         }
 
-        public static IList<IVisio.Shape> GetShapesFromIDs(IVisio.Shapes shapes, IList<short> shapeids)
+        public static IList<IVisio.IVShape> GetShapesFromIDs(IVisio.IVShapes shapes, IList<short> shapeids)
         {
-            var shape_objs = new List<IVisio.Shape>(shapeids.Count);
+            var shape_objs = new List<IVisio.IVShape>(shapeids.Count);
             foreach (short shapeid in shapeids)
             {
-                var shape = (IVisio.Shape) shapes.get_ItemFromID16(shapeid);
+                var shape =  shapes.get_ItemFromID16(shapeid);
                 shape_objs.Add(shape);
             }
             return shape_objs;

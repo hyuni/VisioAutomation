@@ -63,17 +63,17 @@ namespace VisioAutomation_Tests.Core.Extensions
             var g = new VA.Drawing.Point(o.X + width, o.Y + delta);
             var h = new VA.Drawing.Point(o.X + width - delta, o.Y);
 
-            var bottom_left_curve = s0.DrawQuarterArc(a, b, IVisio.VisArcSweepFlags.visArcSweepFlagConcave);
+            var bottom_left_curve = s0.DrawQuarterArc(a, b, IVisio.Enums.VisArcSweepFlags.visArcSweepFlagConcave);
             var left_side = s0.DrawLine(b, c);
-            var top_left_curve = s0.DrawQuarterArc(c, d, IVisio.VisArcSweepFlags.visArcSweepFlagConvex);
+            var top_left_curve = s0.DrawQuarterArc(c, d, IVisio.Enums.VisArcSweepFlags.visArcSweepFlagConvex);
             var top_side = s0.DrawLine(d, e);
-            var top_right_curve = s0.DrawQuarterArc(e, f, IVisio.VisArcSweepFlags.visArcSweepFlagConcave);
+            var top_right_curve = s0.DrawQuarterArc(e, f, IVisio.Enums.VisArcSweepFlags.visArcSweepFlagConcave);
             var right_side = s0.DrawLine(f, g);
-            var bottom_right_curve = s0.DrawQuarterArc(g, h, IVisio.VisArcSweepFlags.visArcSweepFlagConvex);
+            var bottom_right_curve = s0.DrawQuarterArc(g, h, IVisio.Enums.VisArcSweepFlags.visArcSweepFlagConvex);
             var bottom_side = s0.DrawLine(h, a);
 
             // delete the framing rectangle
-            s0.DeleteSection((short) IVisio.VisSectionIndices.visSectionFirstComponent);
+            s0.DeleteSection((short) IVisio.Enums.VisSectionIndices.visSectionFirstComponent);
 
             page1.Delete(0);
         }
@@ -139,7 +139,7 @@ namespace VisioAutomation_Tests.Core.Extensions
             var page1 = this.GetNewPage();            
             var stencil = "basic_u.vss";
 
-            short flags = (short)IVisio.VisOpenSaveArgs.visOpenRO | (short)IVisio.VisOpenSaveArgs.visOpenDocked;
+            short flags = (short)IVisio.Enums.VisOpenSaveArgs.visOpenRO | (short)IVisio.Enums.VisOpenSaveArgs.visOpenDocked;
             var app = page1.Application;
             var documents = app.Documents;
             var stencil_doc = documents.OpenEx(stencil, flags);
@@ -167,7 +167,7 @@ namespace VisioAutomation_Tests.Core.Extensions
           var page1 = this.GetNewPage();
           var stencil = "basic_u.vss";
 
-          short flags = (short)IVisio.VisOpenSaveArgs.visOpenRO | (short)IVisio.VisOpenSaveArgs.visOpenDocked;
+          short flags = (short)IVisio.Enums.VisOpenSaveArgs.visOpenRO | (short)IVisio.Enums.VisOpenSaveArgs.visOpenDocked;
           var app = page1.Application;
           var documents = app.Documents;
           var stencil_doc = documents.OpenEx(stencil, flags);

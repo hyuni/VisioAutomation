@@ -14,7 +14,7 @@ namespace VisioAutomation.Scripting.Commands
 
         }
 
-        public IVisio.Layer Get(string layername)
+        public IVisio.IVLayer Get(string layername)
         {
             this._client.Application.AssertApplicationAvailable();
             this._client.Document.AssertDocumentAvailable();
@@ -31,12 +31,12 @@ namespace VisioAutomation.Scripting.Commands
 
             var application = this._client.Application.Get();
             var page = application.ActivePage;
-            IVisio.Layer layer = null;
+            IVisio.IVLayer layer = null;
             try
             {
                 this._client.WriteVerbose("Trying to find layer named \"{0}\"",layername);
                 var layers = page.Layers;
-                layer = layers.ItemU[layername];
+                layer = layers.get_ItemU(layername);
             }
             catch (System.Runtime.InteropServices.COMException)
             {
@@ -46,7 +46,7 @@ namespace VisioAutomation.Scripting.Commands
             return layer;
         }
 
-        public IList<IVisio.Layer> Get()
+        public IList<IVisio.IVLayer> Get()
         {
             this._client.Application.AssertApplicationAvailable();
             this._client.Document.AssertDocumentAvailable();

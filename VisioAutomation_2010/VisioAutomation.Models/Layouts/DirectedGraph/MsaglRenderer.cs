@@ -163,7 +163,7 @@ namespace VisioAutomation.Models.Layouts.DirectedGraph
 
         public void  Render(
             DirectedGraphLayout layout_diagram, 
-            IVisio.Page page)
+            IVisio.IVPage page)
         {        
             // Create A DOM and render it to the page
             var app = page.Application;
@@ -206,7 +206,7 @@ namespace VisioAutomation.Models.Layouts.DirectedGraph
             // loading the specified stenciles
 
             var documents = app.Documents;
-            var master_to_size = new Dictionary<IVisio.Master, VA.Drawing.Size>();
+            var master_to_size = new Dictionary<IVisio.IVMaster, VA.Drawing.Size>();
 
             // Load and cache all the masters
             var loader = new MasterLoader();
@@ -279,7 +279,7 @@ namespace VisioAutomation.Models.Layouts.DirectedGraph
 
             var compare = StringComparer.InvariantCultureIgnoreCase;
 
-            var stencil_map = new Dictionary<string, IVisio.Document>(compare);
+            var stencil_map = new Dictionary<string, IVisio.IVDocument>(compare);
             foreach (var stencil_name in stencil_names)
             {
                 if (!stencil_map.ContainsKey(stencil_name))
@@ -289,7 +289,7 @@ namespace VisioAutomation.Models.Layouts.DirectedGraph
                 }
             }
 
-            var master_map = new Dictionary<string, IVisio.Master>(compare);
+            var master_map = new Dictionary<string, IVisio.IVMaster>(compare);
             foreach (var nv in shapes)
             {
                 var key = nv.StencilName + "+" + nv.MasterName; 
@@ -298,7 +298,7 @@ namespace VisioAutomation.Models.Layouts.DirectedGraph
                     var stencil = stencil_map[nv.StencilName];
                     var masters = stencil.Masters;
                     var master = masters[nv.MasterName];
-                    master_map[key] = (IVisio.Master)master;
+                    master_map[key] = (IVisio.IVMaster)master;
                 }
             }
 
@@ -540,7 +540,7 @@ namespace VisioAutomation.Models.Layouts.DirectedGraph
             }
         }
 
-        public static void Render(IVisio.Page page, DirectedGraphLayout directedGraphLayout, MsaglLayoutOptions options)
+        public static void Render(IVisio.IVPage page, DirectedGraphLayout directedGraphLayout, MsaglLayoutOptions options)
         {
             if (page == null)
             {

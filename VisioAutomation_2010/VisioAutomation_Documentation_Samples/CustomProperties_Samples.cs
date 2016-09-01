@@ -4,7 +4,7 @@ namespace VisioAutomation_Documentation_Samples
 {
     public static class CustomProperties_Samples
     {
-        public static void Set_Custom_Property_on_Shape(IVisio.Document doc)
+        public static void Set_Custom_Property_on_Shape(IVisio.IVDocument doc)
         {
             // Set Custom Property_on_a_shape
 
@@ -26,7 +26,7 @@ namespace VisioAutomation_Documentation_Samples
             page.Delete(0);
         }
 
-        public static void Set_Custom_Property_on_multiple_Shapes(IVisio.Document doc)
+        public static void Set_Custom_Property_on_multiple_Shapes(IVisio.IVDocument doc)
         {
             // Set Custom Property_on_a_shape
 
@@ -56,7 +56,7 @@ namespace VisioAutomation_Documentation_Samples
         }
 
 
-        public static void Counting_properties(IVisio.Document doc)
+        public static void Counting_properties(IVisio.IVDocument doc)
         {
             // Set Custom Property_on_a_shape
 

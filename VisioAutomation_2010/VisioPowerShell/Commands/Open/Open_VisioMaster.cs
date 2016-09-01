@@ -8,7 +8,7 @@ namespace VisioPowerShell.Commands.Open
     {
         [Parameter(Position = 0, Mandatory = true)]
         [ValidateNotNull]
-        public IVisio.Master Master;
+        public IVisio.IVMaster Master;
 
         protected override void ProcessRecord()
         {

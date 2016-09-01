@@ -6,7 +6,7 @@ namespace VisioAutomation.Shapes.ConnectionPoints
     public static class ConnectionPointHelper
     {
         public static int Add(
-            IVisio.Shape shape,
+            IVisio.IVShape shape,
             ConnectionPointCells connection_point_cells)
         {
             if (shape == null)
@@ -37,7 +37,7 @@ namespace VisioAutomation.Shapes.ConnectionPoints
             return n;
         }
 
-        public static void Delete(IVisio.Shape shape, int index)
+        public static void Delete(IVisio.IVShape shape, int index)
         {
             if (shape == null)
             {
@@ -53,7 +53,7 @@ namespace VisioAutomation.Shapes.ConnectionPoints
             shape.DeleteRow( (short) IVisio.Enums.VisSectionIndices.visSectionConnectionPts, (short)row);
         }
 
-        public static int GetCount(IVisio.Shape shape)
+        public static int GetCount(IVisio.IVShape shape)
         {
             if (shape == null)
             {
@@ -63,7 +63,7 @@ namespace VisioAutomation.Shapes.ConnectionPoints
             return shape.get_RowCount((short) IVisio.Enums.VisSectionIndices.visSectionConnectionPts);
         }
 
-        public static int Delete(IVisio.Shape shape)
+        public static int Delete(IVisio.IVShape shape)
         {
             if (shape == null)
             {

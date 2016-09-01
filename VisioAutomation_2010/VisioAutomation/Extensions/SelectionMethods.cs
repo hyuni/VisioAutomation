@@ -5,17 +5,17 @@ namespace VisioAutomation.Extensions
 {
     public static class SelectionMethods
     {
-        public static IEnumerable<IVisio.Shape> ToEnumerable(this IVisio.Selection selection)
+        public static IEnumerable<IVisio.IVShape> ToEnumerable(this IVisio.IVSelection selection)
         {
             return VisioAutomation.Selections.SelectionHelper.ToEnumerable(selection);
         }
         
-        public static Drawing.Rectangle GetBoundingBox(this IVisio.Selection selection, IVisio.Enums.VisBoundingBoxArgs args)
+        public static Drawing.Rectangle GetBoundingBox(this IVisio.IVSelection selection, IVisio.Enums.VisBoundingBoxArgs args)
         {
             return VisioAutomation.Selections.SelectionHelper.GetBoundingBox(selection, args);
         }
 
-        public static int[] GetIDs(this IVisio.Selection selection)
+        public static int[] GetIDs(this IVisio.IVSelection selection)
         {
             return VisioAutomation.Selections.SelectionHelper.GetIDs(selection);
         }

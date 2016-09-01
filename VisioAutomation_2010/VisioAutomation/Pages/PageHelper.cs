@@ -8,49 +8,49 @@ namespace VisioAutomation.Pages
 {
     public static class PageHelper
     {
-        public static IVisio.Shape DrawLine(IVisio.Page page, Drawing.Point p1, Drawing.Point p2)
+        public static IVisio.IVShape DrawLine(IVisio.IVPage page, Drawing.Point p1, Drawing.Point p2)
         {
             var surface = new Drawing.DrawingSurface(page);
             var shape = surface.DrawLine(p1.X, p1.Y, p2.X, p2.Y);
             return shape;
         }
 
-        public static IVisio.Shape DrawOval(IVisio.Page page, Drawing.Rectangle rect)
+        public static IVisio.IVShape DrawOval(IVisio.IVPage page, Drawing.Rectangle rect)
         {
             var surface = new Drawing.DrawingSurface(page);
             var shape = surface.DrawOval(rect);
             return shape;
         }
 
-        public static IVisio.Shape DrawRectangle(IVisio.Page page, Drawing.Rectangle rect)
+        public static IVisio.IVShape DrawRectangle(IVisio.IVPage page, Drawing.Rectangle rect)
         {
             var surface = new Drawing.DrawingSurface(page);
             var shape = surface.DrawRectangle(rect);
             return shape;
         }
 
-        public static IVisio.Shape DrawBezier(IVisio.Page page, IList<Drawing.Point> points)
+        public static IVisio.IVShape DrawBezier(IVisio.IVPage page, IList<Drawing.Point> points)
         {
             var surface = new Drawing.DrawingSurface(page);
             var shape = surface.DrawBezier(points);
             return shape;
         }
 
-        public static IVisio.Shape DrawBezier(IVisio.Page page, IList<Drawing.Point> points, short degree, short flags)
+        public static IVisio.IVShape DrawBezier(IVisio.IVPage page, IList<Drawing.Point> points, short degree, short flags)
         {
             var surface = new Drawing.DrawingSurface(page);
             var shape = surface.DrawBezier(points, degree, flags);
             return shape;
         }
 
-        public static IVisio.Shape DrawPolyline(IVisio.Page page, IList<Drawing.Point> points)
+        public static IVisio.IVShape DrawPolyline(IVisio.IVPage page, IList<Drawing.Point> points)
         {
             var surface = new Drawing.DrawingSurface(page);
             var shape = surface.DrawBezier(points);
             return shape;
         }
 
-        public static IVisio.Shape DrawNURBS( IVisio.Page page, IList<Drawing.Point> controlpoints,
+        public static IVisio.IVShape DrawNURBS( IVisio.IVPage page, IList<Drawing.Point> controlpoints,
                                      IList<double> knots,
                                      IList<double> weights, int degree)
         {
@@ -59,9 +59,9 @@ namespace VisioAutomation.Pages
             return shape;
         }
 
-        public static IVisio.Shape Drop(
-            IVisio.Page page,
-            IVisio.Master master,
+        public static IVisio.IVShape Drop(
+            IVisio.IVPage page,
+            IVisio.IVMaster master,
             Drawing.Point point)
         {
             var surface = new Drawing.DrawingSurface(page);
@@ -69,7 +69,7 @@ namespace VisioAutomation.Pages
         }
 
 
-        public static short[] DropManyU(IVisio.Page page, IList<IVisio.Master> masters, IEnumerable<VisioAutomation.Drawing.Point> points, IList<string> names)
+        public static short[] DropManyU(IVisio.IVPage page, IList<IVisio.IVMaster> masters, IEnumerable<VisioAutomation.Drawing.Point> points, IList<string> names)
         {
             var surface = new VisioAutomation.Drawing.DrawingSurface(page);
             short[] shapeids = surface.DropManyU(masters, points);
@@ -87,7 +87,7 @@ namespace VisioAutomation.Pages
             }
             return shapeids;
         }
-        public static string[] GetNamesU(IVisio.Pages pages)
+        public static string[] GetNamesU(IVisio.IVPages pages)
         {
             string[] names_sa;
             pages.GetNamesU(out names_sa);
@@ -95,18 +95,18 @@ namespace VisioAutomation.Pages
             return names;
         }
 
-        public static IEnumerable<IVisio.Page> ToEnumerable(IVisio.Pages pages)
+        public static IEnumerable<IVisio.IVPage> ToEnumerable(IVisio.IVPages pages)
         {
             short count = pages.Count;
             for (int i = 0; i < count; i++)
             {
-                yield return (IVisio.Page) pages[i + 1];
+                yield return (IVisio.IVPage) pages[i + 1];
             }
         }
 
         public static void Duplicate(
-            IVisio.Page src_page,
-            IVisio.Page dest_page)
+            IVisio.IVPage src_page,
+            IVisio.IVPage dest_page)
         {
             var app = src_page.Application;
             short copy_paste_flags = (short)IVisio.Enums.VisCutCopyPasteCodes.visCopyPasteNoTranslate;
@@ -146,7 +146,7 @@ namespace VisioAutomation.Pages
             }
 
             var src_pagesheet = src_page.PageSheet;
-            var pagecells = PageCells.GetCells((IVisio.Shape)src_pagesheet);
+            var pagecells = PageCells.GetCells((IVisio.IVShape)src_pagesheet);
 
 
             // handle the dest page
@@ -155,7 +155,7 @@ namespace VisioAutomation.Pages
             var dest_pagesheet = dest_page.PageSheet;
             var writer = new FormulaWriterSRC();
             pagecells.SetFormulas(writer);
-            writer.Commit((IVisio.Shape)dest_pagesheet);
+            writer.Commit((IVisio.IVShape)dest_pagesheet);
 
             // make sure the new page looks like the old page
             dest_page.Background = src_page.Background;
@@ -167,13 +167,13 @@ namespace VisioAutomation.Pages
             }
         }
 
-        private static Drawing.Size GetSize(IVisio.Page page)
+        private static Drawing.Size GetSize(IVisio.IVPage page)
         {
             var query = new ShapeSheet.Queries.Query();
             var col_height = query.AddCell(ShapeSheet.SRCConstants.PageHeight,"PageHeight");
             var col_width = query.AddCell(ShapeSheet.SRCConstants.PageWidth,"PageWidth");
 
-            var page_surface = new ShapeSheetSurface((IVisio.Shape) page.PageSheet);
+            var page_surface = new ShapeSheetSurface((IVisio.IVShape) page.PageSheet);
             var results = query.GetResults<double>(page_surface);
             double height = results.Cells[col_height];
             double width = results.Cells[col_width];
@@ -181,17 +181,17 @@ namespace VisioAutomation.Pages
             return s;
         }
 
-        private static void SetSize(IVisio.Page page, Drawing.Size size)
+        private static void SetSize(IVisio.IVPage page, Drawing.Size size)
         {
             var page_cells = new PageCells();
             page_cells.PageHeight = size.Height;
             page_cells.PageWidth = size.Width;
             var writer = new FormulaWriterSRC();
             page_cells.SetFormulas(writer);
-            writer.Commit((IVisio.Shape)page.PageSheet);
+            writer.Commit((IVisio.IVShape)page.PageSheet);
         }
         
-        public static void ResizeToFitContents(IVisio.Page page, Drawing.Size padding)
+        public static void ResizeToFitContents(IVisio.IVPage page, Drawing.Size padding)
         {
             // first perform the native resizetofit
             page.ResizeToFitContents();
@@ -215,8 +215,8 @@ namespace VisioAutomation.Pages
         }
 
         public static short[] DropManyU(
-            IVisio.Page page,
-            IList<IVisio.Master> masters,
+            IVisio.IVPage page,
+            IList<IVisio.IVMaster> masters,
             IEnumerable<Drawing.Point> points)
         {
             if (masters == null)
@@ -247,7 +247,7 @@ namespace VisioAutomation.Pages
         }
 
         public static short[] DropManyAutoConnectors(
-            IVisio.Page page,
+            IVisio.IVPage page,
             IEnumerable<Drawing.Point> points)
         {
 

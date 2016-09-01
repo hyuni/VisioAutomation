@@ -6,7 +6,7 @@ namespace VisioAutomation.Shapes.Controls
 {
     public static class ControlHelper
     {
-        public static int Add(IVisio.Shape shape)
+        public static int Add(IVisio.IVShape shape)
         {
             if (shape == null)
             {
@@ -19,7 +19,7 @@ namespace VisioAutomation.Shapes.Controls
         }
 
         public static int Add(
-            IVisio.Shape shape,
+            IVisio.IVShape shape,
             ControlCells ctrl)
         {
             if (shape == null)
@@ -37,7 +37,7 @@ namespace VisioAutomation.Shapes.Controls
         }
 
         public static int Set(
-            IVisio.Shape shape,
+            IVisio.IVShape shape,
             short row,
             ControlCells ctrl)
         {
@@ -64,7 +64,7 @@ namespace VisioAutomation.Shapes.Controls
             return row;
         }
 
-        public static void Delete(IVisio.Shape shape, int index)
+        public static void Delete(IVisio.IVShape shape, int index)
         {
             if (shape == null)
             {
@@ -80,7 +80,7 @@ namespace VisioAutomation.Shapes.Controls
             shape.DeleteRow( (short) IVisio.Enums.VisSectionIndices.visSectionControls, (short)row);
         }
 
-        public static int GetCount(IVisio.Shape shape)
+        public static int GetCount(IVisio.IVShape shape)
         {
             if (shape == null)
             {
