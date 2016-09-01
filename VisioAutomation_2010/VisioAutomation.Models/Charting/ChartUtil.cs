@@ -15,7 +15,12 @@ namespace VisioAutomation.Models.Charting
                 var win = app.ActiveWindow;
                 win.DeselectAll();
                 win.DeselectAll();
-                win.Select(shapes, (short) IVisio.Enums.VisSelectArgs.visSelect);
+
+                // TODO: NETOFFICE
+                foreach (var shape in shapes)
+                {
+                    win.Select(shape, (short)IVisio.Enums.VisSelectArgs.visSelect);
+                }
                 var sel = win.Selection;
                 sel.Group();
             }

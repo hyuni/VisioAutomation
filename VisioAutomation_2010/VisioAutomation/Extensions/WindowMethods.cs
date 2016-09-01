@@ -7,19 +7,12 @@ namespace VisioAutomation.Extensions
     {
         public static void Select(
             this IVisio.Window window,
-            IEnumerable<IVisio.Shape> shapes,
+            IEnumerable<IVisio.IVShape> shapes,
             IVisio.Enums.VisSelectArgs selectargs)
         {
             VisioAutomation.Windows.WindowHelper.Select(window, shapes, selectargs);
         }
 
-        public static void Select(
-    this IVisio.Window window,
-    IEnumerable<IVisio.IVShape> shapes,
-    IVisio.Enums.VisSelectArgs selectargs)
-        {
-            VisioAutomation.Windows.WindowHelper.Select(window, shapes, selectargs);
-        }
 
 
         public static Drawing.Rectangle GetViewRect(this IVisio.Window window)
