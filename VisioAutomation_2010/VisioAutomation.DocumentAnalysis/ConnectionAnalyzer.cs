@@ -129,7 +129,7 @@ namespace VisioAutomation.DocumentAnalysis
             }
 
             var page_connects = page.Connects;
-            var connects = page_connects.ToEnumerable();
+            var connects = page_connects;
 
             var edges = new List<ConnectorEdge>();
 
@@ -145,15 +145,15 @@ namespace VisioAutomation.DocumentAnalysis
                     // the currect connector is NOT same as the one we stored previously
                     // this means the previous connector is connected to only one shape (not two).
                     // So skip the previos connector and start remembering from the current connector
-                    old_connect_shape = current_connect_shape;
-                    fromsheet = connect.ToSheet;
+                    old_connect_shape = (IVisio.Shape) current_connect_shape;
+                    fromsheet = (IVisio.Shape) connect.ToSheet;
                 }
                 else
                 {
                     // the currect connector is the same as the one we stored previously
                     // this means we have enountered it twice which means it connects two
                     // shapes and is thus an edge
-                    var undirected_edge = new ConnectorEdge(current_connect_shape, fromsheet, connect.ToSheet);
+                    var undirected_edge = new ConnectorEdge((IVisio.Shape)current_connect_shape, fromsheet, (IVisio.Shape)connect.ToSheet);
                     edges.Add(undirected_edge);
                 }
             }

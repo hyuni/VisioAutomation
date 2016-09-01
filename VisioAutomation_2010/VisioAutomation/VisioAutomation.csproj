@@ -62,12 +62,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="NetOffice, Version=1.7.3.0, Culture=neutral, PublicKeyToken=0939138a4a188afd, processorArchitecture=MSIL">
-      <HintPath>..\packages\NetOffice.Core.Net35.1.7.3.0\lib\net35\NetOffice.dll</HintPath>
+    <Reference Include="NetOffice, Version=1.7.3.0, Culture=neutral, PublicKeyToken=297f57b43ae7c1de, processorArchitecture=MSIL">
+      <HintPath>..\packages\NetOffice.Core.Net40.1.7.3.0\lib\net40\NetOffice.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
-    <Reference Include="OfficeApi, Version=1.7.3.0, Culture=neutral, PublicKeyToken=1208423a019d3443, processorArchitecture=MSIL">
-      <HintPath>..\packages\NetOffice.Core.Net35.1.7.3.0\lib\net35\OfficeApi.dll</HintPath>
+    <Reference Include="OfficeApi, Version=1.7.3.0, Culture=neutral, PublicKeyToken=a39beb0835c43c8e, processorArchitecture=MSIL">
+      <HintPath>..\packages\NetOffice.Core.Net40.1.7.3.0\lib\net40\OfficeApi.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="System" />
@@ -76,12 +76,12 @@
     </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="VBIDEApi, Version=1.7.3.0, Culture=neutral, PublicKeyToken=6040f8ab492f76a1, processorArchitecture=MSIL">
-      <HintPath>..\packages\NetOffice.Core.Net35.1.7.3.0\lib\net35\VBIDEApi.dll</HintPath>
+    <Reference Include="VBIDEApi, Version=1.7.3.0, Culture=neutral, PublicKeyToken=931cec8882205047, processorArchitecture=MSIL">
+      <HintPath>..\packages\NetOffice.Core.Net40.1.7.3.0\lib\net40\VBIDEApi.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
-    <Reference Include="VisioApi, Version=1.7.3.0, Culture=neutral, PublicKeyToken=fe4ae256de44f5fc, processorArchitecture=MSIL">
-      <HintPath>..\packages\NetOffice.Visio.Net35.1.7.3.0\lib\net35\VisioApi.dll</HintPath>
+    <Reference Include="VisioApi, Version=1.7.3.0, Culture=neutral, PublicKeyToken=bfcd37a3a83f1609, processorArchitecture=MSIL">
+      <HintPath>..\packages\NetOffice.Visio.Net40.1.7.3.0\lib\net40\VisioApi.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
   </ItemGroup>
