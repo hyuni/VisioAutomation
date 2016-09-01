@@ -7,7 +7,7 @@ namespace VisioAutomation_Documentation_Samples
         static void Main(string[] args)
         {
 
-            var app = new IVisio.ApplicationClass();
+            var app = new IVisio.Application();
 
             var doc = app.Documents.Add("");
 

@@ -262,7 +262,7 @@ namespace VisioAutomationSamples
             }
 
             var root_shape = (IVisio.IVShape)layout.Root.Data;
-            root_shape.CellsU["FillForegnd"].FormulaForceU = "rgb(240,240,240)";
+            root_shape.get_CellsU("FillForegnd").FormulaForceU = "rgb(240,240,240)";
             var margin = new VA.Drawing.Size(0.5, 0.5);
             page1.ResizeToFitContents(margin);
 

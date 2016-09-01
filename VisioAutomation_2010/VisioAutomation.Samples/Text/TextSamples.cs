@@ -11,7 +11,7 @@ namespace VisioAutomationSamples
             s0.Text = "Hello World";
 
             var src = VA.ShapeSheet.SRCConstants.TxtAngle;
-            var cell = s0.CellsSRC[src.Section, src.Row, src.Cell];
+            var cell = s0.get_CellsSRC(src.Section, src.Row, src.Cell);
             cell.Formula = "-Angle";
         }
 
