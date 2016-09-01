@@ -23,7 +23,7 @@ namespace VisioAutomation.Models.Dom
             this._measurement_system = ms;
         }
 
-        public IVisio.IVDocument Render(IVisio.Application app)
+        public IVisio.IVDocument Render(IVisio.IVApplication app)
         {
             var appdocs = app.Documents;
             IVisio.IVDocument doc = null;

@@ -3,7 +3,7 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using VisioAutomation.Extensions;
 using VACHART=VisioAutomation.Models.Charting;
-using IVisio= Microsoft.Office.Interop.Visio;
+using IVisio= NetOffice.VisioApi;
 using VA=VisioAutomation;
 
 namespace VisioAutomation_Tests.Core.Extensions

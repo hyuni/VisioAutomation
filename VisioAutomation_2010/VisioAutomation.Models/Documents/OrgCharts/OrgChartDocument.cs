@@ -24,7 +24,7 @@ namespace VisioAutomation.Models.Documents.OrgCharts
             return newnode;
         }
 
-        public void Render(IVisio.Application app)
+        public void Render(IVisio.IVApplication app)
         {
             var orgchartdrawing = this;
 

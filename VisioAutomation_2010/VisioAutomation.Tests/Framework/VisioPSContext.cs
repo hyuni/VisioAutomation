@@ -11,19 +11,19 @@ namespace VisioAutomation_Tests
             
         }
 
-        public IVisio.ShapeClass New_Visio_Container(string cont_master_name, string cont_doc)
+        public IVisio.IVShape New_Visio_Container(string cont_master_name, string cont_doc)
         {
             var xdoc = this.Open_Visio_Document(cont_doc);
             var xmaster = this.Get_Visio_Master(cont_master_name,cont_doc);
 
             var cmd = new VisioPowerShell.Commands.New.New_VisioContainer();
             cmd.Master = xmaster;
-            var results = cmd.Invoke<IVisio.ShapeClass>();
+            var results = cmd.Invoke<IVisio.IVShape>();
             var shape = results.First();
             return shape ;
         }
 
-        public List<IVisio.IVShape> New_VisioShape(IVisio.MasterClass master, double[] points)
+        public List<IVisio.IVShape> New_VisioShape(IVisio.IVMaster master, double[] points)
         {
             var cmd = new VisioPowerShell.Commands.New.New_VisioShape();
             cmd.Masters = new IVisio.IVMaster[]{ master };
@@ -33,23 +33,23 @@ namespace VisioAutomation_Tests
             return shape_list;
         }
 
-        public IVisio.MasterClass Get_Visio_Master(string rectangle, string basic_u_vss)
+        public IVisio.IVMaster Get_Visio_Master(string rectangle, string basic_u_vss)
         {
             var doc = this.Open_Visio_Document(basic_u_vss);
 
             var cmd = new VisioPowerShell.Commands.Get.Get_VisioMaster();
             cmd.Name = rectangle;
             cmd.Document = doc;
-            var results = cmd.Invoke<IVisio.MasterClass>();
+            var results = cmd.Invoke<IVisio.IVMaster>();
             var master = results.First();
             return master;
         }
 
-        public IVisio.DocumentClass Open_Visio_Document(string filename)
+        public IVisio.IVDocument Open_Visio_Document(string filename)
         {
             var cmd = new VisioPowerShell.Commands.Open.Open_VisioDocument();
             cmd.Filename = filename;
-            var results = cmd.Invoke<IVisio.DocumentClass>();
+            var results = cmd.Invoke<IVisio.IVDocument>();
             var doc = results.First();
             return doc;
         }
@@ -65,27 +65,27 @@ namespace VisioAutomation_Tests
             var results = cmd.Invoke();
         }
 
-        public IVisio.DocumentClass New_Visio_Document()
+        public IVisio.IVDocument New_Visio_Document()
         {
             var cmd = new VisioPowerShell.Commands.New.New_VisioDocument();
-            var results = cmd.Invoke<IVisio.DocumentClass>();
+            var results = cmd.Invoke<IVisio.IVDocument>();
             var doc = results.First();
             return doc;
         }
 
-        public IVisio.PageClass New_Visio_Page()
+        public IVisio.IVPage New_Visio_Page()
         {
             var cmd = new VisioPowerShell.Commands.New.New_VisioPage();
-            var results = cmd.Invoke<IVisio.PageClass>();
+            var results = cmd.Invoke<IVisio.IVPage>();
             var page  = results.First();
             return page;
         }
 
 
-        public IVisio.ApplicationClass Get_Visio_Application()
+        public IVisio.IVApplication Get_Visio_Application()
         {
             var cmd = new VisioPowerShell.Commands.Get.Get_VisioApplication();
-            var results = cmd.Invoke<IVisio.ApplicationClass>();
+            var results = cmd.Invoke<IVisio.IVApplication>();
             var app = results.First();
             return app;
         }

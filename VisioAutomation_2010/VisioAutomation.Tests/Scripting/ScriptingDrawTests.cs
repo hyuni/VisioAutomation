@@ -483,7 +483,7 @@ namespace VisioAutomation_Tests.Scripting
             var containers_file = app.GetBuiltInStencilFile(stencil_type, measurement_system);
             var containers_doc = app.Documents.OpenStencil(containers_file);
             var masters = containers_doc.Masters;
-            var container_master = masters.ItemU[cont_master_name];
+            var container_master = masters.get_ItemU(cont_master_name);
             var dropped_container = client.Master.DropContainer(container_master);
 
             // Verify

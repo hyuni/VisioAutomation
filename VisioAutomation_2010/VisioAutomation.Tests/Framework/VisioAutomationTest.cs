@@ -117,7 +117,7 @@ namespace VisioAutomation_Tests
         }
 
         /// Selects a series of shapes and groups them into one shape
-        public static IVisio.IVShape SelectAndGroup(IVisio.Window window, IEnumerable<IVisio.IVShape> shapes)
+        public static IVisio.IVShape SelectAndGroup(IVisio.IVWindow window, IEnumerable<IVisio.IVShape> shapes)
         {
             if (window == null)
             {

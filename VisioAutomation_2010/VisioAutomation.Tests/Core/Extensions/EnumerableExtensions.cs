@@ -99,7 +99,7 @@ namespace VisioAutomation_Tests.Core.Extensions
             var fonts = doc1.Fonts;
 
             var expects = fonts.Cast<IVisio.Font>().ToList();
-            var actual = fonts.ToEnumerable().ToList();
+            var actual = fonts.ToList();
 
             Assert.AreEqual(expects.Count, actual.Count);
             for (int i = 0; i < fonts.Count; i++)
@@ -134,7 +134,7 @@ namespace VisioAutomation_Tests.Core.Extensions
             var doc1 = this.GetNewDoc();
             var app = doc1.Application;
             var windows = app.Windows;
-            var actual = windows.ToEnumerable().ToList();
+            var actual = windows.ToList();
             for (int i = 0; i < windows.Count; i++)
             {
                 var ex = windows[(short)(i + 1)];
@@ -191,7 +191,7 @@ namespace VisioAutomation_Tests.Core.Extensions
         {
             var doc1 = this.GetNewDoc();
             var colors = doc1.Colors;
-            var actual = colors.ToEnumerable().ToList();
+            var actual = colors.ToList();
             for (int i = 0; i < colors.Count; i++)
             {
                 var expected_color = colors[i];

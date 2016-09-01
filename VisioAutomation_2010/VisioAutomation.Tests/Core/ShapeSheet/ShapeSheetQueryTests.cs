@@ -44,9 +44,9 @@ namespace VisioAutomation_Tests.Core.ShapeSheet
             int s1_id = s1.ID;
 
             // format it with setformulas
-            var fg_cell = s1.Cells["FillForegnd"];
-            var bg_cell = s1.Cells["FillBkgnd"];
-            var pat_cell = s1.Cells["FillPattern"];
+            var fg_cell = s1.get_Cells("FillForegnd");
+            var bg_cell = s1.get_Cells("FillBkgnd");
+            var pat_cell = s1.get_Cells("FillPattern");
 
             fg_cell.FormulaU = "RGB(255,0,0)";
             bg_cell.FormulaU = "RGB(0,0,255)";
@@ -109,9 +109,9 @@ namespace VisioAutomation_Tests.Core.ShapeSheet
             int s1_id = s1.ID;
 
             // format it with setformulas
-            var fg_cell = s1.Cells["FillForegnd"];
-            var bg_cell = s1.Cells["FillBkgnd"];
-            var pat_cell = s1.Cells["FillPattern"];
+            var fg_cell = s1.get_Cells("FillForegnd");
+            var bg_cell = s1.get_Cells("FillBkgnd");
+            var pat_cell = s1.get_Cells("FillPattern");
 
             fg_cell.ResultIU = 2.0; //red
             bg_cell.ResultIU = 3.0; //green
@@ -325,8 +325,8 @@ namespace VisioAutomation_Tests.Core.ShapeSheet
             // First verify that none of the shapes have the controls section locally or otherwise
             foreach (var s in shapes)
             {
-                Assert.AreEqual(0, s.SectionExists[(short)IVisio.Enums.VisSectionIndices.visSectionControls, 1]);
-                Assert.AreEqual(0, s.SectionExists[(short)IVisio.Enums.VisSectionIndices.visSectionControls, 0]);
+                Assert.AreEqual(0, s.get_SectionExists((short)IVisio.Enums.VisSectionIndices.visSectionControls, 1));
+                Assert.AreEqual(0, s.get_SectionExists((short)IVisio.Enums.VisSectionIndices.visSectionControls, 0));
             }
 
             // Try to retrieve the control cells rows for each shape, every shape should return zero rows
@@ -353,13 +353,13 @@ namespace VisioAutomation_Tests.Core.ShapeSheet
             {
                 if (s != s2)
                 {
-                    Assert.AreEqual(0, s.SectionExists[(short)IVisio.Enums.VisSectionIndices.visSectionControls, 1]);
-                    Assert.AreEqual(0, s.SectionExists[(short)IVisio.Enums.VisSectionIndices.visSectionControls, 0]);
+                    Assert.AreEqual(0, s.get_SectionExists((short)IVisio.Enums.VisSectionIndices.visSectionControls, 1));
+                    Assert.AreEqual(0, s.get_SectionExists((short)IVisio.Enums.VisSectionIndices.visSectionControls, 0));
                 }
                 else
                 {
-                    Assert.AreEqual(-1, s.SectionExists[(short)IVisio.Enums.VisSectionIndices.visSectionControls, 1]);
-                    Assert.AreEqual(-1, s.SectionExists[(short)IVisio.Enums.VisSectionIndices.visSectionControls, 0]);
+                    Assert.AreEqual(-1, s.get_SectionExists((short)IVisio.Enums.VisSectionIndices.visSectionControls, 1));
+                    Assert.AreEqual(-1, s.get_SectionExists((short)IVisio.Enums.VisSectionIndices.visSectionControls, 0));
                 }
             }
 

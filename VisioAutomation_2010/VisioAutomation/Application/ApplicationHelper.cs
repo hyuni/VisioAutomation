@@ -6,7 +6,7 @@ namespace VisioAutomation.Application
 {
     public static class ApplicationHelper
     {
-        public static System.Version GetVersion(IVisio.Application app)
+        public static System.Version GetVersion(IVisio.IVApplication app)
         {
             // It's always safer to get the app version via this class because it normalizes the version string
             string verstring = app.Version;
@@ -15,7 +15,7 @@ namespace VisioAutomation.Application
             return version;
         }
 
-        public static string GetContentLocation(IVisio.Application app)
+        public static string GetContentLocation(IVisio.IVApplication app)
         {
             var ver = ApplicationHelper.GetVersion(app);
             var invariant_culture = System.Globalization.CultureInfo.InvariantCulture;
