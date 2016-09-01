@@ -21,6 +21,23 @@ namespace VisioAutomation.Windows
             }
         }
 
+        public static void Select(
+    IVisio.Window window,
+    IEnumerable<IVisio.IVShape> shapes,
+    IVisio.Enums.VisSelectArgs selectargs)
+        {
+            if (shapes == null)
+            {
+                throw new System.ArgumentNullException(nameof(shapes));
+            }
+
+            foreach (var shape in shapes)
+            {
+                window.Select(shape, (short)selectargs);
+            }
+        }
+
+
         public static Drawing.Rectangle GetViewRect(IVisio.Window window)
         {
             // MSDN: http://msdn.microsoft.com/en-us/library/office/ff765846.aspx

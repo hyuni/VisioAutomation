@@ -167,7 +167,7 @@ namespace VisioAutomation.Models.Layouts.DirectedGraph
         {        
             // Create A DOM and render it to the page
             var app = page.Application;
-            var page_node = this.CreateDOMPage(layout_diagram, app);
+            var page_node = this.CreateDOMPage(layout_diagram, (IVisio.Application) app);
 
             page_node.Render(page);                    
 
@@ -214,7 +214,7 @@ namespace VisioAutomation.Models.Layouts.DirectedGraph
             {
                 loader.Add(layout_shape.MasterName,layout_shape.StencilName);                
             }
-            loader.Resolve(documents);
+            loader.Resolve((IVisio.Documents)documents);
             
             // If no size was provided for the shape, then set the size based on the master
             var layoutshapes_without_size_info = layout_diagram.Shapes.Where(s => s.Size == null);
@@ -224,7 +224,7 @@ namespace VisioAutomation.Models.Layouts.DirectedGraph
                 var size = MsaglRenderer.TryGetValue(master_to_size,master.VisioMaster);
                 if (!size.HasValue)
                 {
-                    var master_bb = master.VisioMaster.GetBoundingBox(IVisio.VisBoundingBoxArgs.visBBoxUprightWH);
+                    var master_bb = master.VisioMaster.GetBoundingBox(IVisio.Enums.VisBoundingBoxArgs.visBBoxUprightWH);
                     size = master_bb.Size;
                     master_to_size[master.VisioMaster] = size.Value;
                 }
@@ -284,7 +284,7 @@ namespace VisioAutomation.Models.Layouts.DirectedGraph
             {
                 if (!stencil_map.ContainsKey(stencil_name))
                 {
-                    var stencil = app_documents.OpenStencil(stencil_name);
+                    var stencil = ((IVisio.Documents)app_documents).OpenStencil(stencil_name);
                     stencil_map[stencil_name] = stencil;
                 }
             }
@@ -298,7 +298,7 @@ namespace VisioAutomation.Models.Layouts.DirectedGraph
                     var stencil = stencil_map[nv.StencilName];
                     var masters = stencil.Masters;
                     var master = masters[nv.MasterName];
-                    master_map[key] = master;
+                    master_map[key] = (IVisio.Master)master;
                 }
             }
 
@@ -494,21 +494,21 @@ namespace VisioAutomation.Models.Layouts.DirectedGraph
             return bez_shape;
         }
 
-        private IVisio.VisCellVals ConnectorTypeToCellVal_Appearance(ConnectorType ct)
+        private IVisio.Enums.VisCellVals ConnectorTypeToCellVal_Appearance(ConnectorType ct)
         {
             switch (ct)
             {
                 case (ConnectorType.Curved):
                     {
-                        return IVisio.VisCellVals.visLORouteExtNURBS;
+                        return IVisio.Enums.VisCellVals.visLORouteExtNURBS;
                     }
                 case (ConnectorType.Straight):
                     {
-                        return IVisio.VisCellVals.visLORouteExtStraight;
+                        return IVisio.Enums.VisCellVals.visLORouteExtStraight;
                     }
                 case (ConnectorType.RightAngle):
                     {
-                        return IVisio.VisCellVals.visLORouteExtStraight;
+                        return IVisio.Enums.VisCellVals.visLORouteExtStraight;
                     }
                 default:
                     {
@@ -517,21 +517,21 @@ namespace VisioAutomation.Models.Layouts.DirectedGraph
             }
         }
 
-        private IVisio.VisCellVals ConnectorTypeToCellVal_Style(ConnectorType ct)
+        private IVisio.Enums.VisCellVals ConnectorTypeToCellVal_Style(ConnectorType ct)
         {
             switch (ct)
             {
                 case (ConnectorType.Curved):
                     {
-                        return IVisio.VisCellVals.visLORouteRightAngle;
+                        return IVisio.Enums.VisCellVals.visLORouteRightAngle;
                     }
                 case (ConnectorType.Straight):
                     {
-                        return IVisio.VisCellVals.visLORouteCenterToCenter;
+                        return IVisio.Enums.VisCellVals.visLORouteCenterToCenter;
                     }
                 case (ConnectorType.RightAngle):
                     {
-                        return IVisio.VisCellVals.visLORouteFlowchartNS;
+                        return IVisio.Enums.VisCellVals.visLORouteFlowchartNS;
                     }
                 default:
                     {

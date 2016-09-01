@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using IVisio = NetOffice.VisioApi;
 using VisioAutomation.Extensions;
 
@@ -14,7 +15,7 @@ namespace VisioAutomation.Models.Charting
                 var win = app.ActiveWindow;
                 win.DeselectAll();
                 win.DeselectAll();
-                win.Select(shapes, IVisio.VisSelectArgs.visSelect);
+                win.Select(shapes, (short) IVisio.Enums.VisSelectArgs.visSelect);
                 var sel = win.Selection;
                 sel.Group();
             }

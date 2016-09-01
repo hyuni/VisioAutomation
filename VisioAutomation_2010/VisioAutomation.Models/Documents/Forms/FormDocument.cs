@@ -25,11 +25,11 @@ namespace VisioAutomation.Models.Documents.Forms
 
             var context = new FormRenderingContext();
             context.Application = app;
-            context.Document = doc;
-            context.Pages = doc.Pages;
-            context.Fonts = doc.Fonts;
+            context.Document = (IVisio.Document) doc;
+            context.Pages = (IVisio.Pages) doc.Pages;
+            context.Fonts = (IVisio.Fonts)doc.Fonts;
 
-            this.VisioDocument = doc;
+            this.VisioDocument = (IVisio.Document)doc;
 
             doc.Subject = this.Subject;
             doc.Title = this.Title;
@@ -51,7 +51,7 @@ namespace VisioAutomation.Models.Documents.Forms
                 var active_window = app.ActiveWindow;
                 active_window.Page = first_page;
             }
-            return doc;
+            return (IVisio.Document)doc;
         }
     }
 }

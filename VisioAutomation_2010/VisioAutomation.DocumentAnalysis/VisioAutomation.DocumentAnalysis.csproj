@@ -61,17 +61,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <COMReference Include="Microsoft.Office.Interop.Visio">
-      <Guid>{00021A98-0000-0000-C000-000000000046}</Guid>
-      <VersionMajor>4</VersionMajor>
-      <VersionMinor>14</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>primary</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
-    </COMReference>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\VisioAutomation\VisioAutomation.csproj">
       <Project>{920c7842-10e0-48c3-a439-c785fc2b234e}</Project>
       <Name>VisioAutomation</Name>

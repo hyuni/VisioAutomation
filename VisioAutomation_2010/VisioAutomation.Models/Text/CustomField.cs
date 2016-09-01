@@ -6,7 +6,7 @@ namespace VisioAutomation.Models.Text
     {
         public string Formula { get; set; }
 
-        public CustomField(string formula, IVisio.VisFieldFormats fmt) :
+        public CustomField(string formula, IVisio.Enums.VisFieldFormats fmt) :
             base(NodeType.Field)
         {
             this.Formula = formula;

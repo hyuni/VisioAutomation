@@ -64,7 +64,7 @@ namespace VisioAutomation.Models.Dom
                 }
                 else
                 {
-                    var rendered_page = pagenode.Render(doc);
+                    var rendered_page = pagenode.Render((IVisio.Document)doc);
                     pages.Add(rendered_page);
                 }
 

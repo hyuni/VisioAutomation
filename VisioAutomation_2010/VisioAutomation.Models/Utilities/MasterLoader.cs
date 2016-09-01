@@ -89,7 +89,7 @@ namespace VisioAutomation.Models.Utilities
                         var stencildoc = name_to_stencildoc[master_ref.StencilName];
                         var stencilmasters = stencildoc.Masters;
 
-                        var master_object = this.TryGetMaster(stencilmasters, master_ref.MasterName);
+                        var master_object = this.TryGetMaster((IVisio.Masters)stencilmasters, master_ref.MasterName);
                         if (master_object == null)
                         {
                             string msg =
@@ -106,7 +106,7 @@ namespace VisioAutomation.Models.Utilities
                         var stencildoc = app.ActiveDocument;
                         var stencilmasters = stencildoc.Masters;
 
-                        var master_object = this.TryGetMaster(stencilmasters, master_ref.MasterName);
+                        var master_object = this.TryGetMaster((IVisio.Masters)stencilmasters, master_ref.MasterName);
                         if (master_object == null)
                         {
                             string msg =
@@ -124,8 +124,8 @@ namespace VisioAutomation.Models.Utilities
         {
             try
             {
-                var masterobj = masters.ItemU[name];
-                return masterobj;
+                var masterobj = masters.get_ItemU(name);
+                return (IVisio.Master) masterobj;
             }
             catch (System.Runtime.InteropServices.COMException)
             {

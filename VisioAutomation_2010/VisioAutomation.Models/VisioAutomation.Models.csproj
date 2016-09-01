@@ -34,9 +34,25 @@
       <HintPath>..\packages\Microsoft.Automatic.Graph.Layout.0.7.0-beta\lib\net40\Microsoft.Msagl.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="NetOffice, Version=1.7.3.0, Culture=neutral, PublicKeyToken=297f57b43ae7c1de, processorArchitecture=MSIL">
+      <HintPath>..\packages\NetOffice.Core.Net40.1.7.3.0\lib\net40\NetOffice.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="OfficeApi, Version=1.7.3.0, Culture=neutral, PublicKeyToken=a39beb0835c43c8e, processorArchitecture=MSIL">
+      <HintPath>..\packages\NetOffice.Core.Net40.1.7.3.0\lib\net40\OfficeApi.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="VBIDEApi, Version=1.7.3.0, Culture=neutral, PublicKeyToken=931cec8882205047, processorArchitecture=MSIL">
+      <HintPath>..\packages\NetOffice.Core.Net40.1.7.3.0\lib\net40\VBIDEApi.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="VisioApi, Version=1.7.3.0, Culture=neutral, PublicKeyToken=bfcd37a3a83f1609, processorArchitecture=MSIL">
+      <HintPath>..\packages\NetOffice.Visio.Net40.1.7.3.0\lib\net40\VisioApi.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Layouts\Box\AlignmentHorizontal.cs" />
@@ -148,17 +164,6 @@
       <Project>{920c7842-10e0-48c3-a439-c785fc2b234e}</Project>
       <Name>VisioAutomation</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <COMReference Include="Microsoft.Office.Interop.Visio">
-      <Guid>{00021A98-0000-0000-C000-000000000046}</Guid>
-      <VersionMajor>4</VersionMajor>
-      <VersionMinor>14</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>primary</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
-    </COMReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -17,7 +17,7 @@ namespace VisioAutomation.Models.Documents.Forms
 
         public InteractiveRenderer(IVisio.Document doc)
         {
-            this._visio_pages = doc.Pages;
+            this._visio_pages = (IVisio.Pages)doc.Pages;
             this.Blocks = new List<TextBlock>();
         }
 
@@ -25,7 +25,7 @@ namespace VisioAutomation.Models.Documents.Forms
         {
             this._form_page = formpage;
 
-            this._page = this._visio_pages.Add();
+            this._page = (IVisio.Page)this._visio_pages.Add();
             this._page.Name = formpage.Name;
 
             // Update the Page Cells
@@ -40,7 +40,7 @@ namespace VisioAutomation.Models.Documents.Forms
             pagecells.PageTopMargin = formpage.Margin.Top;
             pagecells.PageBottomMargin = formpage.Margin.Bottom;
             pagecells.SetFormulas(pagewriter);
-            pagewriter.Commit(pagesheet);
+            pagewriter.Commit((IVisio.Shape)pagesheet);
 
 
             this.Reset();

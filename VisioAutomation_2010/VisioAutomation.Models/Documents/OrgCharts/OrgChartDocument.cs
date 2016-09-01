@@ -60,7 +60,7 @@ namespace VisioAutomation.Models.Documents.OrgCharts
             const string dyncon_master_name = "Dynamic connector";
             const double border_width = 0.5;
 
-            var doc_node = new Dom.Document(orgchart_vst, IVisio.VisMeasurementSystem.visMSUS);
+            var doc_node = new Dom.Document(orgchart_vst, IVisio.Enums.VisMeasurementSystem.visMSUS);
 
             var trees = new List<IList<Node<object>>>();
 

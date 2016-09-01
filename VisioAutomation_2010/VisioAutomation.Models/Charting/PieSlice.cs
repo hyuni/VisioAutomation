@@ -123,7 +123,7 @@ namespace VisioAutomation.Models.Charting
                 // Render the bezier
                 var doubles_array = Drawing.Point.ToDoubles(pie_bez).ToArray();
                 var pie_slice = page.DrawBezier(doubles_array, (short)degree, 0);
-                return pie_slice;
+                return (IVisio.Shape) pie_slice;
             }
         }
 
@@ -163,7 +163,7 @@ namespace VisioAutomation.Models.Charting
                 // Render the bezier
                 var doubles_array = Drawing.Point.ToDoubles(thickarc).ToArray();
                 var pie_slice = page.DrawBezier(doubles_array, (short)degree, 0);
-                return pie_slice;
+                return (IVisio.Shape) pie_slice;
             }
         }
 

@@ -4,10 +4,10 @@ namespace VisioAutomation.Models.Text
 {
     public class Field : FieldBase
     {
-        public IVisio.VisFieldCategories Category { get; set; }
-        public IVisio.VisFieldCodes Code { get; set; }
+        public IVisio.Enums.VisFieldCategories Category { get; set; }
+        public IVisio.Enums.VisFieldCodes Code { get; set; }
 
-        public Field(IVisio.VisFieldCategories category, IVisio.VisFieldCodes code, IVisio.VisFieldFormats format) :
+        public Field(IVisio.Enums.VisFieldCategories category, IVisio.Enums.VisFieldCodes code, IVisio.Enums.VisFieldFormats format) :
             base(NodeType.Field)
         {
             this.Category = category;

@@ -1,4 +1,4 @@
-﻿using IVisio=Microsoft.Office.Interop.Visio;
+﻿using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.Models.Text
 {
@@ -6,9 +6,9 @@ namespace VisioAutomation.Models.Text
     public enum CharStyle
     {
         None = 0,
-        Bold = IVisio.VisCellVals.visBold,
-        Italic = IVisio.VisCellVals.visItalic,
-        UnderLine = IVisio.VisCellVals.visUnderLine,
-        SmallCaps = IVisio.VisCellVals.visSmallCaps
+        Bold = IVisio.Enums.VisCellVals.visBold,
+        Italic = IVisio.Enums.VisCellVals.visItalic,
+        UnderLine = IVisio.Enums.VisCellVals.visUnderLine,
+        SmallCaps = IVisio.Enums.VisCellVals.visSmallCaps
     }
 }

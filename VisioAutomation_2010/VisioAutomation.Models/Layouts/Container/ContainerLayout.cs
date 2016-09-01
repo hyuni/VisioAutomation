@@ -119,7 +119,7 @@ namespace VisioAutomation.Models.Layouts.Container
             var page = pages.Add();
 
             // load the stencil used to draw the items
-            var item_stencil = docs.OpenStencil(this.LayoutOptions.ManualItemStencil);
+            var item_stencil = ((IVisio.Documents)docs).OpenStencil(this.LayoutOptions.ManualItemStencil);
             var item_stencil_masters = item_stencil.Masters;
             var item_master = item_stencil_masters[this.LayoutOptions.ManualItemMaster];
             var plain_container_master = item_stencil_masters[this.LayoutOptions.ManualContainerMaster];
@@ -130,8 +130,8 @@ namespace VisioAutomation.Models.Layouts.Container
             // Drop the container shapes
             var ct_items = this.Containers.ToList();
             var ct_rects = ct_items.Select(item => item.Rectangle).ToList();
-            var masters = ct_items.Select(i => plain_container_master).ToList();
-            short[] ct_shapeids = ContainerLayout.DropManyU(page, masters, ct_rects);
+            var masters = ct_items.Select(i => plain_container_master).Cast<IVisio.Master>().ToList();
+            short[] ct_shapeids = ContainerLayout.DropManyU((IVisio.Page)page, masters, ct_rects);
 
             // associate each container with the corresponding shape oject and shape id
             for (int i = 0; i < ct_items.Count; i++)
@@ -139,7 +139,7 @@ namespace VisioAutomation.Models.Layouts.Container
                 var ct_item = ct_items[i];
                 var ct_shapeid = ct_shapeids[i];
                 var shape = page_shapes[ct_shapeid];
-                ct_item.VisioShape = shape;
+                ct_item.VisioShape = (IVisio.Shape)shape;
                 ct_item.ShapeID = ct_shapeid;
             }
 
@@ -147,8 +147,8 @@ namespace VisioAutomation.Models.Layouts.Container
             // Render the items
             var items = this.ContainerItems.ToList();
             var item_rects = items.Select(item => item.Rectangle).ToList();
-            var item_masters = items.Select(i => item_master).ToList();
-            short[] shapeids = ContainerLayout.DropManyU(page, item_masters, item_rects);
+            var item_masters = items.Select(i => item_master).Cast<IVisio.Master>().ToList();
+            short[] shapeids = ContainerLayout.DropManyU((IVisio.Page)page, item_masters, item_rects);
 
             // Associate each item with the corresponding shape object and shape id
             for (int i = 0; i < items.Count; i++)
@@ -156,12 +156,12 @@ namespace VisioAutomation.Models.Layouts.Container
                 var item = items[i];
                 var shapeid = shapeids[i];
                 var shape = page_shapes[shapeid];
-                item.VisioShape = shape;
+                item.VisioShape = (IVisio.Shape)shape;
                 item.ShapeID = shapeid;
             }
 
             // Often useful to show everthing because these diagrams can get large
-            app.ActiveWindow.ViewFit = (short)IVisio.VisWindowFit.visFitPage;
+            app.ActiveWindow.ViewFit = (short)IVisio.Enums.VisWindowFit.visFitPage;
 
             // Set the items
             foreach (var item in items.Where(i => i.Text != null))
@@ -184,7 +184,7 @@ namespace VisioAutomation.Models.Layouts.Container
             }     
 
             writer.BlastGuards = true;
-            writer.Commit(page);
+            writer.Commit((IVisio.Page)page);
 
             // Set the Container Text
             foreach (var ct in this.Containers)
@@ -196,9 +196,9 @@ namespace VisioAutomation.Models.Layouts.Container
             }
 
             page.ResizeToFitContents();
-            app.ActiveWindow.ViewFit = (short)IVisio.VisWindowFit.visFitPage;
+            app.ActiveWindow.ViewFit = (short)IVisio.Enums.VisWindowFit.visFitPage;
 
-            return page;
+            return (IVisio.Page)page;
         }
 
         private static short[] DropManyU(

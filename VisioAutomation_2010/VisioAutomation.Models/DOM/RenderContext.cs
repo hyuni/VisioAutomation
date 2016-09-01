@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using IVisio=Microsoft.Office.Interop.Visio;
+using IVisio=NetOffice.VisioApi;
 
 namespace VisioAutomation.Models.Dom
 {
@@ -13,7 +13,7 @@ namespace VisioAutomation.Models.Dom
         {
             this._id_to_shape = new Dictionary<short, IVisio.Shape>();
             this.VisioPage = visio_page;
-            this._pageshapes = visio_page.Shapes;
+            this._pageshapes = (IVisio.Shapes)visio_page.Shapes;
         }
 
         public IVisio.Shape GetShape(short id)
@@ -25,7 +25,7 @@ namespace VisioAutomation.Models.Dom
             }
             else
             {
-                vshape = this._pageshapes.ItemFromID16[id];
+                vshape = (IVisio.Shape) this._pageshapes.get_ItemFromID16(id);
                 this._id_to_shape[id] = vshape;
                 return vshape;
             }

@@ -43,11 +43,11 @@ namespace VisioAutomation.Models.Dom
 
             var pages = doc.Pages;
             var page = pages.Add();
-            this.VisioPage = page;
+            this.VisioPage = (IVisio.Page)page;
 
-            this.Render(page);
+            this.Render((IVisio.Page)page);
             
-            return page;
+            return (IVisio.Page)page;
         }
 
         public void Render(IVisio.Page page)
@@ -71,7 +71,7 @@ namespace VisioAutomation.Models.Dom
             var app = page.Application;
 
 
-            using (var perfscope = new Application.PerfScope(app, this.PerfSettings))
+            using (var perfscope = new Application.PerfScope((IVisio.Application)app, this.PerfSettings))
             {
                 if (this.Size.HasValue)
                 {

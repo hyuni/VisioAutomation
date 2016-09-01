@@ -157,7 +157,7 @@ namespace VisioAutomation.Models.Text
             var regions_to_format = markupinfo.FormatRegions.Where(region => region.Length >= 1).ToList();
 
             
-            var default_chars_bias = IVisio.VisCharsBias.visBiasLeft;
+            var default_chars_bias = IVisio.Enums.VisCharsBias.visBiasLeft;
 
 
             var writer = new FormulaWriterSRC();
@@ -172,8 +172,8 @@ namespace VisioAutomation.Models.Text
                     var chars = shape.Characters;
                     chars.Begin = region.Start;
                     chars.End = region.End;
-                    chars.CharProps[ShapeSheet.SRCConstants.CharColor.Cell] = 0;
-                    short rownum = chars.CharPropsRow[(short) default_chars_bias];
+                    chars.set_CharProps(ShapeSheet.SRCConstants.CharColor.Cell,0);
+                    short rownum = chars.get_CharPropsRow((short) default_chars_bias);
 
                     if (rownum < 0)
                     {
@@ -192,8 +192,8 @@ namespace VisioAutomation.Models.Text
                     var chars = shape.Characters;
                     chars.Begin = region.Start;
                     chars.End = region.End;
-                    chars.ParaProps[ShapeSheet.SRCConstants.Para_Bullet.Cell] = 0;
-                    short rownum = chars.ParaPropsRow[(short) default_chars_bias];
+                    chars.set_ParaProps(ShapeSheet.SRCConstants.Para_Bullet.Cell,0);
+                    short rownum = chars.get_ParaPropsRow((short) default_chars_bias);
 
                     if (rownum < 0)
                     {

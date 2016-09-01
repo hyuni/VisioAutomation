@@ -237,7 +237,7 @@ namespace VisioAutomation.Models.Dom
 
             var application = context.VisioPage.Application;
             var docs = application.Documents;
-            loader.Resolve(docs);
+            loader.Resolve((IVisio.Documents)docs);
 
             foreach (var shape_node in shape_nodes)
             {
@@ -309,14 +309,14 @@ namespace VisioAutomation.Models.Dom
                     var rect = (Rectangle) shape;
                     var rect_shape = context.VisioPage.DrawRectangle(rect.P0.X, rect.P0.Y, rect.P1.X, rect.P1.Y);
                     rect.VisioShapeID = rect_shape.ID16;
-                    rect.VisioShape = rect_shape;
+                    rect.VisioShape = (IVisio.Shape) rect_shape;
                 }
                 else if (shape is Oval)
                 {
                     var oval = (Oval)shape;
                     var oval_shape = context.VisioPage.DrawOval(oval.P0.X, oval.P0.Y, oval.P1.X, oval.P1.Y);
                     oval.VisioShapeID = oval_shape.ID16;
-                    oval.VisioShape = oval_shape;
+                    oval.VisioShape = (IVisio.Shape)oval_shape;
                 }
                 else if (shape is Arc)
                 {
@@ -386,14 +386,14 @@ namespace VisioAutomation.Models.Dom
             for (int i = 0; i < connector_shapeids.Length; i++)
             {
                 var connector_shapeid = connector_shapeids[i];
-                var vis_connector = page_shapes.ItemFromID[connector_shapeid];
+                var vis_connector = page_shapes.get_ItemFromID16(connector_shapeid);
                 var dyncon_shape = connector_nodes[i];
 
                 var from_shape = context.GetShape(dyncon_shape.From.VisioShapeID);
                 var to_shape = context.GetShape(dyncon_shape.To.VisioShapeID);
 
-                ConnectorHelper.ConnectShapes(from_shape, to_shape, vis_connector);
-                dyncon_shape.VisioShape = vis_connector;
+                ConnectorHelper.ConnectShapes(from_shape, to_shape, (IVisio.Shape)vis_connector);
+                dyncon_shape.VisioShape = (IVisio.Shape)vis_connector;
                 dyncon_shape.VisioShapeID = connector_shapeids[i];
             }
         }
