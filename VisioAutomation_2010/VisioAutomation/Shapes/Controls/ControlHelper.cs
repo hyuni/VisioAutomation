@@ -1,6 +1,6 @@
 using System;
 using VisioAutomation.ShapeSheet.Writers;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.Shapes.Controls
 {
@@ -27,9 +27,9 @@ namespace VisioAutomation.Shapes.Controls
                 throw new ArgumentNullException(nameof(shape));
             }
 
-            short row = shape.AddRow((short)IVisio.VisSectionIndices.visSectionControls,
-                                     (short)IVisio.VisRowIndices.visRowLast,
-                                     (short)IVisio.VisRowTags.visTagDefault);
+            short row = shape.AddRow((short)IVisio.Enums.VisSectionIndices.visSectionControls,
+                                     (short)IVisio.Enums.VisRowIndices.visRowLast,
+                                     (short)IVisio.Enums.VisRowTags.visTagDefault);
 
             ControlHelper.Set(shape, row, ctrl);
 
@@ -76,8 +76,8 @@ namespace VisioAutomation.Shapes.Controls
                 throw new ArgumentOutOfRangeException(nameof(index));
             }
 
-            var row = (IVisio.VisRowIndices)index;
-            shape.DeleteRow( (short) IVisio.VisSectionIndices.visSectionControls, (short)row);
+            var row = (IVisio.Enums.VisRowIndices)index;
+            shape.DeleteRow( (short) IVisio.Enums.VisSectionIndices.visSectionControls, (short)row);
         }
 
         public static int GetCount(IVisio.Shape shape)
@@ -87,7 +87,7 @@ namespace VisioAutomation.Shapes.Controls
                 throw new ArgumentNullException(nameof(shape));
             }
 
-            return shape.RowCount[(short)IVisio.VisSectionIndices.visSectionControls];
+            return shape.get_RowCount((short)IVisio.Enums.VisSectionIndices.visSectionControls);
         }
     }
 }

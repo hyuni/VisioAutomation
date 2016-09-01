@@ -1,4 +1,4 @@
-﻿using IVisio = Microsoft.Office.Interop.Visio;
+﻿using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.Pages.PageLayout
 {
@@ -13,7 +13,7 @@ namespace VisioAutomation.Pages.PageLayout
         protected override void SetPageCells(PageCells pagecells)
         {
             base.SetPageCells(pagecells);
-            pagecells.PlaceStyle = (int) IVisio.VisCellVals.visPLOPlaceCircular;
+            pagecells.PlaceStyle = (int) IVisio.Enums.VisCellVals.visPLOPlaceCircular;
         }
     }
 }

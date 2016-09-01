@@ -1,7 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using VisioAutomation.Exceptions;
 using VisioAutomation.Extensions;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 using VA = VisioAutomation;
 using CONMODEL = VisioAutomation.Models.Layouts.Container;
 

@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using IVisio=Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.Windows
 {
@@ -8,7 +8,7 @@ namespace VisioAutomation.Windows
         public static void Select(
             IVisio.Window window,
             IEnumerable<IVisio.Shape> shapes,
-            IVisio.VisSelectArgs selectargs)
+            IVisio.Enums.VisSelectArgs selectargs)
         {
             if (shapes == null)
             {
@@ -65,7 +65,7 @@ namespace VisioAutomation.Windows
             short count = windows.Count;
             for (int i = 0; i < count; i++)
             {
-                yield return windows[(short)(i + 1)];
+                yield return (IVisio.Window) windows[(short)(i + 1)];
             }
         }
     }

@@ -1,6 +1,6 @@
 using System.Linq;
 using VisioAutomation.Extensions;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 using System.Collections.Generic;
 using VisioAutomation.Drawing.Layout;
 using VisioAutomation.ShapeSheet.Writers;

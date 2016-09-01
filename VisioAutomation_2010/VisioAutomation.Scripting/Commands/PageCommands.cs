@@ -6,7 +6,7 @@ using VisioAutomation.Scripting.View;
 using VisioAutomation.ShapeSheet;
 using VisioAutomation.ShapeSheet.Writers;
 using VisioAutomation.Utilities;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.Scripting.Commands
 {

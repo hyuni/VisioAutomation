@@ -1,4 +1,4 @@
-﻿using IVisio = Microsoft.Office.Interop.Visio;
+﻿using IVisio = NetOffice.VisioApi;
 using SMA = System.Management.Automation;
 
 namespace VisioPowerShell.Commands.New

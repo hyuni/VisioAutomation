@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using VisioAutomation.ShapeSheet;
 using VisioAutomation.ShapeSheet.Writers;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.Pages
 {
@@ -89,7 +89,7 @@ namespace VisioAutomation.Pages
         }
         public static string[] GetNamesU(IVisio.Pages pages)
         {
-            System.Array names_sa;
+            string[] names_sa;
             pages.GetNamesU(out names_sa);
             string[] names = (string[])names_sa;
             return names;
@@ -100,7 +100,7 @@ namespace VisioAutomation.Pages
             short count = pages.Count;
             for (int i = 0; i < count; i++)
             {
-                yield return pages[i + 1];
+                yield return (IVisio.Page) pages[i + 1];
             }
         }
 
@@ -109,7 +109,7 @@ namespace VisioAutomation.Pages
             IVisio.Page dest_page)
         {
             var app = src_page.Application;
-            short copy_paste_flags = (short)IVisio.VisCutCopyPasteCodes.visCopyPasteNoTranslate;
+            short copy_paste_flags = (short)IVisio.Enums.VisCutCopyPasteCodes.visCopyPasteNoTranslate;
 
             // handle the source page
             if (src_page == null)
@@ -146,7 +146,7 @@ namespace VisioAutomation.Pages
             }
 
             var src_pagesheet = src_page.PageSheet;
-            var pagecells = PageCells.GetCells(src_pagesheet);
+            var pagecells = PageCells.GetCells((IVisio.Shape)src_pagesheet);
 
 
             // handle the dest page
@@ -155,7 +155,7 @@ namespace VisioAutomation.Pages
             var dest_pagesheet = dest_page.PageSheet;
             var writer = new FormulaWriterSRC();
             pagecells.SetFormulas(writer);
-            writer.Commit(dest_pagesheet);
+            writer.Commit((IVisio.Shape)dest_pagesheet);
 
             // make sure the new page looks like the old page
             dest_page.Background = src_page.Background;
@@ -173,7 +173,7 @@ namespace VisioAutomation.Pages
             var col_height = query.AddCell(ShapeSheet.SRCConstants.PageHeight,"PageHeight");
             var col_width = query.AddCell(ShapeSheet.SRCConstants.PageWidth,"PageWidth");
 
-            var page_surface = new ShapeSheetSurface(page.PageSheet);
+            var page_surface = new ShapeSheetSurface((IVisio.Shape) page.PageSheet);
             var results = query.GetResults<double>(page_surface);
             double height = results.Cells[col_height];
             double width = results.Cells[col_width];
@@ -188,7 +188,7 @@ namespace VisioAutomation.Pages
             page_cells.PageWidth = size.Width;
             var writer = new FormulaWriterSRC();
             page_cells.SetFormulas(writer);
-            writer.Commit(page.PageSheet);
+            writer.Commit((IVisio.Shape)page.PageSheet);
         }
         
         public static void ResizeToFitContents(IVisio.Page page, Drawing.Size padding)
@@ -238,7 +238,7 @@ namespace VisioAutomation.Pages
             var masters_obj_array = masters.Cast<object>().ToArray();
             var xy_array = Drawing.Point.ToDoubles(points).ToArray();
 
-            System.Array outids_sa;
+            short [] outids_sa;
 
             page.DropManyU(masters_obj_array, xy_array, out outids_sa);
 
@@ -264,7 +264,7 @@ namespace VisioAutomation.Pages
             var masters_obj_array = Enumerable.Repeat(thing, num_points).ToArray();
             var xy_array = Drawing.Point.ToDoubles(points).ToArray();
 
-            System.Array outids_sa;
+            short [] outids_sa;
 
             page.DropManyU(masters_obj_array, xy_array, out outids_sa);
 

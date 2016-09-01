@@ -1,5 +1,5 @@
 using VisioAutomation.ShapeSheet.Writers;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.Shapes.ConnectionPoints
 {
@@ -26,9 +26,9 @@ namespace VisioAutomation.Shapes.ConnectionPoints
                 throw new System.ArgumentException(msg, nameof(connection_point_cells));
             }
 
-            var n = shape.AddRow((short)IVisio.VisSectionIndices.visSectionConnectionPts,
-                                 (short)IVisio.VisRowIndices.visRowLast,
-                                 (short)IVisio.VisRowTags.visTagCnnctPt);
+            var n = shape.AddRow((short)IVisio.Enums.VisSectionIndices.visSectionConnectionPts,
+                                 (short)IVisio.Enums.VisRowIndices.visRowLast,
+                                 (short)IVisio.Enums.VisRowTags.visTagCnnctPt);
 
             var writer = new FormulaWriterSRC();
             connection_point_cells.SetFormulas(writer,n);
@@ -49,8 +49,8 @@ namespace VisioAutomation.Shapes.ConnectionPoints
                 throw new System.ArgumentOutOfRangeException(nameof(index));
             }
 
-            var row = (IVisio.VisRowIndices)index;
-            shape.DeleteRow( (short) IVisio.VisSectionIndices.visSectionConnectionPts, (short)row);
+            var row = (IVisio.Enums.VisRowIndices)index;
+            shape.DeleteRow( (short) IVisio.Enums.VisSectionIndices.visSectionConnectionPts, (short)row);
         }
 
         public static int GetCount(IVisio.Shape shape)
@@ -60,7 +60,7 @@ namespace VisioAutomation.Shapes.ConnectionPoints
                 throw new System.ArgumentNullException(nameof(shape));
             }
 
-            return shape.RowCount[ (short) IVisio.VisSectionIndices.visSectionConnectionPts];
+            return shape.get_RowCount((short) IVisio.Enums.VisSectionIndices.visSectionConnectionPts);
         }
 
         public static int Delete(IVisio.Shape shape)

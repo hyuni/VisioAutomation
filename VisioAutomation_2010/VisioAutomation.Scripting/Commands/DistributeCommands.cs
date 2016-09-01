@@ -1,4 +1,4 @@
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 using VisioAutomation.Drawing.Layout;
 using VisioAutomation.Scripting.Utilities;
 using VisioAutomation.Extensions;

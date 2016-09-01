@@ -1,7 +1,7 @@
 using System.Management.Automation;
 using VisioAutomation.Drawing.Layout;
 using VA = VisioAutomation;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioPowerShell.Commands.Format
 {

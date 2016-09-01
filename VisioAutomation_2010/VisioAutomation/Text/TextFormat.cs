@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.Text
 {
@@ -14,7 +14,7 @@ namespace VisioAutomation.Text
 
         private static IList<TextRun> GetTextRuns(
             IVisio.Shape shape,
-            IVisio.VisRunTypes runtype,
+            IVisio.Enums.VisRunTypes runtype,
             bool collect_text)
         {
             if (shape == null)
@@ -40,8 +40,8 @@ namespace VisioAutomation.Text
                 chars.End = c + 1;
 
                 // Get the beginning and end of this character run
-                int run_begin = chars.RunBegin[(short)runtype];
-                run_end = chars.RunEnd[(short)runtype];
+                int run_begin = chars.get_RunBegin((short)runtype);
+                run_end = chars.get_RunEnd((short)runtype);
 
                 // Set the begin and end of the Characters object to this run
                 chars.Begin = run_begin;
@@ -70,8 +70,8 @@ namespace VisioAutomation.Text
             cells.CharacterFormats = CharacterCells.GetCells(shape);
             cells.ParagraphFormats = ParagraphCells.GetCells(shape);
             cells.TextBlock = TextBlockCells.GetCells(shape);
-            cells.CharacterTextRuns = TextFormat.GetTextRuns(shape, IVisio.VisRunTypes.visCharPropRow, true);
-            cells.ParagraphTextRuns = TextFormat.GetTextRuns(shape, IVisio.VisRunTypes.visParaPropRow, true);
+            cells.CharacterTextRuns = TextFormat.GetTextRuns(shape, IVisio.Enums.VisRunTypes.visCharPropRow, true);
+            cells.ParagraphTextRuns = TextFormat.GetTextRuns(shape, IVisio.Enums.VisRunTypes.visParaPropRow, true);
             cells.TabStops = TabStopHelper.GetTabStops(shape);
             return cells;
         }
@@ -91,9 +91,9 @@ namespace VisioAutomation.Text
                 format.TextBlock = textblockcells[i];
                 formats.Add(format);
 
-                var shape = page_shapes.ItemFromID[shapeids[i]];
-                format.CharacterTextRuns = TextFormat.GetTextRuns(shape, IVisio.VisRunTypes.visCharPropRow, true);
-                format.ParagraphTextRuns = TextFormat.GetTextRuns(shape, IVisio.VisRunTypes.visParaPropRow, true);
+                var shape = (IVisio.Shape) page_shapes.get_ItemFromID(shapeids[i]);
+                format.CharacterTextRuns = TextFormat.GetTextRuns(shape, IVisio.Enums.VisRunTypes.visCharPropRow, true);
+                format.ParagraphTextRuns = TextFormat.GetTextRuns(shape, IVisio.Enums.VisRunTypes.visParaPropRow, true);
 
                 format.TabStops = TabStopHelper.GetTabStops(shape);
             }

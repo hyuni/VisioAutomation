@@ -1,7 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using VisioAutomation.Exceptions;
 using VACUSTPROP = VisioAutomation.Shapes.CustomProperties;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 using VA = VisioAutomation;
 
 namespace VisioAutomation_Tests.Core.Extensions

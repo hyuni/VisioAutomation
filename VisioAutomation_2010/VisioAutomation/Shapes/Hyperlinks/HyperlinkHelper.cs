@@ -1,6 +1,6 @@
 using System;
 using VisioAutomation.ShapeSheet.Writers;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.Shapes.Hyperlinks
 {
@@ -80,8 +80,8 @@ namespace VisioAutomation.Shapes.Hyperlinks
                 throw new ArgumentOutOfRangeException(nameof(index));
             }
 
-            var row = (IVisio.VisRowIndices)index;
-            shape.DeleteRow( (short) IVisio.VisSectionIndices.visSectionHyperlink, (short)row);
+            var row = (IVisio.Enums.VisRowIndices)index;
+            shape.DeleteRow( (short) IVisio.Enums.VisSectionIndices.visSectionHyperlink, (short)row);
         }
 
         public static int GetCount(IVisio.Shape shape)
@@ -91,7 +91,7 @@ namespace VisioAutomation.Shapes.Hyperlinks
                 throw new ArgumentNullException(nameof(shape));
             }
 
-            return shape.RowCount[(short)IVisio.VisSectionIndices.visSectionHyperlink];
+            return shape.get_RowCount((short)IVisio.Enums.VisSectionIndices.visSectionHyperlink);
         }
     }
 }

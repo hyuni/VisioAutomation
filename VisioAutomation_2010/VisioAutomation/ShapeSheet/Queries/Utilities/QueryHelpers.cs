@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 using VisioAutomation.Exceptions;
 
 namespace VisioAutomation.ShapeSheet.Queries.Utilities
@@ -45,7 +45,7 @@ namespace VisioAutomation.ShapeSheet.Queries.Utilities
                 return new string[0];
             }
 
-            System.Array formulas_sa = null;
+            object [] formulas_sa = null;
 
             if (surface.Target.Master != null)
             {
@@ -78,14 +78,14 @@ namespace VisioAutomation.ShapeSheet.Queries.Utilities
             return formulas;
         }
 
-        public static TResult[] GetResults_SIDSRC<TResult>(ShapeSheetSurface surface, short[] stream, IList<IVisio.VisUnitCodes> unitcodes)
+        public static TResult[] GetResults_SIDSRC<TResult>(ShapeSheetSurface surface, short[] stream, IList<IVisio.Enums.VisUnitCodes> unitcodes)
         {
             int numitems = check_stream_size(stream, 4);
             var results = _GetResults<TResult>(surface, stream, unitcodes, numitems);
             return results;
         }
 
-        public static TResult[] GetResults_SRC<TResult>(ShapeSheetSurface surface, short[] stream, IList<IVisio.VisUnitCodes> unitcodes)
+        public static TResult[] GetResults_SRC<TResult>(ShapeSheetSurface surface, short[] stream, IList<IVisio.Enums.VisUnitCodes> unitcodes)
         {
             int numitems = check_stream_size(stream, 3);
             var results = _GetResults<TResult>(surface, stream, unitcodes, numitems);
@@ -93,7 +93,7 @@ namespace VisioAutomation.ShapeSheet.Queries.Utilities
         }
 
 
-        public static TResult[] _GetResults<TResult>(ShapeSheetSurface surface, short[] stream, IList<IVisio.VisUnitCodes> unitcodes, int numitems)
+        public static TResult[] _GetResults<TResult>(ShapeSheetSurface surface, short[] stream, IList<IVisio.Enums.VisUnitCodes> unitcodes, int numitems)
         {
             EnforceValidResultType(typeof(TResult));
 
@@ -106,7 +106,7 @@ namespace VisioAutomation.ShapeSheet.Queries.Utilities
             var unitcodes_obj_array = get_unit_code_obj_array(unitcodes);
             var flags = get_VisGetSetArgs(result_type);
 
-            System.Array results_sa = null;
+            object [] results_sa = null;
 
             if (surface.Target.Master != null)
             {
@@ -137,20 +137,20 @@ namespace VisioAutomation.ShapeSheet.Queries.Utilities
             return results;
         }
 
-        private static IVisio.VisGetSetArgs get_VisGetSetArgs(System.Type type)
+        private static IVisio.Enums.VisGetSetArgs get_VisGetSetArgs(System.Type type)
         {
-            IVisio.VisGetSetArgs flags;
+            IVisio.Enums.VisGetSetArgs flags;
             if (type == typeof(int))
             {
-                flags = IVisio.VisGetSetArgs.visGetTruncatedInts;
+                flags = IVisio.Enums.VisGetSetArgs.visGetTruncatedInts;
             }
             else if (type == typeof(double))
             {
-                flags = IVisio.VisGetSetArgs.visGetFloats;
+                flags = IVisio.Enums.VisGetSetArgs.visGetFloats;
             }
             else if (type == typeof(string))
             {
-                flags = IVisio.VisGetSetArgs.visGetStrings;
+                flags = IVisio.Enums.VisGetSetArgs.visGetStrings;
             }
             else
             {
@@ -160,7 +160,7 @@ namespace VisioAutomation.ShapeSheet.Queries.Utilities
             return flags;
         }
 
-        private static object[] get_unit_code_obj_array(IList<IVisio.VisUnitCodes> unitcodes)
+        private static object[] get_unit_code_obj_array(IList<IVisio.Enums.VisUnitCodes> unitcodes)
         {
             // Create the unit codes array
             object[] unitcodes_obj_array = null;

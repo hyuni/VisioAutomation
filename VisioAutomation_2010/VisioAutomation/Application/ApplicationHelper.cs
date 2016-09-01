@@ -1,6 +1,6 @@
 using System.Linq;
 using VisioAutomation.Exceptions;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.Application
 {

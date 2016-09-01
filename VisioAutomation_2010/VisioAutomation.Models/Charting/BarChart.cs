@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 using VisioAutomation.Extensions;
 
 namespace VisioAutomation.Models.Charting

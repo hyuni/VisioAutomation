@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Management.Automation;
 using VACUSTPROP = VisioAutomation.Shapes.CustomProperties;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioPowerShell.Commands.Set
 {

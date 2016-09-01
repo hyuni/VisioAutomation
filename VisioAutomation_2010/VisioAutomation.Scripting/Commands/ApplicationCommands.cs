@@ -1,6 +1,6 @@
 using VisioAutomation.Extensions;
 using VisioAutomation.Scripting.Exceptions;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 using VA = VisioAutomation;
 
 namespace VisioAutomation.Scripting.Commands

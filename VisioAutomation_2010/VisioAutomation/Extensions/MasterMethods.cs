@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.Extensions
 {
     public static class MasterMethods
     {
-        public static Drawing.Rectangle GetBoundingBox(this IVisio.Master master, IVisio.VisBoundingBoxArgs args)
+        public static Drawing.Rectangle GetBoundingBox(this IVisio.Master master, IVisio.Enums.VisBoundingBoxArgs args)
         {
             return VisioAutomation.Masters.MasterHelper.GetBoundingBox(master, args);
         }

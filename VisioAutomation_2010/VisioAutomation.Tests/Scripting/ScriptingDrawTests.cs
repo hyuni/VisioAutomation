@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using VisioAutomation.Extensions;
 using VA = VisioAutomation;
 using SXL = System.Xml.Linq;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 using VAUSERCELL = VisioAutomation.Shapes.UserDefinedCells;
 
 namespace VisioAutomation_Tests.Scripting

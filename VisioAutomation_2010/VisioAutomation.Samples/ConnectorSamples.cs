@@ -1,5 +1,5 @@
 using VA = VisioAutomation;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 using VisioAutomation.Extensions;
 using VisioAutomation.Shapes.Connectors;
 

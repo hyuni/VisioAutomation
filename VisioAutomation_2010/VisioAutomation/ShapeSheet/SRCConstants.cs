@@ -1,6 +1,6 @@
-﻿using SEC = Microsoft.Office.Interop.Visio.VisSectionIndices;
-using ROW = Microsoft.Office.Interop.Visio.VisRowIndices;
-using CEL = Microsoft.Office.Interop.Visio.VisCellIndices;
+﻿using SEC = NetOffice.VisioApi.Enums.VisSectionIndices;
+using ROW = NetOffice.VisioApi.Enums.VisRowIndices;
+using CEL = NetOffice.VisioApi.Enums.VisCellIndices;
 
 namespace VisioAutomation.ShapeSheet
 {

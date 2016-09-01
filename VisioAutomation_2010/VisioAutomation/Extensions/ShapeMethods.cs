@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.Extensions
 {
@@ -11,12 +11,12 @@ namespace VisioAutomation.Extensions
             return Shapes.ShapeHelper.DrawLine(shape, p1, p2);
         }
 
-        public static IVisio.Shape DrawQuarterArc(this IVisio.Shape shape, Drawing.Point p0, Drawing.Point p1, IVisio.VisArcSweepFlags flags)
+        public static IVisio.Shape DrawQuarterArc(this IVisio.Shape shape, Drawing.Point p0, Drawing.Point p1, IVisio.Enums.VisArcSweepFlags flags)
         {
             return Shapes.ShapeHelper.DrawQuarterArc(shape, p0, p1, flags);
         }
 
-        public static Drawing.Rectangle GetBoundingBox(this IVisio.Shape shape, IVisio.VisBoundingBoxArgs args)
+        public static Drawing.Rectangle GetBoundingBox(this IVisio.Shape shape, IVisio.Enums.VisBoundingBoxArgs args)
         {
             return Shapes.ShapeHelper.GetBoundingBox(shape, args);
         }

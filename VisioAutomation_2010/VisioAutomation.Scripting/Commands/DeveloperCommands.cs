@@ -5,7 +5,7 @@ using VisioAutomation.Drawing.Layout;
 using VisioAutomation.Models.Dom;
 using VisioAutomation.Scripting.Exceptions;
 using VisioAutomation.Scripting.Utilities;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 using VATREE = VisioAutomation.Models.Layouts.Tree;
 
 namespace VisioAutomation.Scripting.Commands

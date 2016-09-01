@@ -1,4 +1,4 @@
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.Application
 {
@@ -74,7 +74,7 @@ namespace VisioAutomation.Application
                 rect.Width,
                 rect.Height,
                 0, 0, 0);
-            return anchor_window;
+            return (IVisio.Window) anchor_window;
         }
     }
 }

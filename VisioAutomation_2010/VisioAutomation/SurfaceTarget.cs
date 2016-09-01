@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using VisioAutomation.Extensions;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation
 {
@@ -56,15 +56,15 @@ namespace VisioAutomation
                 if (this.Master != null)
                 {
 
-                    shapes = this.Master.Shapes;
+                    shapes = (IVisio.Shapes) this.Master.Shapes;
                 }
                 else if (this.Page != null)
                 {
-                    shapes = this.Page.Shapes;
+                    shapes = (IVisio.Shapes) this.Page.Shapes;
                 }
                 else if (this.Shape != null)
                 {
-                    shapes = this.Shape.Shapes;
+                    shapes = (IVisio.Shapes) this.Shape.Shapes;
                 }
                 else
                 {
@@ -83,15 +83,15 @@ namespace VisioAutomation
             if (this.Master != null)
             {
 
-                shapes = this.Master.Shapes;
+                shapes = (IVisio.Shapes) this.Master.Shapes;
             }
             else if (this.Page != null)
             {
-                shapes = this.Page.Shapes;
+                shapes = (IVisio.Shapes) this.Page.Shapes;
             }
             else if (this.Shape != null)
             {
-                shapes = this.Shape.Shapes;
+                shapes = (IVisio.Shapes) this.Shape.Shapes;
             }
             else
             {

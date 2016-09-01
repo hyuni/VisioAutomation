@@ -1,7 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using VisioAutomation.Shapes.Connectors;
 using VACUSTPROP=VisioAutomation.Shapes.CustomProperties;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 using VA = VisioAutomation;
 using DG = VisioAutomation.Models.Layouts.DirectedGraph;
 

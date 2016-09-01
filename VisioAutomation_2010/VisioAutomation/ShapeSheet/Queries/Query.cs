@@ -4,7 +4,7 @@ using VisioAutomation.Exceptions;
 using VisioAutomation.ShapeSheet.Queries.Columns;
 using VisioAutomation.ShapeSheet.Queries.Outputs;
 using VisioAutomation.ShapeSheet.Queries.Utilities;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.ShapeSheet.Queries
 {
@@ -33,7 +33,7 @@ namespace VisioAutomation.ShapeSheet.Queries
             return col;
         }
 
-        public SubQuery AddSubQuery(IVisio.VisSectionIndices section)
+        public SubQuery AddSubQuery(IVisio.Enums.VisSectionIndices section)
         {
             var col = this.SubQueries.Add(section);
             return col;
@@ -197,7 +197,7 @@ namespace VisioAutomation.ShapeSheet.Queries
                 foreach (var sec in this.SubQueries)
                 {
                     // Figure out which rows to query
-                    int num_rows = surface.Target.Shape.RowCount[(short)sec.SectionIndex];
+                    int num_rows = surface.Target.Shape.get_RowCount((short)sec.SectionIndex);
                     var section_info = new SubQuerySectionDetails(sec, num_rows);
                     section_infos.Add(section_info);
                 }
@@ -304,8 +304,8 @@ namespace VisioAutomation.ShapeSheet.Queries
             var shapes = new List<IVisio.Shape>(shapeids.Count);
             foreach (int shapeid in shapeids)
             {
-                var shape = pageshapes.ItemFromID16[(short)shapeid];
-                shapes.Add(shape);
+                var shape = pageshapes.get_ItemFromID16((short)shapeid);
+                shapes.Add( (IVisio.Shape) shape);
             }
 
             for (int n = 0; n < shapeids.Count; n++)
@@ -334,13 +334,13 @@ namespace VisioAutomation.ShapeSheet.Queries
         {
             // For visSectionObject we know the result is always going to be 1
             // so avoid making the call tp RowCount[]
-            if (subquery.SectionIndex == IVisio.VisSectionIndices.visSectionObject)
+            if (subquery.SectionIndex == IVisio.Enums.VisSectionIndices.visSectionObject)
             {
                 return 1;
             }
 
             // For all other cases use RowCount[]
-            return shape.RowCount[(short)subquery.SectionIndex];
+            return shape.get_RowCount((short)subquery.SectionIndex);
         }
 
         private int _get_total_cell_count(int numshapes)
@@ -357,7 +357,7 @@ namespace VisioAutomation.ShapeSheet.Queries
             return count;
         }
 
-        private IList<IVisio.VisUnitCodes> _build_unit_code_array(int numshapes)
+        private IList<IVisio.Enums.VisUnitCodes> _build_unit_code_array(int numshapes)
         {
             if (numshapes < 1)
             {
@@ -365,7 +365,7 @@ namespace VisioAutomation.ShapeSheet.Queries
             }
 
             int numcells = this._get_total_cell_count(numshapes);
-            var unitcodes = new List<IVisio.VisUnitCodes>(numcells);
+            var unitcodes = new List<IVisio.Enums.VisUnitCodes>(numcells);
 
             for (int i = 0; i < numshapes; i++)
             {

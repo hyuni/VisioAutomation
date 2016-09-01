@@ -1,6 +1,6 @@
 using VisioAutomation.ShapeSheet.Queries.Columns;
 using SRCCON = VisioAutomation.ShapeSheet.SRCConstants;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.ShapeSheet.Queries.CommonQueries
 {
@@ -17,7 +17,7 @@ namespace VisioAutomation.ShapeSheet.Queries.CommonQueries
 
         public ControlCellsQuery()
         {
-            var sec = this.AddSubQuery(IVisio.VisSectionIndices.visSectionControls);
+            var sec = this.AddSubQuery(IVisio.Enums.VisSectionIndices.visSectionControls);
 
             this.CanGlue = sec.AddCell(SRCCON.Controls_CanGlue, nameof(SRCCON.Controls_CanGlue));
             this.Tip = sec.AddCell(SRCCON.Controls_Tip, nameof(SRCCON.Controls_Tip));

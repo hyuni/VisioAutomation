@@ -1,6 +1,6 @@
 using System;
 using VisioAutomation.ShapeSheet.Writers;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 using VA=VisioAutomation;
 
 namespace VisioAutomation.Shapes.Geometry
@@ -14,14 +14,14 @@ namespace VisioAutomation.Shapes.Geometry
         public ShapeSheet.FormulaLiteral C { get; set; }
         public ShapeSheet.FormulaLiteral D { get; set; }
         public ShapeSheet.FormulaLiteral E { get; set; }
-        public IVisio.VisRowTags RowTag { get; set; }
+        public IVisio.Enums.VisRowTags RowTag { get; set; }
 
-        public GeometryRow(IVisio.VisRowTags tag)
+        public GeometryRow(IVisio.Enums.VisRowTags tag)
         {
             this.RowTag = tag;
         }
 
-        public virtual IVisio.VisRowTags GetRowTagType()
+        public virtual IVisio.Enums.VisRowTags GetRowTagType()
         {
             return this.RowTag;
         }
@@ -56,7 +56,7 @@ namespace VisioAutomation.Shapes.Geometry
         {
             // http://msdn.microsoft.com/en-us/library/aa195656(v=office.11).aspx
 
-            var row = new GeometryRow(IVisio.VisRowTags.visTagLineTo);
+            var row = new GeometryRow(IVisio.Enums.VisRowTags.visTagLineTo);
             row.X = x;
             row.Y = y;
             return row;
@@ -66,7 +66,7 @@ namespace VisioAutomation.Shapes.Geometry
         {
             // http://msdn.microsoft.com/en-us/library/aa195679(v=office.11).aspx
 
-            var row = new GeometryRow(IVisio.VisRowTags.visTagMoveTo);
+            var row = new GeometryRow(IVisio.Enums.VisRowTags.visTagMoveTo);
             row.X = x;
             row.Y = y;
             return row;
@@ -77,7 +77,7 @@ namespace VisioAutomation.Shapes.Geometry
         {
             // http://msdn.microsoft.com/en-us/library/aa195698(v=office.11).aspx
 
-            var row = new GeometryRow(IVisio.VisRowTags.visTagArcTo);
+            var row = new GeometryRow(IVisio.Enums.VisRowTags.visTagArcTo);
             row.X = x;
             row.Y = y;
             row.A = a;
@@ -93,7 +93,7 @@ namespace VisioAutomation.Shapes.Geometry
         {
             // http://msdn.microsoft.com/en-us/library/aa195660(v=office.11).aspx
 
-            var row = new GeometryRow(IVisio.VisRowTags.visTagEllipticalArcTo);
+            var row = new GeometryRow(IVisio.Enums.VisRowTags.visTagEllipticalArcTo);
             row.X = x;
             row.Y = y;
             row.A = a;
@@ -113,7 +113,7 @@ namespace VisioAutomation.Shapes.Geometry
 
             // http://msdn.microsoft.com/en-us/library/aa195692(v=office.11).aspx
 
-            var row = new GeometryRow(IVisio.VisRowTags.visTagEllipse);
+            var row = new GeometryRow(IVisio.Enums.VisRowTags.visTagEllipse);
             row.X = x;
             row.Y = y;
             row.A = a;
@@ -133,7 +133,7 @@ namespace VisioAutomation.Shapes.Geometry
         {
             // http://msdn.microsoft.com/en-us/library/aa195685(v=office.11).aspx
 
-            var row = new GeometryRow(IVisio.VisRowTags.visTagEllipse);
+            var row = new GeometryRow(IVisio.Enums.VisRowTags.visTagEllipse);
             row.X = x;
             row.Y = y;
             row.A = a;
@@ -150,7 +150,7 @@ namespace VisioAutomation.Shapes.Geometry
         {
             // http://msdn.microsoft.com/en-us/library/aa195682(v=office.11).aspx
 
-            var row = new GeometryRow(IVisio.VisRowTags.visTagPolylineTo);
+            var row = new GeometryRow(IVisio.Enums.VisRowTags.visTagPolylineTo);
             row.X = x;
             row.Y = y;
             row.A = a;
@@ -164,7 +164,7 @@ namespace VisioAutomation.Shapes.Geometry
         {
             // http://msdn.microsoft.com/en-us/library/aa195682(v=office.11).aspx
 
-            var row = new GeometryRow(IVisio.VisRowTags.visTagInfiniteLine);
+            var row = new GeometryRow(IVisio.Enums.VisRowTags.visTagInfiniteLine);
             row.X = x;
             row.Y = y;
             row.A = a;
@@ -178,7 +178,7 @@ namespace VisioAutomation.Shapes.Geometry
         {
             // http://msdn.microsoft.com/en-us/library/aa195667(v=office.11).aspx
 
-            var row = new GeometryRow(IVisio.VisRowTags.visTagSplineSpan);
+            var row = new GeometryRow(IVisio.Enums.VisRowTags.visTagSplineSpan);
             row.X = x;
             row.Y = y;
             row.A = a;
@@ -195,7 +195,7 @@ namespace VisioAutomation.Shapes.Geometry
 
             // http://msdn.microsoft.com/en-us/library/aa195663(v=office.11).aspx
 
-            var row = new GeometryRow(IVisio.VisRowTags.visTagSplineBeg);
+            var row = new GeometryRow(IVisio.Enums.VisRowTags.visTagSplineBeg);
             row.X = x;
             row.Y = y;
             row.A = a;

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using VisioAutomation.Extensions;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.Shapes.Connectors
 {
@@ -12,7 +12,7 @@ namespace VisioAutomation.Shapes.Connectors
             int count = connects.Count;
             for (int i = 0; i < count; i++)
             {
-                yield return connects[i + 1];
+                yield return (IVisio.Connect) connects[i + 1];
             }
         }
 
@@ -53,10 +53,10 @@ namespace VisioAutomation.Shapes.Connectors
 
                 var src_beginx = ShapeSheet.SRCConstants.BeginX;
                 var src_endx = ShapeSheet.SRCConstants.EndX;
-                var connector_beginx = connector_shape.CellsSRC[src_beginx.Section, src_beginx.Row, src_beginx.Cell];
-                var connector_endx = connector_shape.CellsSRC[src_endx.Section, src_endx.Row, src_endx.Cell];
-                var from_cell = from_shape.CellsSRC[1, 1, 0];
-                var to_cell = to_shape.CellsSRC[1, 1, 0];
+                var connector_beginx = connector_shape.get_CellsSRC(src_beginx.Section, src_beginx.Row, src_beginx.Cell);
+                var connector_endx = connector_shape.get_CellsSRC(src_endx.Section, src_endx.Row, src_endx.Cell);
+                var from_cell = from_shape.get_CellsSRC(1, 1, 0);
+                var to_cell = to_shape.get_CellsSRC(1, 1, 0);
                 connector_beginx.GlueTo(from_cell);
                 connector_endx.GlueTo(to_cell);                                
             }
@@ -65,11 +65,11 @@ namespace VisioAutomation.Shapes.Connectors
                 // Use the AutoConnect feature
                 if (connector_shape == null)
                 {
-                    from_shape.AutoConnect(to_shape, IVisio.VisAutoConnectDir.visAutoConnectDirNone);                    
+                    from_shape.AutoConnect(to_shape, IVisio.Enums.VisAutoConnectDir.visAutoConnectDirNone);                    
                 }
                 else
                 {
-                    from_shape.AutoConnect(to_shape, IVisio.VisAutoConnectDir.visAutoConnectDirNone,connector_shape);                    
+                    from_shape.AutoConnect(to_shape, IVisio.Enums.VisAutoConnectDir.visAutoConnectDirNone,connector_shape);                    
                     
                 }
             }
@@ -121,12 +121,12 @@ namespace VisioAutomation.Shapes.Connectors
             {
                 var masters = Enumerable.Repeat(connector_master, num_connectors).ToList();
                 short[] con_shapeids = page.DropManyU(masters, points);
-                con_shapes = page.Shapes.GetShapesFromIDs(con_shapeids);                
+                con_shapes = ((IVisio.Shapes) page.Shapes).GetShapesFromIDs(con_shapeids);                
             }
             else
             {
                 short[] con_shapeids = Pages.PageHelper.DropManyAutoConnectors(page, points);
-                con_shapes = page.Shapes.GetShapesFromIDs(con_shapeids);
+                con_shapes = ((IVisio.Shapes)page.Shapes).GetShapesFromIDs(con_shapeids);
             }
 
             for (int i = 0; i < num_connectors; i++)

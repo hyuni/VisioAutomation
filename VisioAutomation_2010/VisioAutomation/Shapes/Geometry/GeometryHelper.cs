@@ -1,5 +1,5 @@
 using VisioAutomation.Exceptions;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.Shapes.Geometry
 {
@@ -20,7 +20,7 @@ namespace VisioAutomation.Shapes.Geometry
             {
                 throw new InternalAssertionException();
             }
-            short row_index = shape.AddRow(new_sec_index, (short)IVisio.VisRowIndices.visRowComponent, (short)IVisio.VisRowTags.visTagComponent);
+            short row_index = shape.AddRow(new_sec_index, (short)IVisio.Enums.VisRowIndices.visRowComponent, (short)IVisio.Enums.VisRowTags.visTagComponent);
 
             return new_sec_index;
         }
@@ -28,7 +28,7 @@ namespace VisioAutomation.Shapes.Geometry
         private static short GetGeometrySectionIndex(short index)
         {
             short i =
-                (short) (((int) IVisio.VisSectionIndices.visSectionFirstComponent) + (index));
+                (short) (((int) IVisio.Enums.VisSectionIndices.visSectionFirstComponent) + (index));
             return i;
         }
 

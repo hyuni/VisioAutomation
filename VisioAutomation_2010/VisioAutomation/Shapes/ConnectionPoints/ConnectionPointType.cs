@@ -1,11 +1,11 @@
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.Shapes.ConnectionPoints
 {
     public enum ConnectionPointType
     {
-        Inward = IVisio.VisCellVals.visCnnctTypeInward,
-        Outward = IVisio.VisCellVals.visCnnctTypeOutward,
-        InwardOutward = IVisio.VisCellVals.visCnnctTypeInwardOutward
+        Inward = IVisio.Enums.VisCellVals.visCnnctTypeInward,
+        Outward = IVisio.Enums.VisCellVals.visCnnctTypeOutward,
+        InwardOutward = IVisio.Enums.VisCellVals.visCnnctTypeInwardOutward
     }
 }

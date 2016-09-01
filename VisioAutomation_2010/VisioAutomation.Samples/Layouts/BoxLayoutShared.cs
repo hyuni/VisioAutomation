@@ -1,5 +1,5 @@
 ﻿using VisioAutomation.Extensions;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 using VA = VisioAutomation;
 using BoxL = VisioAutomation.Models.Layouts.Box;
 

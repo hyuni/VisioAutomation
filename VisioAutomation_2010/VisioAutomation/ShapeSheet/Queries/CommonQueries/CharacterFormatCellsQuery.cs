@@ -1,6 +1,6 @@
 using VisioAutomation.ShapeSheet.Queries.Columns;
 using SRCCON = VisioAutomation.ShapeSheet.SRCConstants;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.ShapeSheet.Queries.CommonQueries
 {
@@ -31,7 +31,7 @@ namespace VisioAutomation.ShapeSheet.Queries.CommonQueries
 
         public CharacterFormatCellsQuery()
         {
-            var sec = this.AddSubQuery(IVisio.VisSectionIndices.visSectionCharacter);
+            var sec = this.AddSubQuery(IVisio.Enums.VisSectionIndices.visSectionCharacter);
 
             this.Color = sec.AddCell(SRCCON.CharColor, nameof(SRCCON.CharColor));
             this.Trans = sec.AddCell(SRCCON.CharColorTrans, nameof(SRCCON.CharColorTrans));

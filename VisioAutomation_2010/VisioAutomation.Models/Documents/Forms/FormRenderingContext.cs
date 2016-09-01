@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.Models.Documents.Forms
 {

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using IVisio=Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.Fonts
 {
@@ -10,7 +10,7 @@ namespace VisioAutomation.Fonts
             short count = fonts.Count;
             for (int i = 0; i < count; i++)
             {
-                yield return fonts[i + 1];
+                yield return (IVisio.Font) fonts[i + 1];
             }
         }
     }

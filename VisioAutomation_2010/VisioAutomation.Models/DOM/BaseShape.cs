@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using VisioAutomation.Text;
 using VACUSTPROP = VisioAutomation.Shapes.CustomProperties;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.Models.Dom
 {

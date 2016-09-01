@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using VisioAutomation.Extensions;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.Shapes
 {
@@ -14,14 +14,14 @@ namespace VisioAutomation.Shapes
             return s;
         }
 
-        public static IVisio.Shape DrawQuarterArc(IVisio.Shape shape, Drawing.Point p0, Drawing.Point p1, IVisio.VisArcSweepFlags flags)
+        public static IVisio.Shape DrawQuarterArc(IVisio.Shape shape, Drawing.Point p0, Drawing.Point p1, IVisio.Enums.VisArcSweepFlags flags)
         {
             var surface = new Drawing.DrawingSurface(shape);
             var s = surface.DrawQuarterArc(p0, p1, flags);
             return s;
         }
 
-        public static Drawing.Rectangle GetBoundingBox(IVisio.Shape shape, IVisio.VisBoundingBoxArgs args)
+        public static Drawing.Rectangle GetBoundingBox(IVisio.Shape shape, IVisio.Enums.VisBoundingBoxArgs args)
         {
             var surface = new Drawing.DrawingSurface(shape);
             var r = surface.GetBoundingBox(args);
@@ -51,7 +51,7 @@ namespace VisioAutomation.Shapes
             int count = shapes.Count;
             for (int i = 0; i < count; i++)
             {
-                yield return shapes[i + 1];
+                yield return (IVisio.Shape) shapes[i + 1];
             }
         }
 
@@ -76,9 +76,9 @@ namespace VisioAutomation.Shapes
                 var subshapes = s.Shapes;
                 if (subshapes.Count > 0)
                 {
-                    foreach (var child in subshapes.ToEnumerable())
+                    foreach (var child in subshapes)
                     {
-                        stack.Push(child);
+                        stack.Push((IVisio.Shape) child);
                     }
                 }
 
@@ -105,7 +105,7 @@ namespace VisioAutomation.Shapes
             var shape_objs = new List<IVisio.Shape>(shapeids.Count);
             foreach (short shapeid in shapeids)
             {
-                var shape = shapes.ItemFromID16[shapeid];
+                var shape = (IVisio.Shape) shapes.get_ItemFromID16(shapeid);
                 shape_objs.Add(shape);
             }
             return shape_objs;

@@ -1,4 +1,4 @@
-﻿using IVisio = Microsoft.Office.Interop.Visio;
+﻿using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.Pages.PageLayout
 {
@@ -22,66 +22,66 @@ namespace VisioAutomation.Pages.PageLayout
             pagecells.PlaceStyle = (int) HierarchyLayout.GetPlaceStyle(this.Direction, this.HorizontalAlignment, this.VerticalAlignment);
         }
 
-        private static IVisio.VisCellVals GetPlaceStyle(Direction dir, HorizontalAlignment halign, VerticalAlignment valign)
+        private static IVisio.Enums.VisCellVals GetPlaceStyle(Direction dir, HorizontalAlignment halign, VerticalAlignment valign)
         {
             if (dir == Direction.BottomToTop)
             {
                 if (halign == HorizontalAlignment.Left)
                 {
-                    return IVisio.VisCellVals.visPLOPlaceHierarchyBottomToTopLeft;
+                    return IVisio.Enums.VisCellVals.visPLOPlaceHierarchyBottomToTopLeft;
                 }
                 else if (halign == HorizontalAlignment.Center)
                 {
-                    return IVisio.VisCellVals.visPLOPlaceHierarchyBottomToTopCenter;
+                    return IVisio.Enums.VisCellVals.visPLOPlaceHierarchyBottomToTopCenter;
                 }
                 else if (halign == HorizontalAlignment.Right)
                 {
-                    return IVisio.VisCellVals.visPLOPlaceHierarchyBottomToTopRight;
+                    return IVisio.Enums.VisCellVals.visPLOPlaceHierarchyBottomToTopRight;
                 }
             }
             else if (dir == Direction.TopToBottom)
             {
                 if (halign == HorizontalAlignment.Left)
                 {
-                    return IVisio.VisCellVals.visPLOPlaceHierarchyTopToBottomLeft;
+                    return IVisio.Enums.VisCellVals.visPLOPlaceHierarchyTopToBottomLeft;
                 }
                 else if (halign == HorizontalAlignment.Center)
                 {
-                    return IVisio.VisCellVals.visPLOPlaceHierarchyTopToBottomCenter;
+                    return IVisio.Enums.VisCellVals.visPLOPlaceHierarchyTopToBottomCenter;
                 }
                 else if (halign == HorizontalAlignment.Right)
                 {
-                    return IVisio.VisCellVals.visPLOPlaceHierarchyTopToBottomRight;
+                    return IVisio.Enums.VisCellVals.visPLOPlaceHierarchyTopToBottomRight;
                 }
             }
             else if (dir == Direction.LeftToRight)
             {
                 if (valign == VerticalAlignment.Top)
                 {
-                    return IVisio.VisCellVals.visPLOPlaceHierarchyLeftToRightTop;
+                    return IVisio.Enums.VisCellVals.visPLOPlaceHierarchyLeftToRightTop;
                 }
                 else if (valign == VerticalAlignment.Middle)
                 {
-                    return IVisio.VisCellVals.visPLOPlaceHierarchyLeftToRightMiddle;
+                    return IVisio.Enums.VisCellVals.visPLOPlaceHierarchyLeftToRightMiddle;
                 }
                 else if (valign == VerticalAlignment.Bottom)
                 {
-                    return IVisio.VisCellVals.visPLOPlaceHierarchyLeftToRightBottom;
+                    return IVisio.Enums.VisCellVals.visPLOPlaceHierarchyLeftToRightBottom;
                 }
             }
             else if (dir == Direction.RightToLeft)
             {
                 if (valign == VerticalAlignment.Top)
                 {
-                    return IVisio.VisCellVals.visPLOPlaceHierarchyRightToLeftTop;
+                    return IVisio.Enums.VisCellVals.visPLOPlaceHierarchyRightToLeftTop;
                 }
                 else if (valign == VerticalAlignment.Middle)
                 {
-                    return IVisio.VisCellVals.visPLOPlaceHierarchyRightToLeftMiddle;
+                    return IVisio.Enums.VisCellVals.visPLOPlaceHierarchyRightToLeftMiddle;
                 }
                 else if (valign == VerticalAlignment.Bottom)
                 {
-                    return IVisio.VisCellVals.visPLOPlaceHierarchyRightToLeftBottom;
+                    return IVisio.Enums.VisCellVals.visPLOPlaceHierarchyRightToLeftBottom;
                 }
                 else
                 {
@@ -91,7 +91,7 @@ namespace VisioAutomation.Pages.PageLayout
             throw new System.ArgumentOutOfRangeException(nameof(dir));
         }
 
-        protected override IVisio.VisCellVals? ConnectorsStyleToRouteStyle()
+        protected override IVisio.Enums.VisCellVals? ConnectorsStyleToRouteStyle()
         {
             var rs = base.ConnectorsStyleToRouteStyle();
             if (rs.HasValue)

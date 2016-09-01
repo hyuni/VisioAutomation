@@ -1,11 +1,11 @@
-﻿using IVisio=Microsoft.Office.Interop.Visio;
+﻿using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.Pages
 {
     public enum PrintPageOrientation
     {
-        SameAsPrinter = IVisio.VisCellVals.visPPOSameAsPrinter,
-        Portrait = IVisio.VisCellVals.visPPOPortrait,
-        Landscape = IVisio.VisCellVals.visPPOLandscape
+        SameAsPrinter = IVisio.Enums.VisCellVals.visPPOSameAsPrinter,
+        Portrait = IVisio.Enums.VisCellVals.visPPOPortrait,
+        Landscape = IVisio.Enums.VisCellVals.visPPOLandscape
     }
 }

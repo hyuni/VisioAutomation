@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using IVisio=Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.Layers
 {
@@ -10,7 +10,7 @@ namespace VisioAutomation.Layers
             short count = layers.Count;
             for (int i = 0; i < count; i++)
             {
-                yield return layers[i + 1];
+                yield return (IVisio.Layer) layers[i + 1];
             }
         }
     }

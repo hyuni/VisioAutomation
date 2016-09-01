@@ -3,7 +3,7 @@ using System.Linq;
 using VisioAutomation.ShapeSheet;
 using VisioAutomation.ShapeSheet.Writers;
 using SRCCON = VisioAutomation.ShapeSheet.SRCConstants;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.Scripting.FormatPaint
 {

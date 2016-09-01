@@ -1,6 +1,6 @@
 using VisioAutomation.ShapeSheet.Queries.Columns;
 using SRCCON=VisioAutomation.ShapeSheet.SRCConstants;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.ShapeSheet.Queries.CommonQueries
 {
@@ -23,7 +23,7 @@ namespace VisioAutomation.ShapeSheet.Queries.CommonQueries
 
         public ParagraphFormatCellsQuery()
         {
-            var sec = this.AddSubQuery(IVisio.VisSectionIndices.visSectionParagraph);
+            var sec = this.AddSubQuery(IVisio.Enums.VisSectionIndices.visSectionParagraph);
             this.Bullet = sec.AddCell(SRCCON.Para_Bullet, nameof(SRCCON.Para_Bullet));
             this.BulletFont = sec.AddCell(SRCCON.Para_BulletFont, nameof(SRCCON.Para_BulletFont));
             this.BulletFontSize = sec.AddCell(SRCCON.Para_BulletFontSize, nameof(SRCCON.Para_BulletFontSize));

@@ -1,4 +1,4 @@
-﻿using IVisio = Microsoft.Office.Interop.Visio;
+﻿using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.ShapeSheet.Writers
 {
@@ -13,13 +13,13 @@ namespace VisioAutomation.ShapeSheet.Writers
         {
         }
         
-        public void SetResult(SIDSRC sidsrc, double value, IVisio.VisUnitCodes unitcode)
+        public void SetResult(SIDSRC sidsrc, double value, IVisio.Enums.VisUnitCodes unitcode)
         {
             var v = new ResultValue(value, unitcode);
             this.SetResult(sidsrc, v);
         }
 
-        public void SetResult(SIDSRC sidsrc, string value, IVisio.VisUnitCodes unitcode)
+        public void SetResult(SIDSRC sidsrc, string value, IVisio.Enums.VisUnitCodes unitcode)
         {
             var v = new ResultValue(value, unitcode);
             this.SetResult(sidsrc, v);

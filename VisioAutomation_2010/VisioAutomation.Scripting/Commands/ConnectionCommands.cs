@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using VisioAutomation.Shapes.Connectors;
 using VA = VisioAutomation;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.Scripting.Commands
 {

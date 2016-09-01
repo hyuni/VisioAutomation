@@ -7,7 +7,7 @@ using VisioAutomation.ShapeSheet;
 using VisioAutomation.ShapeSheet.Queries;
 using VACONT = VisioAutomation.Shapes.Controls;
 using VACUSTPROP = VisioAutomation.Shapes.CustomProperties;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 using VA = VisioAutomation;
 
 namespace VisioAutomation_Tests.Core.ShapeSheet

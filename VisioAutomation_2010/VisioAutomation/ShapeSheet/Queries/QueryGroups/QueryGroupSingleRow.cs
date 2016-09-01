@@ -1,4 +1,4 @@
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 using System.Collections.Generic;
 using VisioAutomation.Exceptions;
 using VisioAutomation.ShapeSheet;

@@ -1,7 +1,7 @@
 ﻿using VisioAutomation.Models.Dom;
 using VisioAutomation.Shapes.Connectors;
 using VA = VisioAutomation;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.Models.Layouts.DirectedGraph
 {

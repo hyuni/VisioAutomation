@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.Extensions
 {
@@ -10,7 +10,7 @@ namespace VisioAutomation.Extensions
             return VisioAutomation.Selections.SelectionHelper.ToEnumerable(selection);
         }
         
-        public static Drawing.Rectangle GetBoundingBox(this IVisio.Selection selection, IVisio.VisBoundingBoxArgs args)
+        public static Drawing.Rectangle GetBoundingBox(this IVisio.Selection selection, IVisio.Enums.VisBoundingBoxArgs args)
         {
             return VisioAutomation.Selections.SelectionHelper.GetBoundingBox(selection, args);
         }

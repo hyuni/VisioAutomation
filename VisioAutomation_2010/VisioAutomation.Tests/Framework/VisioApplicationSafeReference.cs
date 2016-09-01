@@ -1,5 +1,5 @@
 using System.Runtime.InteropServices;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation_Tests
 {

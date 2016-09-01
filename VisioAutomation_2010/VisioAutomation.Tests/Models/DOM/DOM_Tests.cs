@@ -4,7 +4,7 @@ using VisioAutomation.Exceptions;
 using VisioAutomation.Extensions;
 using VisioAutomation.Models.Dom;
 using VA = VisioAutomation;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 
 namespace VisioAutomation_Tests.Models.Dom

@@ -1,4 +1,4 @@
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 using VA=VisioAutomation;
 
 namespace VisioAutomation.Models.Layouts.Tree

@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using IVisio=Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.Styles
 {
@@ -10,13 +10,13 @@ namespace VisioAutomation.Styles
             int count = styles.Count;
             for (int i = 0; i < count; i++)
             {
-                yield return styles[i + 1];
+                yield return (IVisio.Style) styles[i + 1];
             }
         }
 
         public static string[] GetNamesU(IVisio.Styles styles)
         {
-            System.Array names_sa;
+            string[] names_sa;
             styles.GetNamesU(out names_sa);
             string[] names = (string[])names_sa;
             return names;

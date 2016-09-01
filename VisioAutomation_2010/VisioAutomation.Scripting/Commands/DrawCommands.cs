@@ -4,7 +4,7 @@ using System.Security.Cryptography.X509Certificates;
 using VisioAutomation.Extensions;
 using VisioAutomation.Scripting.Exceptions;
 using VisioAutomation.Scripting.View;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 using VAGRID = VisioAutomation.Models.Layouts.Grid;
 using VAORGCHART = VisioAutomation.Models.Documents.OrgCharts;
 using VAGRAPH = VisioAutomation.Models.Layouts.DirectedGraph;

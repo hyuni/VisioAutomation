@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.Colors
 {
@@ -10,7 +10,7 @@ namespace VisioAutomation.Colors
             int count = colors.Count;
             for (int i = 0; i < count; i++)
             {
-                yield return colors[i];
+                yield return (IVisio.Color) colors[i];
             }
         }
     }

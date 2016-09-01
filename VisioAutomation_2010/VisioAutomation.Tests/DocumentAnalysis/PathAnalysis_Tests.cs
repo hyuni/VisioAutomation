@@ -5,7 +5,7 @@ using VisioAutomation.Shapes.Connectors;
 using VisioAutomation.ShapeSheet.Writers;
 using VADRAW=VisioAutomation.Drawing;
 using VASS=VisioAutomation.ShapeSheet;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation_Tests.DocumentAnalysis
 {

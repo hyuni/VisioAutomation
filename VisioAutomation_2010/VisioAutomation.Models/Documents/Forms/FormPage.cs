@@ -1,5 +1,5 @@
 using VisioAutomation.Drawing.Layout;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.Models.Documents.Forms
 {

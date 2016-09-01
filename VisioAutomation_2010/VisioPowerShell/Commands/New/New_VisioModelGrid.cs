@@ -1,5 +1,5 @@
 ﻿using System.Management.Automation;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 using VA = VisioAutomation;
 using GRID = VisioAutomation.Models.Layouts.Grid;
 

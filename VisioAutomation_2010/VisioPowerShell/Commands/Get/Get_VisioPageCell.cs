@@ -4,7 +4,7 @@ using System.Linq;
 using System.Management.Automation;
 using VisioAutomation.ShapeSheet;
 using VisioPowerShell.ShapeSheet;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 using VA = VisioAutomation;
 
 namespace VisioPowerShell.Commands.Get

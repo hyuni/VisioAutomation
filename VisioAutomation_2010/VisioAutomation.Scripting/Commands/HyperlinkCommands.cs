@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using VAHLINK = VisioAutomation.Shapes.Hyperlinks;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.Scripting.Commands
 {

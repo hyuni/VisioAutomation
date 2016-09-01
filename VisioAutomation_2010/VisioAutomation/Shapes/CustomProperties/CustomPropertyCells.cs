@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using VisioAutomation.ShapeSheet.Queries.QueryGroups;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.Shapes.CustomProperties
 {

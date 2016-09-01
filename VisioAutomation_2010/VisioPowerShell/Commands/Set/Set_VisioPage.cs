@@ -1,7 +1,7 @@
 using System.Management.Automation;
 using VisioAutomation.Scripting.View;
 using VA = VisioAutomation;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioPowerShell.Commands.Set
 {

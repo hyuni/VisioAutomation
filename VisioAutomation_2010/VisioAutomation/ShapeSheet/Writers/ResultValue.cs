@@ -1,4 +1,4 @@
-using IVisio= Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.ShapeSheet.Writers
 {
@@ -6,11 +6,11 @@ namespace VisioAutomation.ShapeSheet.Writers
     {
         public readonly double ValueNumeric;
         public readonly string ValueString;
-        public readonly IVisio.VisUnitCodes UnitCode;
+        public readonly IVisio.Enums.VisUnitCodes UnitCode;
         public readonly ResultType ResultType;
 
         internal ResultValue(double value,
-            IVisio.VisUnitCodes unit_code)
+            IVisio.Enums.VisUnitCodes unit_code)
         {
             this.UnitCode = unit_code;
             this.ValueNumeric = value;
@@ -19,7 +19,7 @@ namespace VisioAutomation.ShapeSheet.Writers
         }
 
         internal ResultValue(string value,
-            IVisio.VisUnitCodes unit_code)
+            IVisio.Enums.VisUnitCodes unit_code)
         {
             this.UnitCode = unit_code;
             this.ValueNumeric = 0.0;

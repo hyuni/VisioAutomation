@@ -7,7 +7,7 @@ using VisioAutomation.Models.Utilities;
 using VisioAutomation.Shapes.Connectors;
 using VisioAutomation.ShapeSheet.Writers;
 using VACUSTPROP = VisioAutomation.Shapes.CustomProperties;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.Models.Dom
 {

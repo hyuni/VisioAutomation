@@ -1,4 +1,4 @@
-﻿using IVisio = Microsoft.Office.Interop.Visio;
+﻿using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.Pages.PageLayout
 {
@@ -19,23 +19,23 @@ namespace VisioAutomation.Pages.PageLayout
             pagecells.PlaceStyle = (int) FlowchartLayout.GetPlaceStyle(this.Direction);
         }
 
-        private static IVisio.VisCellVals GetPlaceStyle(Direction dir)
+        private static IVisio.Enums.VisCellVals GetPlaceStyle(Direction dir)
         {
             if (dir == Direction.TopToBottom)
             {
-                return IVisio.VisCellVals.visPLOPlaceTopToBottom;
+                return IVisio.Enums.VisCellVals.visPLOPlaceTopToBottom;
             }
             else if (dir == Direction.LeftToRight)
             {
-                return IVisio.VisCellVals.visPLOPlaceLeftToRight;
+                return IVisio.Enums.VisCellVals.visPLOPlaceLeftToRight;
             }
             else if (dir == Direction.BottomToTop)
             {
-                return IVisio.VisCellVals.visPLOPlaceBottomToTop;
+                return IVisio.Enums.VisCellVals.visPLOPlaceBottomToTop;
             }
             else if (dir == Direction.RightToLeft)
             {
-                return IVisio.VisCellVals.visPLOPlaceRightToLeft;
+                return IVisio.Enums.VisCellVals.visPLOPlaceRightToLeft;
             }
             else
             {
@@ -43,7 +43,7 @@ namespace VisioAutomation.Pages.PageLayout
             }
         }
 
-        protected override IVisio.VisCellVals? ConnectorsStyleToRouteStyle()
+        protected override IVisio.Enums.VisCellVals? ConnectorsStyleToRouteStyle()
         {
             var rs = base.ConnectorsStyleToRouteStyle();
             if (rs.HasValue)

@@ -1,7 +1,7 @@
 using VisioAutomation.Shapes.ConnectionPoints;
 using VisioAutomation.ShapeSheet.Queries.Columns;
 using SRCCON = VisioAutomation.ShapeSheet.SRCConstants;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.ShapeSheet.Queries.CommonQueries
 {
@@ -15,7 +15,7 @@ namespace VisioAutomation.ShapeSheet.Queries.CommonQueries
 
         public ConnectionPointCellsQuery()
         {
-            var sec = this.AddSubQuery(IVisio.VisSectionIndices.visSectionConnectionPts);
+            var sec = this.AddSubQuery(IVisio.Enums.VisSectionIndices.visSectionConnectionPts);
 
             this.DirX = sec.AddCell(SRCCON.Connections_DirX, nameof(SRCCON.Connections_DirX));
             this.DirY = sec.AddCell(SRCCON.Connections_DirY, nameof(SRCCON.Connections_DirY));

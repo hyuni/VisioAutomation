@@ -3,7 +3,7 @@ using System.Linq;
 using VisioAutomation.Exceptions;
 using VisioAutomation.Extensions;
 using VisioAutomation.ShapeSheet.Writers;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.Shapes.UserDefinedCells
 {
@@ -32,7 +32,7 @@ namespace VisioAutomation.Shapes.UserDefinedCells
 
             string full_prop_name = UserDefinedCellHelper.GetRowName(name);
 
-            short row = shape.CellsU[full_prop_name].Row;
+            short row = shape.get_CellsU( full_prop_name).Row;
             shape.DeleteRow(UserDefinedCellHelper._userdefinedcell_section, row);
         }
 
@@ -57,14 +57,14 @@ namespace VisioAutomation.Shapes.UserDefinedCells
                 if (value.HasValue)
                 {
                     string value_cell_name = full_prop_name;
-                    var cell = shape.CellsU[value_cell_name];
+                    var cell = shape.get_CellsU(value_cell_name);
                     cell.FormulaU = value.Encode();                    
                 }
 
                 if (prompt.HasValue)
                 {
                     string prompt_cell_name = full_prop_name+".Prompt";
-                    var cell = shape.CellsU[prompt_cell_name];
+                    var cell = shape.get_CellsU(prompt_cell_name);
                     cell.FormulaU = prompt.Encode();                                        
                 }
                 return;
@@ -73,19 +73,19 @@ namespace VisioAutomation.Shapes.UserDefinedCells
             short row = shape.AddNamedRow(
                 UserDefinedCellHelper._userdefinedcell_section,
                 name,
-                (short)IVisio.VisRowIndices.visRowUser);
+                (short)IVisio.Enums.VisRowIndices.visRowUser);
 
             var writer = new FormulaWriterSRC();
 
             if (value.HasValue)
             {
-                var src = new ShapeSheet.SRC(UserDefinedCellHelper._userdefinedcell_section, row, (short)IVisio.VisCellIndices.visUserValue);
+                var src = new ShapeSheet.SRC(UserDefinedCellHelper._userdefinedcell_section, row, (short)IVisio.Enums.VisCellIndices.visUserValue);
                 writer.SetFormula(src, value.Encode());
             }
 
             if (prompt.HasValue)
             {
-                var src = new ShapeSheet.SRC(UserDefinedCellHelper._userdefinedcell_section, row, (short)IVisio.VisCellIndices.visUserPrompt);
+                var src = new ShapeSheet.SRC(UserDefinedCellHelper._userdefinedcell_section, row, (short)IVisio.Enums.VisCellIndices.visUserPrompt);
                 writer.SetFormula(src, prompt.Encode());
             }
 
@@ -179,12 +179,12 @@ namespace VisioAutomation.Shapes.UserDefinedCells
             }
 
             // If the User Property section does not exist then return zero immediately
-            if (0 == shape.SectionExists[UserDefinedCellHelper._userdefinedcell_section, (short)IVisio.VisExistsFlags.visExistsAnywhere])
+            if (0 == shape.get_SectionExists(UserDefinedCellHelper._userdefinedcell_section, (short)IVisio.Enums.VisExistsFlags.visExistsAnywhere))
             {
                 return 0;
             }
 
-            var section = shape.Section[UserDefinedCellHelper._userdefinedcell_section];
+            var section = shape.get_Section(UserDefinedCellHelper._userdefinedcell_section);
 
             if (section == null)
             {
@@ -192,7 +192,7 @@ namespace VisioAutomation.Shapes.UserDefinedCells
                 throw new InternalAssertionException(msg);
             }
 
-            int row_count = section.Shape.RowCount[UserDefinedCellHelper._userdefinedcell_section];
+            int row_count = section.Shape.get_RowCount(UserDefinedCellHelper._userdefinedcell_section);
 
             return row_count;
         }
@@ -220,7 +220,7 @@ namespace VisioAutomation.Shapes.UserDefinedCells
             }
 
             var prop_names = new List<string>(user_prop_row_count);
-            var prop_section = shape.Section[UserDefinedCellHelper._userdefinedcell_section];
+            var prop_section = (IVisio.Section) shape.get_Section(UserDefinedCellHelper._userdefinedcell_section);
             var query_names = prop_section.ToEnumerable().Select(row => row.NameU);
             prop_names.AddRange(query_names);
 
@@ -281,8 +281,8 @@ namespace VisioAutomation.Shapes.UserDefinedCells
 
             string full_prop_name = UserDefinedCellHelper.GetRowName(name);
 
-            var exists = (short)IVisio.VisExistsFlags.visExistsAnywhere;
-            return 0 != (shape.CellExistsU[full_prop_name, exists]);
+            var exists = (short)IVisio.Enums.VisExistsFlags.visExistsAnywhere;
+            return 0 != (shape.get_CellExistsU(full_prop_name, exists));
         }
     }
 }

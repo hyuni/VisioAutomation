@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.ShapeSheet
 {
@@ -10,9 +10,9 @@ namespace VisioAutomation.ShapeSheet
         public short Cell { get; }
 
         public SRC(
-            IVisio.VisSectionIndices section,
-            IVisio.VisRowIndices row,
-            IVisio.VisCellIndices cell)
+            IVisio.Enums.VisSectionIndices section,
+            IVisio.Enums.VisRowIndices row,
+            IVisio.Enums.VisCellIndices cell)
             : this((short)section, (short)row, (short)cell)
         {
         }

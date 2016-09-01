@@ -1,6 +1,6 @@
 ﻿using VAUDCELLS = VisioAutomation.Shapes.UserDefinedCells;
 using VA = VisioAutomation;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 using VisioAutomation.Extensions;
 using System.Linq;
 using System.Collections.Generic;

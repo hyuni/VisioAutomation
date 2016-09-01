@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using VisioAutomation.ShapeSheet.Writers;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 using VA=VisioAutomation;
 
 namespace VisioAutomation.Shapes.Geometry
@@ -41,7 +41,7 @@ namespace VisioAutomation.Shapes.Geometry
         public short Render(IVisio.Shape shape)
         {
             short sec_index = GeometryHelper.AddSection(shape);
-            short row_count = shape.RowCount[sec_index];
+            short row_count = shape.get_RowCount(sec_index);
 
             var writer = new FormulaWriterSRC();
 

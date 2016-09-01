@@ -1,4 +1,4 @@
-﻿using IVisio = Microsoft.Office.Interop.Visio;
+﻿using IVisio = NetOffice.VisioApi;
 using System.Collections.Generic;
 
 namespace VisioAutomation.ShapeSheet.Queries
@@ -6,12 +6,12 @@ namespace VisioAutomation.ShapeSheet.Queries
     public class ListSubQuery : IEnumerable<SubQuery>
     {
         private IList<SubQuery> Items { get; }
-        private readonly Dictionary<IVisio.VisSectionIndices,SubQuery> _section_set; 
+        private readonly Dictionary<IVisio.Enums.VisSectionIndices,SubQuery> _section_set; 
 
         internal ListSubQuery(int capacity)
         {
             this.Items = new List<SubQuery>(capacity);
-            this._section_set = new Dictionary<IVisio.VisSectionIndices, SubQuery>(capacity);
+            this._section_set = new Dictionary<IVisio.Enums.VisSectionIndices, SubQuery>(capacity);
         }
 
         public IEnumerator<SubQuery> GetEnumerator()
@@ -26,7 +26,7 @@ namespace VisioAutomation.ShapeSheet.Queries
 
         public SubQuery this[int index] => this.Items[index];
 
-        internal SubQuery Add(IVisio.VisSectionIndices section)
+        internal SubQuery Add(IVisio.Enums.VisSectionIndices section)
         {
             if (this._section_set.ContainsKey(section))
             {

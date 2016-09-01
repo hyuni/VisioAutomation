@@ -1,5 +1,5 @@
 using VisioAutomation.ShapeSheet.Queries.Columns;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.ShapeSheet.Queries.CommonQueries
 {
@@ -18,7 +18,7 @@ namespace VisioAutomation.ShapeSheet.Queries.CommonQueries
 
         public HyperlinkCellsQuery()
         {
-            var sec = this.AddSubQuery(IVisio.VisSectionIndices.visSectionHyperlink);
+            var sec = this.AddSubQuery(IVisio.Enums.VisSectionIndices.visSectionHyperlink);
 
             this.Address = sec.AddCell(ShapeSheet.SRCConstants.Hyperlink_Address , nameof(ShapeSheet.SRCConstants.Hyperlink_Address));
             this.Default = sec.AddCell(ShapeSheet.SRCConstants.Hyperlink_Default, nameof(ShapeSheet.SRCConstants.Hyperlink_Default));

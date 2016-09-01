@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.ShapeSheet.Writers
 {
@@ -29,33 +29,33 @@ namespace VisioAutomation.ShapeSheet.Writers
             this.ValueItems = new List<TValue>(capacity);
         }
 
-        protected IVisio.VisGetSetArgs ComputeGetResultFlags(ResultType rt)
+        protected IVisio.Enums.VisGetSetArgs ComputeGetResultFlags(ResultType rt)
         {
             var flags = this.combine_blastguards_and_testcircular_flags();
 
             if (rt == ResultType.ResultString)
             {
-                flags |= IVisio.VisGetSetArgs.visGetStrings;
+                flags |= IVisio.Enums.VisGetSetArgs.visGetStrings;
             }
 
             return flags;
         }
 
-        protected IVisio.VisGetSetArgs ComputeGetFormulaFlags()
+        protected IVisio.Enums.VisGetSetArgs ComputeGetFormulaFlags()
         {
             var common_flags = this.combine_blastguards_and_testcircular_flags();
-            var formula_flags = (short)IVisio.VisGetSetArgs.visSetUniversalSyntax;
+            var formula_flags = (short)IVisio.Enums.VisGetSetArgs.visSetUniversalSyntax;
             var combined_flags = (short)common_flags | formula_flags;
-            return (IVisio.VisGetSetArgs)combined_flags;
+            return (IVisio.Enums.VisGetSetArgs)combined_flags;
         }
 
-        private IVisio.VisGetSetArgs combine_blastguards_and_testcircular_flags()
+        private IVisio.Enums.VisGetSetArgs combine_blastguards_and_testcircular_flags()
         {
-            var f_bg = this.BlastGuards ? IVisio.VisGetSetArgs.visSetBlastGuards : 0;
-            var f_tc = this.TestCircular ? IVisio.VisGetSetArgs.visSetTestCircular : 0;
+            var f_bg = this.BlastGuards ? IVisio.Enums.VisGetSetArgs.visSetBlastGuards : 0;
+            var f_tc = this.TestCircular ? IVisio.Enums.VisGetSetArgs.visSetTestCircular : 0;
 
             var flags = ((short)f_bg) | ((short)f_tc);
-            return (IVisio.VisGetSetArgs)flags;
+            return (IVisio.Enums.VisGetSetArgs)flags;
         }
 
         protected abstract void _commit_to_surface(VisioAutomation.ShapeSheet.ShapeSheetSurface surface);

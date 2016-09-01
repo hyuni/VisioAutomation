@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using VisioAutomation.Exceptions;
 using VisioAutomation.Extensions;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.Documents
 {
@@ -20,11 +20,11 @@ namespace VisioAutomation.Documents
 
         private static IVisio.Document TryOpenStencil(IVisio.Documents docs, string filename)
         {
-            const short flags = (short)IVisio.VisOpenSaveArgs.visOpenRO | (short)IVisio.VisOpenSaveArgs.visOpenDocked;
+            const short flags = (short)IVisio.Enums.VisOpenSaveArgs.visOpenRO | (short)IVisio.Enums.VisOpenSaveArgs.visOpenDocked;
             try
             {
                 var doc = docs.OpenEx(filename, flags);
-                return doc;
+                return (IVisio.Document) doc;
             }
             catch (System.Runtime.InteropServices.COMException)
             {
@@ -47,8 +47,8 @@ namespace VisioAutomation.Documents
             // go through each window and check if it is assigned
             // to the target document
             var appwindows = app.Windows;
-            var allwindows = appwindows.ToEnumerable();
-            foreach (var curwin in allwindows)
+            // var allwindows = appwindows.ToEnumerable();
+            foreach (var curwin in appwindows)
             {
                 if (curwin.Document == doc)
                 {
@@ -74,7 +74,7 @@ namespace VisioAutomation.Documents
                 var new_alert_response = Application.AlertResponseCode.No;
                 var app = doc.Application;
 
-                using (var alertresponse = new Application.AlertResponseScope(app,new_alert_response))
+                using (var alertresponse = new Application.AlertResponseScope((IVisio.Application)app, new_alert_response))
                 {
                     doc.Close();
                 }
@@ -90,7 +90,7 @@ namespace VisioAutomation.Documents
             short count = docs.Count;
             for (int i = 0; i < count; i++)
             {
-                yield return docs[i + 1];
+                yield return (IVisio.Document) docs[i + 1];
             }
         }
     }

@@ -1,6 +1,6 @@
 ﻿using VisioAutomation.Extensions;
 using VisioAutomation.ShapeSheet.Writers;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.Models.Dom
 {

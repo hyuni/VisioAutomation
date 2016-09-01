@@ -1,16 +1,16 @@
 ﻿using VisioAutomation.ShapeSheet.Queries.Columns;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.ShapeSheet.Queries
 {
     public class SubQuery
     {
         public string Name { get; private set; }
-        public IVisio.VisSectionIndices SectionIndex { get; private set; }
+        public IVisio.Enums.VisSectionIndices SectionIndex { get; private set; }
         public ListColumnSubQuery Columns { get; }
         public int Ordinal { get; }
 
-        internal SubQuery(int ordinal, IVisio.VisSectionIndices section)
+        internal SubQuery(int ordinal, IVisio.Enums.VisSectionIndices section)
         {
             this.Name = VisioAutomation.ShapeSheet.ShapeSheetHelper.GetSectionName(section);
             this.Ordinal = ordinal;

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using VisioAutomation.Extensions;
-using IVisio = Microsoft.Office.Interop.Visio;
+using IVisio = NetOffice.VisioApi;
 
 namespace VisioAutomation.Selections
 {
@@ -12,11 +12,11 @@ namespace VisioAutomation.Selections
             short count16 = selection.Count16;
             for (short i = 0; i < count16; i++)
             {
-                yield return selection[i + 1];
+                yield return (IVisio.Shape) selection[i + 1];
             }
         }
 
-        public static Drawing.Rectangle GetBoundingBox(IVisio.Selection selection, IVisio.VisBoundingBoxArgs args)
+        public static Drawing.Rectangle GetBoundingBox(IVisio.Selection selection, IVisio.Enums.VisBoundingBoxArgs args)
         {
             double bbx0, bby0, bbx1, bby1;
             selection.BoundingBox((short)args, out bbx0, out bby0, out bbx1, out bby1);
@@ -26,7 +26,7 @@ namespace VisioAutomation.Selections
 
         public static int[] GetIDs(IVisio.Selection selection)
         {
-            System.Array ids_sa;
+            int[] ids_sa;
             selection.GetIDs(out ids_sa);
             int[] ids = (int[])ids_sa;
             return ids;
@@ -54,7 +54,7 @@ namespace VisioAutomation.Selections
             var sel_shapes = selection.ToEnumerable();
             foreach (var shape in Shapes.ShapeHelper.GetNestedShapes(sel_shapes))
             {
-                if (shape.Type != (short)IVisio.VisShapeTypes.visTypeGroup)
+                if (shape.Type != (short)IVisio.Enums.VisShapeTypes.visTypeGroup)
                 {
                     shapes.Add(shape);
                 }
