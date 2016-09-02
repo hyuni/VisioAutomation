@@ -33,6 +33,48 @@ namespace VisioAutomation_Tests.Core.ShapeSheet
         }
 
         [TestMethod]
+        public void XXXShapeSheet_Query_GetResults_SingleShape()
+        {
+            var doc1 = this.GetNewDoc();
+            var page1 = doc1.Pages[1];
+            VisioAutomationTest.SetPageSize(page1, this.StandardPageSize);
+
+            // draw a simple shape
+            var s1 = page1.DrawRectangle(this.StandardPageSizeRect);
+            int s1_id = s1.ID;
+
+            // format it with setformulas
+            var fg_cell = s1.get_Cells("FillForegnd");
+            var bg_cell = s1.get_Cells("FillBkgnd");
+            var pat_cell = s1.get_Cells("FillPattern");
+
+            fg_cell.FormulaU = "RGB(255,0,0)";
+            bg_cell.FormulaU = "RGB(0,0,255)";
+            pat_cell.FormulaU = "40";
+
+            // now retrieve the formulas with GetFormulas
+
+            var src_fg = VA.ShapeSheet.SRCConstants.FillForegnd;
+            var src_bg = VA.ShapeSheet.SRCConstants.FillBkgnd;
+            var src_filpat = VA.ShapeSheet.SRCConstants.FillPattern;
+
+            var query = new VisioAutomation.ShapeSheet.Queries.Query();
+            var col_fg = query.AddCell(src_fg, "FillForegnd");
+            var col_bg = query.AddCell(src_bg, "FillBkgnd");
+            var col_filpat = query.AddCell(src_filpat, "FillPattern");
+
+            var shapeids = new[] { s1_id };
+
+            var ss1 = new ShapeSheetSurface(page1);
+            var formulas = query.GetFormulas(ss1, shapeids);
+
+
+            page1.Delete(0);
+            doc1.Close(true);
+        }
+
+
+        [TestMethod]
         public void ShapeSheet_Query_GetResults_SingleShape()
         {
             var doc1 = this.GetNewDoc();
