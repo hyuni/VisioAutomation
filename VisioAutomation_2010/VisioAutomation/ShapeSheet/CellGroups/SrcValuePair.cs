@@ -23,19 +23,9 @@ namespace VisioAutomation.ShapeSheet.CellGroups
             this.SrcName = name;
         }
 
-        public static SrcValuePair Create(ShapeSheet.Src src, string value)
-        {
-            return new SrcValuePair(src,value,null,null);
-        }
-
         public static SrcValuePair Create(ShapeSheet.Src src, CellValueLiteral cvf)
         {
             return new SrcValuePair(src, cvf.Value, null, null);
-        }
-
-        public static SrcValuePair Create(ShapeSheet.Src src, string value, string srcname, string name)
-        {
-            return new SrcValuePair(src, value, srcname, name);
         }
 
         public static SrcValuePair Create(ShapeSheet.Src src, CellValueLiteral cvf, string srcname, string name)

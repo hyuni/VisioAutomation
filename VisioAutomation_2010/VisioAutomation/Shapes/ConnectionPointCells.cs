@@ -18,11 +18,11 @@ namespace VisioAutomation.Shapes
         {
             get
             {
-                yield return SrcValuePair.Create(SrcConstants.ConnectionPointX, this.X);
-                yield return SrcValuePair.Create(SrcConstants.ConnectionPointY, this.Y);
-                yield return SrcValuePair.Create(SrcConstants.ConnectionPointDirX, this.DirX);
-                yield return SrcValuePair.Create(SrcConstants.ConnectionPointDirY, this.DirY);
-                yield return SrcValuePair.Create(SrcConstants.ConnectionPointType, this.Type);
+                yield return SrcValuePair.Create(SrcConstants.ConnectionPointX, this.X, nameof(SrcConstants.ConnectionPointX), nameof(this.X));
+                yield return SrcValuePair.Create(SrcConstants.ConnectionPointY, this.Y, nameof(SrcConstants.ConnectionPointY), nameof(this.Y));
+                yield return SrcValuePair.Create(SrcConstants.ConnectionPointDirX, this.DirX, nameof(SrcConstants.ConnectionPointDirX), nameof(this.DirX));
+                yield return SrcValuePair.Create(SrcConstants.ConnectionPointDirY, this.DirY, nameof(SrcConstants.ConnectionPointDirY), nameof(this.DirY));
+                yield return SrcValuePair.Create(SrcConstants.ConnectionPointType, this.Type, nameof(SrcConstants.ConnectionPointType), nameof(this.Type));
             }
         }
 

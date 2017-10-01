@@ -33,26 +33,26 @@ namespace VisioAutomation.Shapes
         {
             get
             {
-                yield return SrcValuePair.Create(SrcConstants.LockAspect, this.Aspect);
-                yield return SrcValuePair.Create(SrcConstants.LockBegin, this.Begin);
-                yield return SrcValuePair.Create(SrcConstants.LockCalcWH, this.CalcWH);
-                yield return SrcValuePair.Create(SrcConstants.LockCrop, this.Crop);
-                yield return SrcValuePair.Create(SrcConstants.LockCustomProp, this.CustProp);
-                yield return SrcValuePair.Create(SrcConstants.LockDelete, this.Delete);
-                yield return SrcValuePair.Create(SrcConstants.LockEnd, this.End);
-                yield return SrcValuePair.Create(SrcConstants.LockFormat, this.Format);
-                yield return SrcValuePair.Create(SrcConstants.LockFromGroupFormat, this.FromGroupFormat);
-                yield return SrcValuePair.Create(SrcConstants.LockGroup, this.Group);
-                yield return SrcValuePair.Create(SrcConstants.LockHeight, this.Height);
-                yield return SrcValuePair.Create(SrcConstants.LockMoveX, this.MoveX);
-                yield return SrcValuePair.Create(SrcConstants.LockMoveY, this.MoveY);
-                yield return SrcValuePair.Create(SrcConstants.LockRotate, this.Rotate);
-                yield return SrcValuePair.Create(SrcConstants.LockSelect, this.Select);
-                yield return SrcValuePair.Create(SrcConstants.LockTextEdit, this.TextEdit);
-                yield return SrcValuePair.Create(SrcConstants.LockThemeColors, this.ThemeColors);
-                yield return SrcValuePair.Create(SrcConstants.LockThemeEffects, this.ThemeEffects);
-                yield return SrcValuePair.Create(SrcConstants.LockVertexEdit, this.VertexEdit);
-                yield return SrcValuePair.Create(SrcConstants.LockWidth, this.Width);
+                yield return SrcValuePair.Create(SrcConstants.LockAspect, this.Aspect, nameof(SrcConstants.LockAspect), nameof(this.Aspect));
+                yield return SrcValuePair.Create(SrcConstants.LockBegin, this.Begin, nameof(SrcConstants.LockBegin), nameof(this.Begin));
+                yield return SrcValuePair.Create(SrcConstants.LockCalcWH, this.CalcWH, nameof(SrcConstants.LockCalcWH), nameof(this.CalcWH));
+                yield return SrcValuePair.Create(SrcConstants.LockCrop, this.Crop, nameof(SrcConstants.LockCrop), nameof(this.Crop));
+                yield return SrcValuePair.Create(SrcConstants.LockCustomProp, this.CustProp, nameof(SrcConstants.LockCustomProp), nameof(this.CustProp));
+                yield return SrcValuePair.Create(SrcConstants.LockDelete, this.Delete, nameof(SrcConstants.LockDelete), nameof(this.Delete));
+                yield return SrcValuePair.Create(SrcConstants.LockEnd, this.End, nameof(SrcConstants.LockEnd), nameof(this.End));
+                yield return SrcValuePair.Create(SrcConstants.LockFormat, this.Format, nameof(SrcConstants.LockFormat), nameof(this.Format));
+                yield return SrcValuePair.Create(SrcConstants.LockFromGroupFormat, this.FromGroupFormat, nameof(SrcConstants.LockFromGroupFormat), nameof(this.FromGroupFormat));
+                yield return SrcValuePair.Create(SrcConstants.LockGroup, this.Group, nameof(SrcConstants.LockGroup), nameof(this.Group));
+                yield return SrcValuePair.Create(SrcConstants.LockHeight, this.Height, nameof(SrcConstants.LockHeight), nameof(this.Height));
+                yield return SrcValuePair.Create(SrcConstants.LockMoveX, this.MoveX, nameof(SrcConstants.LockMoveX), nameof(this.MoveX));
+                yield return SrcValuePair.Create(SrcConstants.LockMoveY, this.MoveY, nameof(SrcConstants.LockMoveY), nameof(this.MoveY));
+                yield return SrcValuePair.Create(SrcConstants.LockRotate, this.Rotate, nameof(SrcConstants.LockRotate), nameof(this.Rotate));
+                yield return SrcValuePair.Create(SrcConstants.LockSelect, this.Select, nameof(SrcConstants.LockSelect), nameof(this.Select));
+                yield return SrcValuePair.Create(SrcConstants.LockTextEdit, this.TextEdit, nameof(SrcConstants.LockTextEdit), nameof(this.TextEdit));
+                yield return SrcValuePair.Create(SrcConstants.LockThemeColors, this.ThemeColors, nameof(SrcConstants.LockThemeColors), nameof(this.ThemeColors));
+                yield return SrcValuePair.Create(SrcConstants.LockThemeEffects, this.ThemeEffects, nameof(SrcConstants.LockThemeEffects), nameof(this.ThemeEffects));
+                yield return SrcValuePair.Create(SrcConstants.LockVertexEdit, this.VertexEdit, nameof(SrcConstants.LockVertexEdit), nameof(this.VertexEdit));
+                yield return SrcValuePair.Create(SrcConstants.LockWidth, this.Width, nameof(SrcConstants.LockWidth), nameof(this.Width));
             }
         }
 

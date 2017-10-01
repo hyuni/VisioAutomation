@@ -35,29 +35,29 @@ namespace VisioAutomation.Text
         {
             get
             {
-                yield return SrcValuePair.Create(SrcConstants.CharColor, this.Color);
-                yield return SrcValuePair.Create(SrcConstants.CharFont, this.Font);
-                yield return SrcValuePair.Create(SrcConstants.CharSize, this.Size);
-                yield return SrcValuePair.Create(SrcConstants.CharStyle, this.Style);
-                yield return SrcValuePair.Create(SrcConstants.CharColorTransparency, this.ColorTransparency);
-                yield return SrcValuePair.Create(SrcConstants.CharAsianFont, this.AsianFont);
-                yield return SrcValuePair.Create(SrcConstants.CharCase, this.Case);
-                yield return SrcValuePair.Create(SrcConstants.CharComplexScriptFont, this.ComplexScriptFont);
-                yield return SrcValuePair.Create(SrcConstants.CharComplexScriptSize, this.ComplexScriptSize);
-                yield return SrcValuePair.Create(SrcConstants.CharDoubleUnderline, this.DoubleUnderline);
-                yield return SrcValuePair.Create(SrcConstants.CharDoubleStrikethrough, this.DoubleStrikethrough);
-                yield return SrcValuePair.Create(SrcConstants.CharLangID, this.LangID);
-                yield return SrcValuePair.Create(SrcConstants.CharFontScale, this.FontScale);
-                yield return SrcValuePair.Create(SrcConstants.CharLangID, this.LangID);
-                yield return SrcValuePair.Create(SrcConstants.CharLetterspace, this.Letterspace);
-                yield return SrcValuePair.Create(SrcConstants.CharLocale, this.Locale);
-                yield return SrcValuePair.Create(SrcConstants.CharLocalizeFont, this.LocalizeFont);
-                yield return SrcValuePair.Create(SrcConstants.CharOverline, this.Overline);
-                yield return SrcValuePair.Create(SrcConstants.CharPerpendicular, this.Perpendicular);
-                yield return SrcValuePair.Create(SrcConstants.CharPos, this.Pos);
-                yield return SrcValuePair.Create(SrcConstants.CharRTLText, this.RTLText);
-                yield return SrcValuePair.Create(SrcConstants.CharStrikethru, this.Strikethru);
-                yield return SrcValuePair.Create(SrcConstants.CharUseVertical, this.UseVertical);
+                yield return SrcValuePair.Create(SrcConstants.CharColor, this.Color, nameof(SrcConstants.CharColor), nameof(this.Color));
+                yield return SrcValuePair.Create(SrcConstants.CharFont, this.Font, nameof(SrcConstants.CharFont), nameof(this.Font));
+                yield return SrcValuePair.Create(SrcConstants.CharSize, this.Size, nameof(SrcConstants.CharSize), nameof(this.Size));
+                yield return SrcValuePair.Create(SrcConstants.CharStyle, this.Style, nameof(SrcConstants.CharStyle), nameof(this.Style));
+                yield return SrcValuePair.Create(SrcConstants.CharColorTransparency, this.ColorTransparency, nameof(SrcConstants.CharColorTransparency), nameof(this.ColorTransparency));
+                yield return SrcValuePair.Create(SrcConstants.CharAsianFont, this.AsianFont, nameof(SrcConstants.CharAsianFont), nameof(this.AsianFont));
+                yield return SrcValuePair.Create(SrcConstants.CharCase, this.Case, nameof(SrcConstants.CharCase), nameof(this.Case));
+                yield return SrcValuePair.Create(SrcConstants.CharComplexScriptFont, this.ComplexScriptFont, nameof(SrcConstants.CharComplexScriptFont), nameof(this.ComplexScriptFont));
+                yield return SrcValuePair.Create(SrcConstants.CharComplexScriptSize, this.ComplexScriptSize, nameof(SrcConstants.CharComplexScriptSize), nameof(this.ComplexScriptSize));
+                yield return SrcValuePair.Create(SrcConstants.CharDoubleUnderline, this.DoubleUnderline, nameof(SrcConstants.CharDoubleUnderline), nameof(this.DoubleUnderline));
+                yield return SrcValuePair.Create(SrcConstants.CharDoubleStrikethrough, this.DoubleStrikethrough, nameof(SrcConstants.CharDoubleStrikethrough), nameof(this.DoubleStrikethrough));
+                yield return SrcValuePair.Create(SrcConstants.CharLangID, this.LangID, nameof(SrcConstants.CharLangID), nameof(this.LangID));
+                yield return SrcValuePair.Create(SrcConstants.CharFontScale, this.FontScale, nameof(SrcConstants.CharFontScale), nameof(this.FontScale));
+                yield return SrcValuePair.Create(SrcConstants.CharLangID, this.LangID, nameof(SrcConstants.CharLangID), nameof(this.LangID));
+                yield return SrcValuePair.Create(SrcConstants.CharLetterspace, this.Letterspace, nameof(SrcConstants.CharLetterspace), nameof(this.Letterspace));
+                yield return SrcValuePair.Create(SrcConstants.CharLocale, this.Locale, nameof(SrcConstants.CharLocale), nameof(this.Locale));
+                yield return SrcValuePair.Create(SrcConstants.CharLocalizeFont, this.LocalizeFont, nameof(SrcConstants.CharLocalizeFont), nameof(this.LocalizeFont));
+                yield return SrcValuePair.Create(SrcConstants.CharOverline, this.Overline, nameof(SrcConstants.CharOverline), nameof(this.Overline));
+                yield return SrcValuePair.Create(SrcConstants.CharPerpendicular, this.Perpendicular, nameof(SrcConstants.CharPerpendicular), nameof(this.Perpendicular));
+                yield return SrcValuePair.Create(SrcConstants.CharPos, this.Pos, nameof(SrcConstants.CharPos), nameof(this.Pos));
+                yield return SrcValuePair.Create(SrcConstants.CharRTLText, this.RTLText, nameof(SrcConstants.CharRTLText), nameof(this.RTLText));
+                yield return SrcValuePair.Create(SrcConstants.CharStrikethru, this.Strikethru, nameof(SrcConstants.CharStrikethru), nameof(this.Strikethru));
+                yield return SrcValuePair.Create(SrcConstants.CharUseVertical, this.UseVertical, nameof(SrcConstants.CharUseVertical), nameof(this.UseVertical));
             }
         }
 

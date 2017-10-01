@@ -23,13 +23,13 @@ namespace VisioAutomation.Text
         {
             get
             {
-                yield return SrcValuePair.Create(SrcConstants.TextXFormPinX, this.PinX);
-                yield return SrcValuePair.Create(SrcConstants.TextXFormPinY, this.PinY);
-                yield return SrcValuePair.Create(SrcConstants.TextXFormLocPinX, this.LocPinX);
-                yield return SrcValuePair.Create(SrcConstants.TextXFormLocPinY, this.LocPinY);
-                yield return SrcValuePair.Create(SrcConstants.TextXFormWidth, this.Width);
-                yield return SrcValuePair.Create(SrcConstants.TextXFormHeight, this.Height);
-                yield return SrcValuePair.Create(SrcConstants.TextXFormAngle, this.Angle);
+                yield return SrcValuePair.Create(SrcConstants.TextXFormPinX, this.PinX, nameof(SrcConstants.TextXFormPinX), nameof(this.PinX));
+                yield return SrcValuePair.Create(SrcConstants.TextXFormPinY, this.PinY, nameof(SrcConstants.TextXFormPinY), nameof(this.PinY));
+                yield return SrcValuePair.Create(SrcConstants.TextXFormLocPinX, this.LocPinX, nameof(SrcConstants.TextXFormLocPinX), nameof(this.LocPinX));
+                yield return SrcValuePair.Create(SrcConstants.TextXFormLocPinY, this.LocPinY, nameof(SrcConstants.TextXFormLocPinY), nameof(this.LocPinY));
+                yield return SrcValuePair.Create(SrcConstants.TextXFormWidth, this.Width, nameof(SrcConstants.TextXFormWidth), nameof(this.Width));
+                yield return SrcValuePair.Create(SrcConstants.TextXFormHeight, this.Height, nameof(SrcConstants.TextXFormHeight), nameof(this.Height));
+                yield return SrcValuePair.Create(SrcConstants.TextXFormAngle, this.Angle, nameof(SrcConstants.TextXFormAngle), nameof(this.Angle));
             }
         }
 

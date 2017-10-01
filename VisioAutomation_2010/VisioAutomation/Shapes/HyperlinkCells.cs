@@ -22,15 +22,15 @@ namespace VisioAutomation.Shapes
         {
             get
             {
-                yield return SrcValuePair.Create(SrcConstants.HyperlinkAddress, this.Address);
-                yield return SrcValuePair.Create(SrcConstants.HyperlinkDescription, this.Description);
-                yield return SrcValuePair.Create(SrcConstants.HyperlinkExtraInfo, this.ExtraInfo);
-                yield return SrcValuePair.Create(SrcConstants.HyperlinkFrame, this.Frame);
-                yield return SrcValuePair.Create(SrcConstants.HyperlinkSortKey, this.SortKey);
-                yield return SrcValuePair.Create(SrcConstants.HyperlinkSubAddress, this.SubAddress);
-                yield return SrcValuePair.Create(SrcConstants.HyperlinkNewWindow, this.NewWindow);
-                yield return SrcValuePair.Create(SrcConstants.HyperlinkDefault, this.Default);
-                yield return SrcValuePair.Create(SrcConstants.HyperlinkInvisible, this.Invisible);
+                yield return SrcValuePair.Create(SrcConstants.HyperlinkAddress, this.Address, nameof(SrcConstants.HyperlinkAddress), nameof(this.Address));
+                yield return SrcValuePair.Create(SrcConstants.HyperlinkDescription, this.Description, nameof(SrcConstants.HyperlinkDescription), nameof(this.Description));
+                yield return SrcValuePair.Create(SrcConstants.HyperlinkExtraInfo, this.ExtraInfo, nameof(SrcConstants.HyperlinkExtraInfo), nameof(this.ExtraInfo));
+                yield return SrcValuePair.Create(SrcConstants.HyperlinkFrame, this.Frame, nameof(SrcConstants.HyperlinkFrame), nameof(this.Frame));
+                yield return SrcValuePair.Create(SrcConstants.HyperlinkSortKey, this.SortKey, nameof(SrcConstants.HyperlinkSortKey), nameof(this.SortKey));
+                yield return SrcValuePair.Create(SrcConstants.HyperlinkSubAddress, this.SubAddress, nameof(SrcConstants.HyperlinkSubAddress), nameof(this.SubAddress));
+                yield return SrcValuePair.Create(SrcConstants.HyperlinkNewWindow, this.NewWindow, nameof(SrcConstants.HyperlinkNewWindow), nameof(this.NewWindow));
+                yield return SrcValuePair.Create(SrcConstants.HyperlinkDefault, this.Default, nameof(SrcConstants.HyperlinkDefault), nameof(this.Default));
+                yield return SrcValuePair.Create(SrcConstants.HyperlinkInvisible, this.Invisible, nameof(SrcConstants.HyperlinkInvisible), nameof(this.Invisible));
             }
         }
 

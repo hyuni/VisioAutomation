@@ -20,8 +20,8 @@ namespace VisioAutomation.Shapes
         {
             get
             {
-                yield return SrcValuePair.Create(SrcConstants.UserDefCellValue, this.Value);
-                yield return SrcValuePair.Create(SrcConstants.UserDefCellPrompt, this.Prompt);
+                yield return SrcValuePair.Create(SrcConstants.UserDefCellValue, this.Value, nameof(SrcConstants.UserDefCellValue), nameof(this.Value));
+                yield return SrcValuePair.Create(SrcConstants.UserDefCellPrompt, this.Prompt, nameof(SrcConstants.UserDefCellPrompt), nameof(this.Prompt));
             }
         }
 

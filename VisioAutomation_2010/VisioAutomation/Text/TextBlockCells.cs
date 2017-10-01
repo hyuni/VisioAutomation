@@ -22,15 +22,15 @@ namespace VisioAutomation.Text
         {
             get
             {
-                yield return SrcValuePair.Create(SrcConstants.TextBlockBottomMargin, this.BottomMargin);
-                yield return SrcValuePair.Create(SrcConstants.TextBlockLeftMargin, this.LeftMargin);
-                yield return SrcValuePair.Create(SrcConstants.TextBlockRightMargin, this.RightMargin);
-                yield return SrcValuePair.Create(SrcConstants.TextBlockTopMargin, this.TopMargin);
-                yield return SrcValuePair.Create(SrcConstants.TextBlockDefaultTabStop, this.DefaultTabStop);
-                yield return SrcValuePair.Create(SrcConstants.TextBlockBackground, this.Background);
-                yield return SrcValuePair.Create(SrcConstants.TextBlockBackgroundTransparency, this.BackgroundTransparency);
-                yield return SrcValuePair.Create(SrcConstants.TextBlockDirection, this.Direction);
-                yield return SrcValuePair.Create(SrcConstants.TextBlockVerticalAlign, this.VerticalAlign);
+                yield return SrcValuePair.Create(SrcConstants.TextBlockBottomMargin, this.BottomMargin, nameof(SrcConstants.TextBlockBottomMargin), nameof(this.BottomMargin));
+                yield return SrcValuePair.Create(SrcConstants.TextBlockLeftMargin, this.LeftMargin, nameof(SrcConstants.TextBlockLeftMargin), nameof(this.LeftMargin));
+                yield return SrcValuePair.Create(SrcConstants.TextBlockRightMargin, this.RightMargin, nameof(SrcConstants.TextBlockRightMargin), nameof(this.RightMargin));
+                yield return SrcValuePair.Create(SrcConstants.TextBlockTopMargin, this.TopMargin, nameof(SrcConstants.TextBlockTopMargin), nameof(this.TopMargin));
+                yield return SrcValuePair.Create(SrcConstants.TextBlockDefaultTabStop, this.DefaultTabStop, nameof(SrcConstants.TextBlockDefaultTabStop), nameof(this.DefaultTabStop));
+                yield return SrcValuePair.Create(SrcConstants.TextBlockBackground, this.Background, nameof(SrcConstants.TextBlockBackground), nameof(this.Background));
+                yield return SrcValuePair.Create(SrcConstants.TextBlockBackgroundTransparency, this.BackgroundTransparency, nameof(SrcConstants.TextBlockBackgroundTransparency), nameof(this.BackgroundTransparency));
+                yield return SrcValuePair.Create(SrcConstants.TextBlockDirection, this.Direction, nameof(SrcConstants.TextBlockDirection), nameof(this.Direction));
+                yield return SrcValuePair.Create(SrcConstants.TextBlockVerticalAlign, this.VerticalAlign, nameof(SrcConstants.TextBlockVerticalAlign), nameof(this.VerticalAlign));
             }
         }
 

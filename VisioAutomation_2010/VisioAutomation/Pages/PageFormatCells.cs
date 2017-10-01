@@ -26,21 +26,21 @@ namespace VisioAutomation.Pages
         public override IEnumerable<SrcValuePair> SrcValuePairs
         {
             get
-            { 
-                yield return SrcValuePair.Create(SrcConstants.PageDrawingScale, this.DrawingScale);
-                yield return SrcValuePair.Create(SrcConstants.PageDrawingScaleType, this.DrawingScaleType);
-                yield return SrcValuePair.Create(SrcConstants.PageDrawingSizeType, this.DrawingSizeType);
-                yield return SrcValuePair.Create(SrcConstants.PageInhibitSnap, this.InhibitSnap);
-                yield return SrcValuePair.Create(SrcConstants.PageHeight, this.Height);
-                yield return SrcValuePair.Create(SrcConstants.PageScale, this.Scale);
-                yield return SrcValuePair.Create(SrcConstants.PageWidth, this.Width);
-                yield return SrcValuePair.Create(SrcConstants.PageShadowObliqueAngle, this.ShadowObliqueAngle);
-                yield return SrcValuePair.Create(SrcConstants.PageShadowOffsetX, this.ShadowOffsetX);
-                yield return SrcValuePair.Create(SrcConstants.PageShadowOffsetY, this.ShadowOffsetY);
-                yield return SrcValuePair.Create(SrcConstants.PageShadowScaleFactor, this.ShadowScaleFactor);
-                yield return SrcValuePair.Create(SrcConstants.PageShadowType, this.ShadowType);
-                yield return SrcValuePair.Create(SrcConstants.PageUIVisibility, this.UIVisibility);
-                yield return SrcValuePair.Create(SrcConstants.PageDrawingResizeType, this.DrawingResizeType);
+            {
+                yield return SrcValuePair.Create(SrcConstants.PageDrawingScale, this.DrawingScale, nameof(SrcConstants.PageDrawingScale), nameof(this.DrawingScale));
+                yield return SrcValuePair.Create(SrcConstants.PageDrawingScaleType, this.DrawingScaleType, nameof(SrcConstants.PageDrawingScaleType), nameof(this.DrawingScaleType));
+                yield return SrcValuePair.Create(SrcConstants.PageDrawingSizeType, this.DrawingSizeType, nameof(SrcConstants.PageDrawingSizeType), nameof(this.DrawingSizeType));
+                yield return SrcValuePair.Create(SrcConstants.PageInhibitSnap, this.InhibitSnap, nameof(SrcConstants.PageInhibitSnap), nameof(this.InhibitSnap));
+                yield return SrcValuePair.Create(SrcConstants.PageHeight, this.Height, nameof(SrcConstants.PageHeight), nameof(this.Height));
+                yield return SrcValuePair.Create(SrcConstants.PageScale, this.Scale, nameof(SrcConstants.PageScale), nameof(this.Scale));
+                yield return SrcValuePair.Create(SrcConstants.PageWidth, this.Width, nameof(SrcConstants.PageWidth), nameof(this.Width));
+                yield return SrcValuePair.Create(SrcConstants.PageShadowObliqueAngle, this.ShadowObliqueAngle, nameof(SrcConstants.PageShadowObliqueAngle), nameof(this.ShadowObliqueAngle));
+                yield return SrcValuePair.Create(SrcConstants.PageShadowOffsetX, this.ShadowOffsetX, nameof(SrcConstants.PageShadowOffsetX), nameof(this.ShadowOffsetX));
+                yield return SrcValuePair.Create(SrcConstants.PageShadowOffsetY, this.ShadowOffsetY, nameof(SrcConstants.PageShadowOffsetY), nameof(this.ShadowOffsetY));
+                yield return SrcValuePair.Create(SrcConstants.PageShadowScaleFactor, this.ShadowScaleFactor, nameof(SrcConstants.PageShadowScaleFactor), nameof(this.ShadowScaleFactor));
+                yield return SrcValuePair.Create(SrcConstants.PageShadowType, this.ShadowType, nameof(SrcConstants.PageShadowType), nameof(this.ShadowType));
+                yield return SrcValuePair.Create(SrcConstants.PageUIVisibility, this.UIVisibility, nameof(SrcConstants.PageUIVisibility), nameof(this.UIVisibility));
+                yield return SrcValuePair.Create(SrcConstants.PageDrawingResizeType, this.DrawingResizeType, nameof(SrcConstants.PageDrawingResizeType), nameof(this.DrawingResizeType));
             }
         }
 

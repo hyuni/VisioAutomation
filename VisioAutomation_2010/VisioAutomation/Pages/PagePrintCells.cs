@@ -27,21 +27,21 @@ namespace VisioAutomation.Pages
         {
             get
             {
-                yield return SrcValuePair.Create(SrcConstants.PrintLeftMargin, this.LeftMargin);
-                yield return SrcValuePair.Create(SrcConstants.PrintCenterX, this.CenterX);
-                yield return SrcValuePair.Create(SrcConstants.PrintCenterY, this.CenterY);
-                yield return SrcValuePair.Create(SrcConstants.PrintOnPage, this.OnPage);
-                yield return SrcValuePair.Create(SrcConstants.PrintBottomMargin, this.BottomMargin);
-                yield return SrcValuePair.Create(SrcConstants.PrintRightMargin, this.RightMargin);
-                yield return SrcValuePair.Create(SrcConstants.PrintPagesX, this.PagesX);
-                yield return SrcValuePair.Create(SrcConstants.PrintPagesY, this.PagesY);
-                yield return SrcValuePair.Create(SrcConstants.PrintTopMargin, this.TopMargin);
-                yield return SrcValuePair.Create(SrcConstants.PrintPaperKind, this.PaperKind);
-                yield return SrcValuePair.Create(SrcConstants.PrintGrid, this.Grid);
-                yield return SrcValuePair.Create(SrcConstants.PrintPageOrientation, this.Orientation);
-                yield return SrcValuePair.Create(SrcConstants.PrintScaleX, this.ScaleX);
-                yield return SrcValuePair.Create(SrcConstants.PrintScaleY, this.ScaleY);
-                yield return SrcValuePair.Create(SrcConstants.PrintPaperSource, this.PaperSource);
+                yield return SrcValuePair.Create(SrcConstants.PrintLeftMargin, this.LeftMargin, nameof(SrcConstants.PrintLeftMargin), nameof(this.LeftMargin));
+                yield return SrcValuePair.Create(SrcConstants.PrintCenterX, this.CenterX, nameof(SrcConstants.PrintCenterX), nameof(this.CenterX));
+                yield return SrcValuePair.Create(SrcConstants.PrintCenterY, this.CenterY, nameof(SrcConstants.PrintCenterY), nameof(this.CenterY));
+                yield return SrcValuePair.Create(SrcConstants.PrintOnPage, this.OnPage, nameof(SrcConstants.PrintOnPage), nameof(this.OnPage));
+                yield return SrcValuePair.Create(SrcConstants.PrintBottomMargin, this.BottomMargin, nameof(SrcConstants.PrintBottomMargin), nameof(this.BottomMargin));
+                yield return SrcValuePair.Create(SrcConstants.PrintRightMargin, this.RightMargin, nameof(SrcConstants.PrintRightMargin), nameof(this.RightMargin));
+                yield return SrcValuePair.Create(SrcConstants.PrintPagesX, this.PagesX, nameof(SrcConstants.PrintPagesX), nameof(this.PagesX));
+                yield return SrcValuePair.Create(SrcConstants.PrintPagesY, this.PagesY, nameof(SrcConstants.PrintPagesY), nameof(this.PagesY));
+                yield return SrcValuePair.Create(SrcConstants.PrintTopMargin, this.TopMargin, nameof(SrcConstants.PrintTopMargin), nameof(this.TopMargin));
+                yield return SrcValuePair.Create(SrcConstants.PrintPaperKind, this.PaperKind, nameof(SrcConstants.PrintPaperKind), nameof(this.PaperKind));
+                yield return SrcValuePair.Create(SrcConstants.PrintGrid, this.Grid, nameof(SrcConstants.PrintGrid), nameof(this.Grid));
+                yield return SrcValuePair.Create(SrcConstants.PrintPageOrientation, this.Orientation, nameof(SrcConstants.PrintPageOrientation), nameof(this.Orientation));
+                yield return SrcValuePair.Create(SrcConstants.PrintScaleX, this.ScaleX, nameof(SrcConstants.PrintScaleX), nameof(this.ScaleX));
+                yield return SrcValuePair.Create(SrcConstants.PrintScaleY, this.ScaleY, nameof(SrcConstants.PrintScaleY), nameof(this.ScaleY));
+                yield return SrcValuePair.Create(SrcConstants.PrintPaperSource, this.PaperSource, nameof(SrcConstants.PrintPaperSource), nameof(this.PaperSource));
             }
         }
 

@@ -20,13 +20,13 @@ namespace VisioAutomation.Shapes
         {
             get
             {
-                yield return SrcValuePair.Create(SrcConstants.XFormPinX, this.PinX);
-                yield return SrcValuePair.Create(SrcConstants.XFormPinY, this.PinY);
-                yield return SrcValuePair.Create(SrcConstants.XFormLocPinX, this.LocPinX);
-                yield return SrcValuePair.Create(SrcConstants.XFormLocPinY, this.LocPinY);
-                yield return SrcValuePair.Create(SrcConstants.XFormWidth, this.Width);
-                yield return SrcValuePair.Create(SrcConstants.XFormHeight, this.Height);
-                yield return SrcValuePair.Create(SrcConstants.XFormAngle, this.Angle);
+                yield return SrcValuePair.Create(SrcConstants.XFormPinX, this.PinX, nameof(SrcConstants.XFormPinX), nameof(this.PinX));
+                yield return SrcValuePair.Create(SrcConstants.XFormPinY, this.PinY, nameof(SrcConstants.XFormPinY), nameof(this.PinY));
+                yield return SrcValuePair.Create(SrcConstants.XFormLocPinX, this.LocPinX, nameof(SrcConstants.XFormLocPinX), nameof(this.LocPinX));
+                yield return SrcValuePair.Create(SrcConstants.XFormLocPinY, this.LocPinY, nameof(SrcConstants.XFormLocPinY), nameof(this.LocPinY));
+                yield return SrcValuePair.Create(SrcConstants.XFormWidth, this.Width, nameof(SrcConstants.XFormWidth), nameof(this.Width));
+                yield return SrcValuePair.Create(SrcConstants.XFormHeight, this.Height, nameof(SrcConstants.XFormHeight), nameof(this.Height));
+                yield return SrcValuePair.Create(SrcConstants.XFormAngle, this.Angle, nameof(SrcConstants.XFormAngle), nameof(this.Angle));
             }
         }
 

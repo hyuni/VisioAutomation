@@ -27,20 +27,20 @@ namespace VisioAutomation.Text
         {
             get
             {
-                yield return SrcValuePair.Create(SrcConstants.ParaIndentLeft, this.IndentLeft);
-                yield return SrcValuePair.Create(SrcConstants.ParaIndentFirst, this.IndentFirst);
-                yield return SrcValuePair.Create(SrcConstants.ParaIndentRight, this.IndentRight);
-                yield return SrcValuePair.Create(SrcConstants.ParaSpacingAfter, this.SpacingAfter);
-                yield return SrcValuePair.Create(SrcConstants.ParaSpacingBefore, this.SpacingBefore);
-                yield return SrcValuePair.Create(SrcConstants.ParaSpacingLine, this.SpacingLine);
-                yield return SrcValuePair.Create(SrcConstants.ParaHorizontalAlign, this.HorizontalAlign);
-                yield return SrcValuePair.Create(SrcConstants.ParaBulletFont, this.BulletFont);
-                yield return SrcValuePair.Create(SrcConstants.ParaBullet, this.Bullet);
-                yield return SrcValuePair.Create(SrcConstants.ParaBulletFontSize, this.BulletFontSize);
-                yield return SrcValuePair.Create(SrcConstants.ParaLocalizeBulletFont, this.LocalizeBulletFont);
-                yield return SrcValuePair.Create(SrcConstants.ParaTextPosAfterBullet, this.TextPosAfterBullet);
-                yield return SrcValuePair.Create(SrcConstants.ParaFlags, this.Flags);
-                yield return SrcValuePair.Create(SrcConstants.ParaBulletString, this.BulletString);
+                yield return SrcValuePair.Create(SrcConstants.ParaIndentLeft, this.IndentLeft, nameof(SrcConstants.ParaIndentLeft), nameof(this.IndentLeft));
+                yield return SrcValuePair.Create(SrcConstants.ParaIndentFirst, this.IndentFirst, nameof(SrcConstants.ParaIndentFirst), nameof(this.IndentFirst));
+                yield return SrcValuePair.Create(SrcConstants.ParaIndentRight, this.IndentRight, nameof(SrcConstants.ParaIndentRight), nameof(this.IndentRight));
+                yield return SrcValuePair.Create(SrcConstants.ParaSpacingAfter, this.SpacingAfter, nameof(SrcConstants.ParaSpacingAfter), nameof(this.SpacingAfter));
+                yield return SrcValuePair.Create(SrcConstants.ParaSpacingBefore, this.SpacingBefore, nameof(SrcConstants.ParaSpacingBefore), nameof(this.SpacingBefore));
+                yield return SrcValuePair.Create(SrcConstants.ParaSpacingLine, this.SpacingLine, nameof(SrcConstants.ParaSpacingLine), nameof(this.SpacingLine));
+                yield return SrcValuePair.Create(SrcConstants.ParaHorizontalAlign, this.HorizontalAlign, nameof(SrcConstants.ParaHorizontalAlign), nameof(this.HorizontalAlign));
+                yield return SrcValuePair.Create(SrcConstants.ParaBulletFont, this.BulletFont, nameof(SrcConstants.ParaBulletFont), nameof(this.BulletFont));
+                yield return SrcValuePair.Create(SrcConstants.ParaBullet, this.Bullet, nameof(SrcConstants.ParaBullet), nameof(this.Bullet));
+                yield return SrcValuePair.Create(SrcConstants.ParaBulletFontSize, this.BulletFontSize, nameof(SrcConstants.ParaBulletFontSize), nameof(this.BulletFontSize));
+                yield return SrcValuePair.Create(SrcConstants.ParaLocalizeBulletFont, this.LocalizeBulletFont, nameof(SrcConstants.ParaLocalizeBulletFont), nameof(this.LocalizeBulletFont));
+                yield return SrcValuePair.Create(SrcConstants.ParaTextPosAfterBullet, this.TextPosAfterBullet, nameof(SrcConstants.ParaTextPosAfterBullet), nameof(this.TextPosAfterBullet));
+                yield return SrcValuePair.Create(SrcConstants.ParaFlags, this.Flags, nameof(SrcConstants.ParaFlags), nameof(this.Flags));
+                yield return SrcValuePair.Create(SrcConstants.ParaBulletString, this.BulletString, nameof(SrcConstants.ParaBulletString), nameof(this.BulletString));
             }
         }
 

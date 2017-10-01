@@ -28,16 +28,16 @@ namespace VisioAutomation.Shapes
         {
             get
             {
-                yield return SrcValuePair.Create(SrcConstants.CustomPropLabel, this.Label);
-                yield return SrcValuePair.Create(SrcConstants.CustomPropValue, this.Value);
-                yield return SrcValuePair.Create(SrcConstants.CustomPropFormat, this.Format);
-                yield return SrcValuePair.Create(SrcConstants.CustomPropPrompt, this.Prompt);
-                yield return SrcValuePair.Create(SrcConstants.CustomPropCalendar, this.Calendar);
-                yield return SrcValuePair.Create(SrcConstants.CustomPropLangID, this.LangID);
-                yield return SrcValuePair.Create(SrcConstants.CustomPropSortKey, this.SortKey);
-                yield return SrcValuePair.Create(SrcConstants.CustomPropInvisible, this.Invisible);
-                yield return SrcValuePair.Create(SrcConstants.CustomPropType, this.Type);
-                yield return SrcValuePair.Create(SrcConstants.CustomPropAsk, this.Ask);
+                yield return SrcValuePair.Create(SrcConstants.CustomPropLabel, this.Label, nameof(SrcConstants.CustomPropLabel), nameof(this.Label));
+                yield return SrcValuePair.Create(SrcConstants.CustomPropValue, this.Value, nameof(SrcConstants.CustomPropValue), nameof(this.Value));
+                yield return SrcValuePair.Create(SrcConstants.CustomPropFormat, this.Format, nameof(SrcConstants.CustomPropFormat), nameof(this.Format));
+                yield return SrcValuePair.Create(SrcConstants.CustomPropPrompt, this.Prompt, nameof(SrcConstants.CustomPropPrompt), nameof(this.Prompt));
+                yield return SrcValuePair.Create(SrcConstants.CustomPropCalendar, this.Calendar, nameof(SrcConstants.CustomPropCalendar), nameof(this.Calendar));
+                yield return SrcValuePair.Create(SrcConstants.CustomPropLangID, this.LangID, nameof(SrcConstants.CustomPropLangID), nameof(this.LangID));
+                yield return SrcValuePair.Create(SrcConstants.CustomPropSortKey, this.SortKey, nameof(SrcConstants.CustomPropSortKey), nameof(this.SortKey));
+                yield return SrcValuePair.Create(SrcConstants.CustomPropInvisible, this.Invisible, nameof(SrcConstants.CustomPropInvisible), nameof(this.Invisible));
+                yield return SrcValuePair.Create(SrcConstants.CustomPropType, this.Type, nameof(SrcConstants.CustomPropType), nameof(this.Type));
+                yield return SrcValuePair.Create(SrcConstants.CustomPropAsk, this.Ask, nameof(SrcConstants.CustomPropAsk), nameof(this.Ask));
             }
         }
 

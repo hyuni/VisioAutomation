@@ -39,34 +39,34 @@ namespace VisioAutomation.Pages
         {
             get
             {
-                yield return SrcValuePair.Create(SrcConstants.PageLayoutAvenueSizeX, this.AvenueSizeX);
-                yield return SrcValuePair.Create(SrcConstants.PageLayoutAvenueSizeY, this.AvenueSizeY);
-                yield return SrcValuePair.Create(SrcConstants.PageLayoutBlockSizeX, this.BlockSizeX);
-                yield return SrcValuePair.Create(SrcConstants.PageLayoutBlockSizeY, this.BlockSizeY);
-                yield return SrcValuePair.Create(SrcConstants.PageLayoutControlAsInput, this.CtrlAsInput);
-                yield return SrcValuePair.Create(SrcConstants.PageLayoutDynamicsOff, this.DynamicsOff);
-                yield return SrcValuePair.Create(SrcConstants.PageLayoutEnableGrid, this.EnableGrid);
-                yield return SrcValuePair.Create(SrcConstants.PageLayoutLineAdjustFrom, this.LineAdjustFrom);
-                yield return SrcValuePair.Create(SrcConstants.PageLayoutLineAdjustTo, this.LineAdjustTo);
-                yield return SrcValuePair.Create(SrcConstants.PageLayoutLineJumpCode, this.LineJumpCode);
-                yield return SrcValuePair.Create(SrcConstants.PageLayoutLineJumpFactorX, this.LineJumpFactorX);
-                yield return SrcValuePair.Create(SrcConstants.PageLayoutLineJumpFactorY, this.LineJumpFactorY);
-                yield return SrcValuePair.Create(SrcConstants.PageLayoutLineJumpStyle, this.LineJumpStyle);
-                yield return SrcValuePair.Create(SrcConstants.PageLayoutLineRouteExt, this.LineRouteExt);
-                yield return SrcValuePair.Create(SrcConstants.PageLayoutLineToLineX, this.LineToLineX);
-                yield return SrcValuePair.Create(SrcConstants.PageLayoutLineToLineY, this.LineToLineY);
-                yield return SrcValuePair.Create(SrcConstants.PageLayoutLineToNodeX, this.LineToNodeX);
-                yield return SrcValuePair.Create(SrcConstants.PageLayoutLineToNodeY, this.LineToNodeY);
-                yield return SrcValuePair.Create(SrcConstants.PageLayoutLineJumpDirX, this.LineJumpDirX);
-                yield return SrcValuePair.Create(SrcConstants.PageLayoutLineJumpDirY, this.LineJumpDirY);
-                yield return SrcValuePair.Create(SrcConstants.PageLayoutShapeSplit, this.PageShapeSplit);
-                yield return SrcValuePair.Create(SrcConstants.PageLayoutPlaceDepth, this.PlaceDepth);
-                yield return SrcValuePair.Create(SrcConstants.PageLayoutPlaceFlip, this.PlaceFlip);
-                yield return SrcValuePair.Create(SrcConstants.PageLayoutPlaceStyle, this.PlaceStyle);
-                yield return SrcValuePair.Create(SrcConstants.PageLayoutPlowCode, this.PlowCode);
-                yield return SrcValuePair.Create(SrcConstants.PageLayoutResizePage, this.ResizePage);
-                yield return SrcValuePair.Create(SrcConstants.PageLayoutRouteStyle, this.RouteStyle);
-                yield return SrcValuePair.Create(SrcConstants.PageLayoutAvoidPageBreaks, this.AvoidPageBreaks);
+                yield return SrcValuePair.Create(SrcConstants.PageLayoutAvenueSizeX, this.AvenueSizeX, nameof(SrcConstants.PageLayoutAvenueSizeX), nameof(this.AvenueSizeX));
+                yield return SrcValuePair.Create(SrcConstants.PageLayoutAvenueSizeY, this.AvenueSizeY, nameof(SrcConstants.PageLayoutAvenueSizeY), nameof(this.AvenueSizeY));
+                yield return SrcValuePair.Create(SrcConstants.PageLayoutBlockSizeX, this.BlockSizeX, nameof(SrcConstants.PageLayoutBlockSizeX), nameof(this.BlockSizeX));
+                yield return SrcValuePair.Create(SrcConstants.PageLayoutBlockSizeY, this.BlockSizeY, nameof(SrcConstants.PageLayoutBlockSizeY), nameof(this.BlockSizeY));
+                yield return SrcValuePair.Create(SrcConstants.PageLayoutControlAsInput, this.CtrlAsInput, nameof(SrcConstants.PageLayoutControlAsInput), nameof(this.CtrlAsInput));
+                yield return SrcValuePair.Create(SrcConstants.PageLayoutDynamicsOff, this.DynamicsOff, nameof(SrcConstants.PageLayoutDynamicsOff), nameof(this.DynamicsOff));
+                yield return SrcValuePair.Create(SrcConstants.PageLayoutEnableGrid, this.EnableGrid, nameof(SrcConstants.PageLayoutEnableGrid), nameof(this.EnableGrid));
+                yield return SrcValuePair.Create(SrcConstants.PageLayoutLineAdjustFrom, this.LineAdjustFrom, nameof(SrcConstants.PageLayoutLineAdjustFrom), nameof(this.LineAdjustFrom));
+                yield return SrcValuePair.Create(SrcConstants.PageLayoutLineAdjustTo, this.LineAdjustTo, nameof(SrcConstants.PageLayoutLineAdjustTo), nameof(this.LineAdjustTo));
+                yield return SrcValuePair.Create(SrcConstants.PageLayoutLineJumpCode, this.LineJumpCode, nameof(SrcConstants.PageLayoutLineJumpCode), nameof(this.LineJumpCode));
+                yield return SrcValuePair.Create(SrcConstants.PageLayoutLineJumpFactorX, this.LineJumpFactorX, nameof(SrcConstants.PageLayoutLineJumpFactorX), nameof(this.LineJumpFactorX));
+                yield return SrcValuePair.Create(SrcConstants.PageLayoutLineJumpFactorY, this.LineJumpFactorY, nameof(SrcConstants.PageLayoutLineJumpFactorY), nameof(this.LineJumpFactorY));
+                yield return SrcValuePair.Create(SrcConstants.PageLayoutLineJumpStyle, this.LineJumpStyle, nameof(SrcConstants.PageLayoutLineJumpStyle), nameof(this.LineJumpStyle));
+                yield return SrcValuePair.Create(SrcConstants.PageLayoutLineRouteExt, this.LineRouteExt, nameof(SrcConstants.PageLayoutLineRouteExt), nameof(this.LineRouteExt));
+                yield return SrcValuePair.Create(SrcConstants.PageLayoutLineToLineX, this.LineToLineX, nameof(SrcConstants.PageLayoutLineToLineX), nameof(this.LineToLineX));
+                yield return SrcValuePair.Create(SrcConstants.PageLayoutLineToLineY, this.LineToLineY, nameof(SrcConstants.PageLayoutLineToLineY), nameof(this.LineToLineY));
+                yield return SrcValuePair.Create(SrcConstants.PageLayoutLineToNodeX, this.LineToNodeX, nameof(SrcConstants.PageLayoutLineToNodeX), nameof(this.LineToNodeX));
+                yield return SrcValuePair.Create(SrcConstants.PageLayoutLineToNodeY, this.LineToNodeY, nameof(SrcConstants.PageLayoutLineToNodeY), nameof(this.LineToNodeY));
+                yield return SrcValuePair.Create(SrcConstants.PageLayoutLineJumpDirX, this.LineJumpDirX, nameof(SrcConstants.PageLayoutLineJumpDirX), nameof(this.LineJumpDirX));
+                yield return SrcValuePair.Create(SrcConstants.PageLayoutLineJumpDirY, this.LineJumpDirY, nameof(SrcConstants.PageLayoutLineJumpDirY), nameof(this.LineJumpDirY));
+                yield return SrcValuePair.Create(SrcConstants.PageLayoutShapeSplit, this.PageShapeSplit, nameof(SrcConstants.PageLayoutShapeSplit), nameof(this.PageShapeSplit));
+                yield return SrcValuePair.Create(SrcConstants.PageLayoutPlaceDepth, this.PlaceDepth, nameof(SrcConstants.PageLayoutPlaceDepth), nameof(this.PlaceDepth));
+                yield return SrcValuePair.Create(SrcConstants.PageLayoutPlaceFlip, this.PlaceFlip, nameof(SrcConstants.PageLayoutPlaceFlip), nameof(this.PlaceFlip));
+                yield return SrcValuePair.Create(SrcConstants.PageLayoutPlaceStyle, this.PlaceStyle, nameof(SrcConstants.PageLayoutPlaceStyle), nameof(this.PlaceStyle));
+                yield return SrcValuePair.Create(SrcConstants.PageLayoutPlowCode, this.PlowCode, nameof(SrcConstants.PageLayoutPlowCode), nameof(this.PlowCode));
+                yield return SrcValuePair.Create(SrcConstants.PageLayoutResizePage, this.ResizePage, nameof(SrcConstants.PageLayoutResizePage), nameof(this.ResizePage));
+                yield return SrcValuePair.Create(SrcConstants.PageLayoutRouteStyle, this.RouteStyle, nameof(SrcConstants.PageLayoutRouteStyle), nameof(this.RouteStyle));
+                yield return SrcValuePair.Create(SrcConstants.PageLayoutAvoidPageBreaks, this.AvoidPageBreaks, nameof(SrcConstants.PageLayoutAvoidPageBreaks), nameof(this.AvoidPageBreaks));
             }
         }
 

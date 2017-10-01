@@ -22,14 +22,14 @@ namespace VisioAutomation.Shapes
         {
             get
             {
-                yield return SrcValuePair.Create(SrcConstants.ControlCanGlue, this.CanGlue);
-                yield return SrcValuePair.Create(SrcConstants.ControlTip, this.Tip);
-                yield return SrcValuePair.Create(SrcConstants.ControlX, this.X);
-                yield return SrcValuePair.Create(SrcConstants.ControlY, this.Y);
-                yield return SrcValuePair.Create(SrcConstants.ControlYBehavior, this.YBehavior);
-                yield return SrcValuePair.Create(SrcConstants.ControlXBehavior, this.XBehavior);
-                yield return SrcValuePair.Create(SrcConstants.ControlXDynamics, this.XDynamics);
-                yield return SrcValuePair.Create(SrcConstants.ControlYDynamics, this.YDynamics);
+                yield return SrcValuePair.Create(SrcConstants.ControlCanGlue, this.CanGlue, nameof(SrcConstants.ControlCanGlue), nameof(this.CanGlue));
+                yield return SrcValuePair.Create(SrcConstants.ControlTip, this.Tip, nameof(SrcConstants.ControlTip), nameof(this.Tip));
+                yield return SrcValuePair.Create(SrcConstants.ControlX, this.X, nameof(SrcConstants.ControlX), nameof(this.X));
+                yield return SrcValuePair.Create(SrcConstants.ControlY, this.Y, nameof(SrcConstants.ControlY), nameof(this.Y));
+                yield return SrcValuePair.Create(SrcConstants.ControlYBehavior, this.YBehavior, nameof(SrcConstants.ControlYBehavior), nameof(this.YBehavior));
+                yield return SrcValuePair.Create(SrcConstants.ControlXBehavior, this.XBehavior, nameof(SrcConstants.ControlXBehavior), nameof(this.XBehavior));
+                yield return SrcValuePair.Create(SrcConstants.ControlXDynamics, this.XDynamics, nameof(SrcConstants.ControlXDynamics), nameof(this.XDynamics));
+                yield return SrcValuePair.Create(SrcConstants.ControlYDynamics, this.YDynamics, nameof(SrcConstants.ControlYDynamics), nameof(this.YDynamics));
             }
         }
 

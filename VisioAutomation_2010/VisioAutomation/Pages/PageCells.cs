@@ -22,16 +22,16 @@ namespace VisioAutomation.Pages
         {
             get
             {
-                yield return SrcValuePair.Create(SrcConstants.XGridDensity, this.XGridDensity);
-                yield return SrcValuePair.Create(SrcConstants.XGridOrigin, this.XGridOrigin);
-                yield return SrcValuePair.Create(SrcConstants.XGridSpacing, this.XGridSpacing);
-                yield return SrcValuePair.Create(SrcConstants.XRulerDensity, this.XRulerDensity);
-                yield return SrcValuePair.Create(SrcConstants.XRulerOrigin, this.XRulerOrigin);
-                yield return SrcValuePair.Create(SrcConstants.YGridDensity, this.YGridDensity);
-                yield return SrcValuePair.Create(SrcConstants.YGridOrigin, this.YGridOrigin);
-                yield return SrcValuePair.Create(SrcConstants.YGridSpacing, this.YGridSpacing);
-                yield return SrcValuePair.Create(SrcConstants.YRulerDensity, this.YRulerDensity);
-                yield return SrcValuePair.Create(SrcConstants.YRulerOrigin, this.YRulerOrigin);
+                yield return SrcValuePair.Create(SrcConstants.XGridDensity, this.XGridDensity, nameof(SrcConstants.XGridDensity), nameof(this.XGridDensity));
+                yield return SrcValuePair.Create(SrcConstants.XGridOrigin, this.XGridOrigin, nameof(SrcConstants.XGridOrigin), nameof(this.XGridOrigin));
+                yield return SrcValuePair.Create(SrcConstants.XGridSpacing, this.XGridSpacing, nameof(SrcConstants.XGridSpacing), nameof(this.XGridSpacing));
+                yield return SrcValuePair.Create(SrcConstants.XRulerDensity, this.XRulerDensity, nameof(SrcConstants.XRulerDensity), nameof(this.XRulerDensity));
+                yield return SrcValuePair.Create(SrcConstants.XRulerOrigin, this.XRulerOrigin, nameof(SrcConstants.XRulerOrigin), nameof(this.XRulerOrigin));
+                yield return SrcValuePair.Create(SrcConstants.YGridDensity, this.YGridDensity, nameof(SrcConstants.YGridDensity), nameof(this.YGridDensity));
+                yield return SrcValuePair.Create(SrcConstants.YGridOrigin, this.YGridOrigin, nameof(SrcConstants.YGridOrigin), nameof(this.YGridOrigin));
+                yield return SrcValuePair.Create(SrcConstants.YGridSpacing, this.YGridSpacing, nameof(SrcConstants.YGridSpacing), nameof(this.YGridSpacing));
+                yield return SrcValuePair.Create(SrcConstants.YRulerDensity, this.YRulerDensity, nameof(SrcConstants.YRulerDensity), nameof(this.YRulerDensity));
+                yield return SrcValuePair.Create(SrcConstants.YRulerOrigin, this.YRulerOrigin, nameof(SrcConstants.YRulerOrigin), nameof(this.YRulerOrigin));
             }
         }
 
